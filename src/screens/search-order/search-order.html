@@ -32,7 +32,7 @@
                               <div class="inp__i">
                                 <error-message
                                         control="vm.searchOrderForm.pnrOrTicketNumber"
-+                                       format-alias="'web.messages.formatTicketOrPNR'"
+                                        format-alias="'web.messages.formatTicketOrPNR'"
                                         touched="vm.submitTouched">
                                 </error-message>
                                 <input type="text"
@@ -40,10 +40,11 @@
                                        placeholder="{{ 'web.order.form.pnr' | aliasStatic}}"
                                        class="textInp"
                                        name="pnrOrTicketNumber"
-+                                      ng-model="vm.searchParams.pnrOrTicketNumber"
+                                       ng-model="vm.searchParams.pnrOrTicketNumber"
                                        ng-change="vm.clear()"
                                        ng-pattern="vm.pnrOrTicketRegexp"
                                        clean-search-order-param
+                                       maxlength="26"
                                        error-highlight="{{ vm.submitTouched }}"
                                        required/>
                               </div>
