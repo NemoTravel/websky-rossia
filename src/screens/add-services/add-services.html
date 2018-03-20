@@ -39,8 +39,7 @@
                   </wrap>{{ ' | ' }}
                   <wrap ng-repeat="(num, segment) in vm.orderInfo.flights">
                     {{ num ? ' – ' : '' }}
-                    <!-- {{ segment.date | formatDate: 'D MMM' }} -->
-                    {{ segment.date | formatDate: 'D.M.Y'}}
+                    {{ segment.date | formatDate: 'DD.MM.YYYY'}}
                   </wrap>
                 </span>
                 <div class="searchResultsControl searchResultsControl__back">
