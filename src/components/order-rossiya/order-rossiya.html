@@ -350,14 +350,14 @@
 
     <div class="row">
       <div class="col">
-        <div ng-if="vm.orderInfo.addingExtraServicesAllowed" class="otherServices">
+		<div ng-if="vm.orderInfo.addingExtraServicesAllowed && (!vm.checkAllPassengersHavePaidService('seat') || !vm.checkAllPassengersHavePaidService('meal'))" class="otherServices">
           <div class="otherServices__i">
             <h2 class="title">
                           {{ 'web.orderInfo.addExtraServices' | aliasStatic}}
                       </h2>
             <!-- <wrap ng-bind-html=" 'web.orderInfo.addExtraServices.htmlItems' | aliasStatic"></wrap> -->
-            <a href="" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-meal"></div></a>
-            <a href="" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-sead"></div></a>
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('meal')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-meal"></div></a>
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('seat')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-sead"></div></a>
             <!--  -->
             <div class="btnRow">
               <a href ng-click="vm.openAddServices(vm.pnr, vm.lastName)" class="btn btn_select js-add-services">

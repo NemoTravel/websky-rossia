@@ -1,5 +1,5 @@
 <div class="item__i mobileHide">
-  <div class="top">
+  <div class="top" ng-if="vm.service.availableBySegments.length > 0">
     <div class="top__i">
 
       <table>
@@ -74,7 +74,7 @@
   </div>
 
 
-  <div class="drop" ng-class="{ active: vm.service.active, show_js: vm.service.active }">
+  <div class="drop" ng-class="{ active: vm.service.active, show_js: vm.service.active }" ng-if="vm.service.availableBySegments.length > 0">
     <div class="drop__i">
 
       <div class="seatSelect">
@@ -211,7 +211,7 @@
 
 <div class="item__i mobileShow">
 
-  <div class="top">
+  <div class="top" ng-if="vm.service.availableBySegments.length > 0">
     <div class="top__i">
       <a href>
         <div class="row">
@@ -285,7 +285,7 @@
     </div>
   </div>
 
-  <div class="drop" ng-class="{ active: vm.service.active, show_js: vm.service.active }">
+  <div class="drop" ng-class="{ active: vm.service.active, show_js: vm.service.active }" ng-if="vm.service.availableBySegments.length > 0">
     <div class="drop__i">
       <div class="seatSelect drop_mobile">
         <div class="seatSelect__i">
