@@ -1,0 +1,68 @@
+<div class="popup popup_auth" id="popupOrderEmailRequired" style="display: none;">
+
+	<div class="title">
+		<div class="title__i">
+			<p>
+				{{ 'web.popupOrderEmailRequired.header' | aliasStatic}}
+			</p>
+			<a href ng-click="vm.close()" class="closePopup closePopup_js"></a>
+		</div>
+	</div>
+
+	<div class="popup__i">
+		<wrap ng-if="!vm.loading">
+
+	        <form name="vm.orderEmailForm" ng-submit="vm.submit()" form-submit-error-highlight novalidate>
+	    		<div class="popup__i__inputBox">
+                    <div class="popup__i__inputBox__wrapper">
+						<span ng-if="!vm.phoneRequiredToo" class="popup__i__inputBox__text">
+							{{ 'web.messages.orderEmailRequired' | aliasStatic}}
+	    				</span>
+	    				<span ng-if="vm.phoneRequiredToo" class="popup__i__inputBox__text">
+							{{ 'web.messages.orderEmailWithPhoneRequired' | aliasStatic}}
+	    				</span>
+	    			</div>
+	                <div ng-if="vm.phoneRequiredToo" class="popup__i__inputBox__wrapper">
+                        <error-message
+                            control="vm.orderEmailForm.phone"
+							format-alias="'web.messages.formatPhone'"
+                            touched="vm.submitTouched">
+                        </error-message>
+                        <input type="tel" class="popup__i__inputBox__input"
+							name="phone"
+							phone-mask
+                            ng-model="vm.newPhone"
+                            required
+                            ng-pattern="'customer.phoneRegexp' | param"
+                            class="popup__i__inputBox__input"
+                            error-highlight="{{ vm.submitTouched }}"
+                            placeholder="{{ 'web.popupOrderEmail.phone' | aliasStatic}}"/>
+                    </div>
+	                <div class="popup__i__inputBox__wrapper">
+                        <error-message
+                            control="vm.orderEmailForm.email"
+                            touched="vm.submitTouched">
+                        </error-message>
+                        <input type="email" class="popup__i__inputBox__input"
+                            name="email"
+                            ng-model="vm.newEmail"
+                            required
+                            ng-pattern="'site.emailRegexp' | param"
+                            class="popup__i__inputBox__input"
+                            error-highlight="{{ vm.submitTouched }}"
+                            placeholder="{{ 'web.popupOrderEmail.email' | aliasStatic}}"/>
+	                </div>
+	    		</div>
+
+	    		<div class="popup__i__footer">
+	    			<div class="popup__i__footer__buttons">
+	    				<button class="btn popup__i__footer__buttons__button">
+	    					{{ 'web.buttons.setOrderEmail' | aliasStatic}}
+	    				</button>
+	    			</div>
+	    		</div>
+	        </form>
+
+		</wrap>
+	</div>
+</div>
