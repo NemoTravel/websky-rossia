@@ -196,7 +196,7 @@
 
                               <!-- Этот блок служит для вывода активного блюда самым первым -->
                               <div ng-repeat="mealItem in subgroup"
-                                   ng-if=" vm.mealMenuSubgroup === subgroupNum && mealItem.active || vm.mealMenuSubgroup === false"
+                                   ng-if="mealItem.active && (vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false)"
                                    ng-class="{ active: mealItem.active }"
                                    ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)" class="item">
                                 <div class="food_wrap">
@@ -220,7 +220,7 @@
                               <!--  -->
 
                               <div ng-repeat="mealItem in subgroup"
-                                   ng-if=" vm.mealMenuSubgroup === subgroupNum && !mealItem.active || vm.mealMenuSubgroup === false "
+                                   ng-if="!mealItem.active && (vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false)"
                                    ng-class="{ active: mealItem.active, control_disabled: vm.locked }"
                                    ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)" class="item">
                                 <div class="food_wrap">
