@@ -1,0 +1,62 @@
+<app-loader ng-if="vm.loading"></app-loader>
+
+<section class="out" ng-if="!vm.loading">
+
+    <app-header></app-header>
+
+    <div ng-if=" 'site.bookingEnabled' | param " class="searchSteps">
+        <div class="wrap">
+            <div class="searchSteps__i">
+                <ol>
+                    <li class="prev"><a href="{{ 'web.site.firstStepUrl' | aliasStatic }}">{{ 'web.steps.search' | aliasStatic}}</a></li>
+                    <li>{{ 'web.steps.selectVariant' | aliasStatic}}</li>
+                    <li>
+                        {{ (vm.orderInfo.passengers.length == 1) ? ( 'web.steps.passenger' | aliasStatic) : ( 'web.steps.passengers' | aliasStatic) }}
+                    </li>
+                    <li>{{ 'web.steps.extraServices' | aliasStatic}}</li>
+                    <li>{{ 'web.steps.payment' | aliasStatic}}</li>
+                    <li class="active">{{ 'web.steps.order' | aliasStatic}}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+	<div class="content">
+		<div class="wrap wrap_pt32">
+			<div class="content__i">
+
+                <p class="invoiceBack invoiceBack_confirmOrder">
+                  <a href="#{{$root.ROUTES.SEARCH_ORDER}}" class="back">
+                    {{ 'web.order.form.goToSearchOrder' | aliasStatic}}
+                  </a>
+                </p>
+
+                <div ng-if="vm.showPaidFailedMessage" class="infoMessage infoMessage_error">
+                    <div class="infoMessage__i">
+                        <p ng-bind-html=" 'web.paymentResult.failed' | aliasStatic"></p>
+                    </div>
+                </div>
+
+                <div ng-if="vm.showPaidSuccessMessage" class="infoMessage">
+                    <div class="infoMessage__i">
+                        <p ng-bind-html=" 'web.paymentResult.paid' | aliasStatic"></p>
+                    </div>
+                </div>
+
+                <div ng-if="vm.showBookingSuccessMessage" class="infoMessage">
+                    <div class="infoMessage__i">
+                        <p ng-bind-html=" 'web.bookingResult.cash' | aliasStatic"></p>
+                    </div>
+                </div>
+
+                <order-rossiya pnr="vm.pnr" lastname="vm.lastName"></order-rossiya>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="push"></div>
+
+</section>
+
+<app-footer ng-if="!vm.loading"></app-footer>
