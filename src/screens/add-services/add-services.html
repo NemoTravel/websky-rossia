@@ -27,7 +27,7 @@
               {{ 'web.addServices.header' | aliasStatic}}
               <div class="orderInfo">
                 <!-- <span>{{ 'web.addServices.regnumLabel' | aliasStatic}}{{ vm.pnr }}</span> -->
-                <span>Заказ № {{ vm.orderInfo.header.regnum }}</span>
+                <span>{{ 'web.addServices.regnumLabel' | aliasStatic}} {{ vm.orderInfo.header.regnum }}</span>
                 <span>
                   <!-- {{ 'web.addServices.routeLabel' | aliasStatic}}{{ ' ' }} -->
                   <wrap ng-repeat="(num, segment) in vm.orderInfo.flights">
