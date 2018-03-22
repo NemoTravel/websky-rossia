@@ -194,33 +194,8 @@
 
                             <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
 
-                              <!-- Этот блок служит для вывода активного блюда самым первым -->
                               <div ng-repeat="mealItem in subgroup"
-                                   ng-if="mealItem.active && (vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false)"
-                                   ng-class="{ active: mealItem.active }"
-                                   ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)" class="item">
-                                <div class="food_wrap">
-                                  <div class="img">
-                                    <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
-                                  </div>
-                                  <div class="food_info">
-                                    <div class="name">
-                                      <p>{{ mealItem.title }}</p>
-                                      <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
-                                    </div>
-                                    <div class="description">
-                                      <a ng-if="vm.hasAlias('web.extraServices.meal.ingredientsDescriptionContent.' + mealItem.serviceType + '.' + mealItem.rfisc)" href fancybox="popupAlias" class="link link--ingredientsDescription" data-popup-alias="web.extraServices.meal.ingredientsDescriptionContent.{{mealItem.serviceType}}.{{mealItem.rfisc}}">
-                                                                          {{ 'web.extraServices.meal.ingredientsDescriptionLabel' | aliasStatic }}
-                                                                      </a>
-                                      <p ng-bind-html="mealItem.description"></p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!--  -->
-
-                              <div ng-repeat="mealItem in subgroup"
-                                   ng-if="!mealItem.active && (vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false)"
+                                   ng-if="vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false"
                                    ng-class="{ active: mealItem.active, control_disabled: vm.locked }"
                                    ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)" class="item">
                                 <div class="food_wrap">
