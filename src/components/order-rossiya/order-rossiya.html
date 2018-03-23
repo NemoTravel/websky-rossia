@@ -355,15 +355,15 @@
             <h2 class="title">
                           {{ 'web.orderInfo.addExtraServices' | aliasStatic}}
                       </h2>
-            <!-- <wrap ng-bind-html=" 'web.orderInfo.addExtraServices.htmlItems' | aliasStatic"></wrap> -->
-            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('meal')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-meal"></div></a>
-            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('seat')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="otherServices__i__icon-sead"></div></a>
-            <!--  -->
             <div class="btnRow">
               <a href ng-click="vm.openAddServices(vm.pnr, vm.lastName)" class="btn btn_select js-add-services">
                               {{ 'web.buttons.addServices' | aliasStatic}}
                           </a>
             </div>
+          </div>
+          <div class="otherServices__icons">
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('meal')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)" ><div class="icon-meal"></div></a>
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('seat')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="icon-sead"></div></a>
           </div>
         </div>
         <div class="invoiceServicesSelected">
