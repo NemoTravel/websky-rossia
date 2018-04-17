@@ -4,7 +4,7 @@ angular.module('app').component('orderRossiya', {
     controller: ['$window', '$timeout', 'backend', 'utils', 'redirect', 'fancyboxTools', OrderRossiyaController],
     controllerAs: 'vm',
     bindings: {
-        pnr: '=pnr',
+        pnrOrTicketNumber: '=num',
         lastName: '=lastname'
     }
 });
@@ -23,7 +23,7 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
     vm.checkAllPassengersHavePaidService = checkAllPassengersHavePaidService;
     vm.clearSession = clearSession;
 
-    backend.searchOrder(vm.pnr, vm.lastName).then(function (orderInfo) {
+    backend.searchOrder(vm.pnrOrTicketNumber, vm.lastName).then(function (orderInfo) {
 
         var resultParam = utils.getParamFromLocation('result');
 
@@ -37,8 +37,8 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
             )
         ) {
             if (resultParam === 'success') {
-                backend.waitPayment(vm.pnr, vm.lastName).then(function () {
-                    $window.location = './order?pnr=' + vm.pnr + '&lastName=' + vm.lastName + '&result=success';
+                backend.waitPayment(vm.orderInfo.header.regnum, vm.lastName).then(function () {
+                    $window.location = './order?pnr=' + vm.orderInfo.header.regnum + '&lastName=' + vm.lastName + '&result=success';
                     return;
                 }, function () {
                     vm.loading = false;
@@ -94,7 +94,7 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
         vm.loading = true;
         backend.retryRegister().then(function (resp) {
             if (resp.lastName && resp.pnr) {
-                $window.location = './order?pnr=' + vm.pnr + '&lastName=' + vm.lastName;
+                $window.location = './order?pnr=' + resp.pnr + '&lastName=' + resp.lastName;
             } else {
                 vm.loading = false;
             }
@@ -105,8 +105,11 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
     }
 
     function bindOrder() {
+        if (!vm.orderInfo.header || !vm.orderInfo.header.regnum) {
+            return;
+        }
         vm.loading = true;
-        backend.bindOrder(vm.pnr, vm.lastName).then(function () {
+        backend.bindOrder(vm.orderInfo.header.regnum, vm.lastName).then(function () {
             vm.loading = false;
             vm.orderInfo.bindAlowed = false;
             vm.showBindOrderSuccessMessage = true;

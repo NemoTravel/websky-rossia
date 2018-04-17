@@ -4340,3 +4340,15 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 }
 
 /* -- end 33340 -- */
+
+
+.seat-prop-babyBassinet .seat-number {
+    display: none;
+}
+.seat-prop-babyBassinet {
+    background: none !important;
+}
+.seat-prop-babyBassinet svg {
+    margin: 1px;
+}
+
