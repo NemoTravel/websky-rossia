@@ -59,7 +59,17 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                 vm.modifyError = false;
                 backend.removeExtraService({
                     code: 'seat'
-                }).then(clearFlightPassenger, function (resp) {
+                }).then(function () {
+                    clearFlightPassenger();
+                    if (
+                        vm.orderInfo.editable_extra_services &&
+                        _.findWhere(vm.orderInfo.editable_extra_services, { code: 'babyBassinet' })
+                    ) {
+                        backend.removeExtraService({
+                            code: 'babyBassinet'
+                        })
+                    }
+                }, function (resp) {
                     if (resp.error) {
                         vm.modifyError = resp.error;
                     }
@@ -269,15 +279,35 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
     }
 
     function removePassengerFlightSeat(passengerNum, flightNum) {
+        var paxId = vm.orderInfo.passengers[passengerNum].id,
+            segId = vm.orderInfo.plainFlights[flightNum].id;
         if (
             !vm.locked && !backend.checkServiceRemovalProhibited('seat', passengerNum, flightNum)
         ) {
             vm.modifyError = false;
+            
             backend.removeExtraService({
                 code: 'seat',
-                passenger_id: vm.orderInfo.passengers[passengerNum].id,
-                segment_id: vm.orderInfo.plainFlights[flightNum].id
+                passenger_id: paxId,
+                segment_id: segId
             }).then(function () {
+                if (
+                    vm.orderInfo.editableExtraServicesHeap &&
+                    _.findWhere(
+                        vm.orderInfo.editableExtraServicesHeap,
+                        {
+                            groupCode: 'babyBassinet',
+                            mainSegmentId: segId,
+                            passengerId: paxId
+                        }
+                    )
+                ) {
+                    backend.removeExtraService({
+                        code: 'babyBassinet',
+                        passenger_id: paxId,
+                        segment_id: segId
+                    })
+                }
                 if (vm.selectedFlight === flightNum) {
                     updateSeatMap();
                 }
@@ -286,6 +316,8 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                     vm.modifyError = resp.error;
                 }
             });
+            
+           
         }
     }
 
