@@ -1,25 +1,11 @@
 angular.module('app').component('babyBassinetIcon', {
     templateUrl: 'components/baby-bassinet-icon/baby-bassinet-icon.html',
-    controller: [BabyBassinetIconController],
+    controller: function () {},
     controllerAs: 'vm',
     bindings: {
-        rfisc: '=rfisc'
+        rfisc: '=rfisc',
+        active: '=active'
     }
 });
 
-function BabyBassinetIconController() {
-    var vm = this;
 
-    function getColorByRFISC(rfisc, propName) {
-        var style = {};
-
-        style[propName] = {
-            '04D': '#1B3E6F',
-            '06Z': '#006DA4'
-        }[rfisc] || '#CBC8C8';
-
-        console.log('style: ', style);
-
-        return style;
-    }
-}

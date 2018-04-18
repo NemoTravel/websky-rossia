@@ -97,6 +97,11 @@
                     <li class="disabled">
                       <span class="seat-place"></span> {{ 'web.extraServices.seat.disabled' | aliasStatic}}
                     </li>
+                    <li ng-if="vm.hasSeatsWithBabyBassinet" class="seat-babyBassinet">
+                      <span class="seat-place">
+                        <baby-bassinet-icon-legend></baby-bassinet-icon-legend>
+                      </span> {{ 'web.extraServices.seat.babyBassinet' | aliasDynamic }}
+                    </li>
                     <li ng-repeat="rfiscsPriceItem in vm.service.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight][0] track by $index" class="rfiscs-seat-label rfiscs-seat-label-{{ rfiscsPriceItem.rfisc }}">
                       <span class="seat-place seat-rfisc-{{ rfiscsPriceItem.rfisc }}"></span>
                       <!--span class="rfiscs-seat-label-cost" ng-bind-html="{ value: rfiscsPriceItem.price, currency: rfiscsPriceItem.currency } | price"></span-->

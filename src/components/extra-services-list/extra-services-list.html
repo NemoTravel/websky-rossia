@@ -6,7 +6,7 @@
 
         <es-meal-rossiya ng-if="esCode == 'meal'" service="vm.es.meal" locked="vm.locked"></es-meal-rossiya>
 
-        <es-seat-rossiya ng-if="esCode == 'seat'" service="vm.es.seat" locked="vm.locked"></es-seat-rossiya>
+        <es-seat-rossiya ng-if="esCode == 'seat'" service="vm.es.seat" baby-bassinet-service="vm.es.babyBassinet || false" locked="vm.locked"></es-seat-rossiya>
 
         <es-insurance ng-if="esCode == 'insurance'" service="vm.es.insurance" locked="vm.locked"></es-insurance>
         <es-aeroexpress ng-if="esCode == 'aeroexpress'" service="vm.es.aeroexpress" locked="vm.locked"></es-aeroexpress>

@@ -4,6 +4,7 @@ angular.module('app').component('esSeatRossiya', {
     controllerAs: 'vm',
     bindings: {
         service: '=service',
+        babyBassinetService: '=',
         locked: '=locked'
     }
 });
@@ -19,7 +20,6 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
     vm.selectFlightPassenger = selectFlightPassenger;
     vm.selectFirstAvailablePassengerFlight = selectFirstAvailablePassengerFlight;
     vm.setPassengerFlightSeat = setPassengerFlightSeat;
-    //
     vm.getSelectedPassengerFlightMeal = getSelectedPassengerFlightMeal;
     vm.checkAllChoose = checkAllChoose;
 
@@ -106,6 +106,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                 vm.orderInfo.plainFlights[vm.selectedFlight].id
             ).then(function (resp) {
                 vm.seatMap = resp;
+                vm.hasSeatsWithBabyBassinet = checkExistSeatsWithBabyBassinetBySeatMap(resp);
                 vm.loadingSeatMap = false;
                 $timeout(function () {
                     jQuery('#seatMapCont .mCSB_container').css('top', seatMapContainerTopPosition);
@@ -118,7 +119,44 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
 
     }
 
+    function checkExistSeatsWithBabyBassinetBySeatMap(seatMap) {
+        var hasBabyBassinet = false;
+        if (seatMap && seatMap.decks) {
+            seatMap.decks.forEach(function (deck) {
+                if (deck && deck.cabins) {
+                    deck.cabins.forEach(function (cabin) {
+                        if (cabin && cabin.rows) {
+                            cabin.rows.forEach(function (row) {
+                                if (row && row.chairs) {
+                                    row.chairs.forEach(function (chair) {
+                                        if (checkExistSeatsWithBabyBassinetByChair(chair)) {
+                                            hasBabyBassinet = true;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+        return hasBabyBassinet;
+    }
+
+    function checkExistSeatsWithBabyBassinetByChair(chair) {
+        var hasBabyBassinet = false;
+        if (chair && chair.properties) {
+            chair.properties.forEach(function (prop) {
+                if (prop === 'babyBassinet') {
+                    hasBabyBassinet = true
+                }
+            });
+        }
+        return hasBabyBassinet;
+    }
+
     function setPassengerFlightSeat(chair, cabinAllowed, rowNumber) {
+        var babyBassinetItem;
         if (!vm.locked) {
             if (chair.available && cabinAllowed) {
                 setSeatMapContainerTopPosition();
@@ -131,7 +169,34 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                     subgroup: vm.service.commonSubgroup,
                     rfisc: chair.rfisc || '',
                     service_type: 'F'
-                }).then(updateSeatMap, function (resp) {
+                }).then(function () {
+                    updateSeatMap()
+                    if (checkExistSeatsWithBabyBassinetByChair(chair)) {
+                        if (
+                            vm.babyBassinetService &&
+                            vm.babyBassinetService.itemsByPassengerSegments &&
+                            vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger] &&
+                            vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]
+                        ) { 
+                            babyBassinetItem = utils.getFirstNotEmptySubListItem(vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]);
+                            if (
+                                babyBassinetItem &&
+                                babyBassinetItem.serviceType &&
+                                babyBassinetItem.rfisc
+                            ) {
+                                backend.modifyExtraService({
+                                    code: 'babyBassinet',
+                                    passenger_id: vm.orderInfo.passengers[vm.selectedPassenger].id,
+                                    segment_id: vm.orderInfo.plainFlights[vm.selectedFlight].id,
+                                    subgroup: vm.babyBassinetService.commonSubgroup,
+                                    rfisc: babyBassinetItem.rfisc,
+                                    service_type: babyBassinetItem.serviceType
+                                })
+                            }
+                        }
+                        return;
+                    }
+                }, function (resp) {
                     if (resp.error) {
                         vm.modifyError = resp.error;
                     }

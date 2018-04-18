@@ -13,10 +13,13 @@
     .rfisc-icon__04D .st2{stroke:#1B3E6F;}
 
     .rfisc-icon__06Z .st1{fill:#006DA4;}
-    .rfisc-icon__06Z .st2{stroke:#006DA4;}
+	.rfisc-icon__06Z .st2{stroke:#006DA4;}
+	
+    g.active .st1{fill:#d0112b;}
+    g.active .st2{stroke:#d0112b;}
 
 </style>
-<g class="rfisc-icon__{{vm.rfisc || 'regular'}}">
+<g class="rfisc-icon__{{vm.rfisc || 'regular'}}" ng-class="{ active: vm.active }">
 	<g>
 		<rect x="0.5" y="0.5" class="st0" width="25" height="25"/>
 		<path class="st1" d="M25,1v24H1V1H25 M26,0H0v26h26V0L26,0z"/>
