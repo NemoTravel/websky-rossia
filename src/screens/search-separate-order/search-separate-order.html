@@ -132,12 +132,8 @@
         </div>
 
         <div class="searchOrderDesc">
-          <div class="searchOrderDesc__title">
-            {{ 'web.order.form.underFormTitle' | aliasStatic }}
-          </div>
-          <div class="searchOrderDesc__text">
-            {{ 'web.order.form.underFormText' |  aliasStatic }}
-          </div>
+          <div class="searchOrderDesc__title" ng-bind-html=" 'web.order.form.underFormTitle' | aliasStatic "></div>
+          <div class="searchOrderDesc__text" ng-bind-html=" 'web.order.form.underFormText' |  aliasStatic "></div>
         </div>
 
       </div>
