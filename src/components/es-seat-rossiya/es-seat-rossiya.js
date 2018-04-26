@@ -166,15 +166,17 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
     }
 
     function setPassengerFlightSeat(chair, cabinAllowed, rowNumber) {
-        var babyBassinetItem;
+        var babyBassinetItem,
+            paxId = vm.orderInfo.passengers[vm.selectedPassenger].id,
+            segId = vm.orderInfo.plainFlights[vm.selectedFlight].id;
         if (!vm.locked) {
             if (chair.available && cabinAllowed) {
                 setSeatMapContainerTopPosition();
                 vm.modifyError = false;
                 backend.modifyExtraService({
                     code: 'seat',
-                    passenger_id: vm.orderInfo.passengers[vm.selectedPassenger].id,
-                    segment_id: vm.orderInfo.plainFlights[vm.selectedFlight].id,
+                    passenger_id: paxId,
+                    segment_id: segId,
                     value: rowNumber + chair.number,
                     subgroup: vm.service.commonSubgroup,
                     rfisc: chair.rfisc || '',
@@ -196,15 +198,16 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                             ) {
                                 backend.modifyExtraService({
                                     code: 'babyBassinet',
-                                    passenger_id: vm.orderInfo.passengers[vm.selectedPassenger].id,
-                                    segment_id: vm.orderInfo.plainFlights[vm.selectedFlight].id,
+                                    passenger_id: paxId,
+                                    segment_id: segId,
                                     subgroup: vm.babyBassinetService.commonSubgroup,
                                     rfisc: babyBassinetItem.rfisc,
                                     service_type: babyBassinetItem.serviceType
                                 })
                             }
                         }
-                        return;
+                    } else {
+                        removeBabyBassinetIfExist(paxId, segId);
                     }
                 }, function (resp) {
                     if (resp.error) {
@@ -291,23 +294,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                 passenger_id: paxId,
                 segment_id: segId
             }).then(function () {
-                if (
-                    vm.orderInfo.editableExtraServicesHeap &&
-                    _.findWhere(
-                        vm.orderInfo.editableExtraServicesHeap,
-                        {
-                            groupCode: 'babyBassinet',
-                            mainSegmentId: segId,
-                            passengerId: paxId
-                        }
-                    )
-                ) {
-                    backend.removeExtraService({
-                        code: 'babyBassinet',
-                        passenger_id: paxId,
-                        segment_id: segId
-                    })
-                }
+                removeBabyBassinetIfExist(paxId, segId);
                 if (vm.selectedFlight === flightNum) {
                     updateSeatMap();
                 }
@@ -318,6 +305,26 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             });
             
            
+        }
+    }
+
+    function removeBabyBassinetIfExist(paxId, segId) {
+        if (
+            vm.orderInfo.editableExtraServicesHeap &&
+            _.findWhere(
+                vm.orderInfo.editableExtraServicesHeap,
+                {
+                    groupCode: 'babyBassinet',
+                    mainSegmentId: segId,
+                    passengerId: paxId
+                }
+            )
+        ) {
+            backend.removeExtraService({
+                code: 'babyBassinet',
+                passenger_id: paxId,
+                segment_id: segId
+            })
         }
     }
 
