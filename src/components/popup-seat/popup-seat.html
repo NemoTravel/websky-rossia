@@ -48,6 +48,11 @@
 											<span class="rfiscs-seat-label-description" ng-bind-html=" rfiscsPriceItem.description | aliasDynamic "></span>
 										</li>
 										<wrap ng-if="vm.hasAlias('web.extraServices.seat.customLabels')" ng-bind-html=" 'web.extraServices.seat.customLabels' | aliasStatic"></wrap>
+										<li ng-if="vm.seatMap.hasSeatsWithBabyBassinet" class="seat-babyBassinet">
+											<span class="seat-place">
+												<baby-bassinet-icon-legend></baby-bassinet-icon-legend>
+											</span> {{ 'web.extraServices.seat.babyBassinet' | aliasDynamic }}
+										</li>
 									</ul>
 								</div>
 							</div>

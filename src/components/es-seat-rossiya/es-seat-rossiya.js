@@ -116,7 +116,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                 vm.orderInfo.plainFlights[vm.selectedFlight].id
             ).then(function (resp) {
                 vm.seatMap = resp;
-                vm.hasSeatsWithBabyBassinet = checkExistSeatsWithBabyBassinetBySeatMap(resp);
+                vm.seatMap.hasSeatsWithBabyBassinet = checkExistSeatsWithBabyBassinetBySeatMap(resp);
                 vm.loadingSeatMap = false;
                 $timeout(function () {
                     jQuery('#seatMapCont .mCSB_container').css('top', seatMapContainerTopPosition);
