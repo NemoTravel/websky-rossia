@@ -356,14 +356,14 @@
                           {{ 'web.orderInfo.addExtraServices' | aliasStatic}}
                       </h2>
             <div class="btnRow">
-              <a href ng-click="vm.openAddServices(vm.pnr, vm.lastName)" class="btn btn_select js-add-services">
+              <a href ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_select js-add-services">
                               {{ 'web.buttons.addServices' | aliasStatic}}
                           </a>
             </div>
           </div>
           <div class="otherServices__icons">
-            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('meal')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)" ><div class="icon-meal"></div></a>
-            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('seat')" ng-click="vm.openAddServices(vm.pnr, vm.lastName)"><div class="icon-sead"></div></a>
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('meal')" ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)" ><div class="icon-meal"></div></a>
+            <a href="" ng-if="!vm.checkAllPassengersHavePaidService('seat')" ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)"><div class="icon-sead"></div></a>
           </div>
         </div>
         <div class="invoiceServicesSelected">
@@ -374,7 +374,7 @@
 
             <grouped-services-list order="vm.orderInfo" mode="all"></grouped-services-list>
             <div ng-if="vm.orderInfo.hasSelectedExtraServices && vm.orderInfo.pricesNotIssued" class="btnRow">
-              <a href ng-click="vm.openAddServices(vm.pnr, vm.lastName)" class="btn btn_select js-add-services">
+              <a href ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_select js-add-services">
                                 {{ 'web.buttons.payAdditionalServices' | aliasStatic}}
                             </a>
             </div>
