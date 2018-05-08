@@ -1,0 +1,480 @@
+/* infoBoxWrap */
+.foodSelect .infoBoxWrap {
+	position: relative;
+}
+
+.foodSelect .infoBoxWrap .infoBox {
+	transform: translate(-50%, -10px);
+}
+
+/* END infoBoxWrap */
+
+.foodSelect__headind {
+	display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+/* перебиваем стили */
+.foodSelect__flights .route {
+	padding-bottom: 0;
+}
+/* end перебиваем стили */
+
+.foodSelect__flights {
+	flex-basis: 50%;
+    padding-left: 20px;
+}
+
+.foodSelect__flight {
+	cursor: pointer;
+}
+
+.foodSelect__flight.active {
+	color: #006da3;
+    font-weight: bold;
+}
+
+.foodSelect__flight.active .route__plane {
+	display: block;
+}
+
+.foodSelect__flight .route {
+	display: flex;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: "Helios";
+    align-items: center;
+    height: 24px;
+}
+
+.foodSelect__flight .route__plane {
+    margin-left: 20px;
+    display: none;
+    font-size: 24px;
+}
+
+.foodSelect__flight .route__city {
+	margin-right: 10px;
+}
+
+.foodSelect__flight .route__city geo-marker {
+	position: relative;
+    margin-right: 5px;
+}
+
+.foodSelect__flight .route__city geo-marker:last-child {
+	margin-right: 0;
+}
+
+.foodSelect__flight .route__city geo-marker:after {
+	content: "/";
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: 2px;
+}
+
+.foodSelect__flight .route__city geo-marker:last-child:after {
+	display: none;
+}
+
+.foodSelect__flight .date {
+	position: relative;
+    margin-left: 10px;
+}
+
+.foodSelect__flight .date:before {
+    content: "|";
+    display: block;
+    position: absolute;
+    left: -10px;
+    top: 0;
+}
+
+.foodSorting {
+	flex-basis: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* foodSelect__output */
+
+.foodSelect__output {
+	display: flex;
+    margin-top: 20px;
+}
+
+.foodSelect__passagers {
+    flex-basis: 35%;
+    padding-left: 20px;
+    padding-top: 30px;
+    margin-right: 20px;
+}
+
+.foodSelect__passager {
+	display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.foodSelect__name-passager {
+    font-weight: bold;
+    font-size: 18px;
+    color: #55565a;
+    position: relative;
+    cursor: pointer;
+}
+
+.foodSelect__name-passager.notChoice {
+	color: #87878a;
+}
+
+.foodSelect__name-passager.notChoice:after {
+    border: 1px solid #87878a;
+}
+
+.foodSelect__name-passager.focus {
+	color: #cd112b;
+}
+
+.foodSelect__name-passager.focus:after {
+    border: 1px solid #cd112b;
+}
+
+.foodSelect__name-passager.focus:before {
+	background: #cd112b;
+    display: block;
+}
+
+.foodSelect__name-passager.disable {
+	color: #87878a;
+}
+
+.foodSelect__name-passager.disable:after {
+	border: 1px solid #87878a;
+}
+
+.foodSelect__name-passager i {
+	line-height: 0.5;
+}
+
+.foodSelect__name-passager:after,
+.foodSelect__name-passager:before {
+	content: "";
+    position: absolute;
+}
+
+.foodSelect__name-passager:after {
+    display: block;
+	top: -2px;
+    left: -25px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #55565a;
+    border-radius: 50%;
+}
+
+.foodSelect__name-passager:before {
+    display: none;
+	top: 3px;
+    left: -20px;
+    width: 8px;
+    height: 8px;
+    background: #55565a;
+    border-radius: 50%;
+}
+
+.foodSelect__passager .btn-choice {
+	margin-right: 35px;
+}
+
+.btn-choice {
+	font-size: 18px;
+    border-bottom: 1px dashed;
+    font-family: Helios;
+    text-transform: uppercase;
+    color: #d0112b;
+    font-weight: bold;
+}
+
+.foodSelect__meal-passager {
+	width: 100%;
+	display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.foodSelect__price {
+    display: flex;
+    align-items: center;
+}
+
+.foodSelect__price .btn-remove {
+	margin-left: 20px;
+}
+
+.foodSelect__price .btn-remove .icon_remove:before {
+    content: "";
+    display: inline-block;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAMAAABggeDtAAAAAXNSR0IB2cksfwAAAGZQTFRFAAAAzxAwzxApzxIs0REr0BEr0BErzxAozxArzxAs0RErzxAr0BErzxAr0BEr0RIrzxIq2T1S9MTK8bW90x8465ei4mp63Exg////99PY7qaw6IiV31tt/O7w9MfO+uPn7aKs1i5FxM/EngAAACJ0Uk5TABBQgMDQ/yBwQLBg4DDwoJD//////////////////////5uLnM0AAAH6SURBVHicpZfXeoQgEIVVEOvakojZ9Pd/yWCNO4ViziWf/3FgBhiiiFacCJmqVakUScZ8RyrLd/RPqfC1KEoEr5KVDy0Zelbtcsi4fx8x3Gx41ThwI8HSceum5xBiBseLTqsm53DzxZVqCIPMY+oWA+/gGYMw3KzB4yJ2gbjJwhkvgnGl8tPk6wt8k/0j+lnHDLJLuFLFxvuVLRvA1d/vAQg43A/D0zMcfBmGEY6VC48WX0/T9AoM7mbsDQUQk7mfeWAw4wSfk8nrJ2iw4NM7+rKkK38EBiuOpm9kao8YBQY8bjJAl/7ZwIKbBUDZgwY2XLUcfxhYcVOC7HWxGnxYcRu/GVhxkwDLdTW6cSuvPhf8C+0FT/6+/R/uBU/+fsyfN2gi9sJd8W+7gWTzv+cd7gXIV3Ycb6YHiejmwO0Gph9x4VYDcwcQCwhrnjWozfmRo1GNqm41wOdXSx7fGhftSPPJfP6iCtJEzY8UXy/nN8rgs9Y9+lWv9Q8c21qxK7fvou0GZkrIqXa/gK8F0BwtTHKJPzWirq6XUnru3kKav00PHVx4AwU6+dActBFQWBNTQjzMIKVaeH8DFHzYGnQ0bp4APoXYJBzu9YKR9mdgYW/knQ84swr8JOrcSS8x0LMofZ6fq+KqfYyiKaugF/TsUeSik1J2QhQ8+wu8kmI1BoIZCgAAAABJRU5ErkJggg==');
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+}
+
+.foodSelect__menu {
+	flex-basis: 65%;
+}
+
+.foodSelect__menu .list__i {
+	margin-left: 0;
+    margin-right: 0;
+}
+
+.foodSelect__menu wrap {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.foodSelect__menu .item {
+	width: 30%;
+    max-width: 500px;
+    float: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 1% 20px 1%;
+    cursor: pointer;
+    background: #e6e6e6;
+}
+
+.foodSelect__menu .item .baggageControl {
+	display: none;
+}
+
+.foodSelect__menu .img {
+    padding-bottom: 0;
+}
+
+.foodSelect__menu .food_footer {
+    padding: 15px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.foodSelect__menu .name {
+    position: relative;
+    padding: 0;
+}
+
+.foodSelect__menu .name p {
+    font-weight: 400;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.foodSelect__menu .item.active {
+	background: #d0102b;
+}
+
+.foodSelect__menu .item.active .panel-action .price {
+	color: #fff;
+}
+
+.foodSelect__menu .item.active .panel-action .price:before {
+	background: #fff;
+    display: block;
+}
+
+.foodSelect__menu .item.active .panel-action .price:after {
+	background: #d00f2b;
+}
+
+.foodSelect__menu .item.active .panel-action .baggageControl {
+	display: inline-block;
+}
+
+.foodSelect__menu .item .img:hover .img__description {
+	display: block;
+}
+
+.foodSelect__menu .item.active .img:hover .img__description {
+	display: block;
+    color: #fff;
+    background: rgba(208, 15, 43, 0.8);
+}
+
+.foodSelect__menu .food_wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.foodSelect__menu .baggageControl__i {
+	background: transparent;
+    border: none;
+    display: flex;
+}
+
+.foodSelect__menu .baggageControl .val {
+	padding: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.foodSelect__menu .panel-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.panel-action .price {
+    font-size: 18px;
+    position: relative;
+}
+
+.panel-action .price:after,
+.panel-action .price:before{
+    content: "";
+	position: absolute;
+}
+
+.panel-action .price:after {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 50%;
+    left: -30px;
+    top: -4px;
+    background: #fff;
+}
+
+.panel-action .price:before {
+    display: none;
+ 	background: black;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    left: -25px;
+    z-index: 1;
+    top: 1px;
+}
+
+.panel-action .baggageControl a.minus,
+.panel-action .baggageControl a.plus {
+	left: 0;
+    font-size: 0;
+    background: #d0112b;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    border: 1px solid #fff;
+}
+
+.panel-action .baggageControl a.minus:after {
+	content: "";
+    display:block;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.panel-action .baggageControl a.plus:after,
+.panel-action .baggageControl a.plus:before {
+	content: "";
+    display:block;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.panel-action .baggageControl a.plus:before {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.foodSelect__menu .img  {
+    position: relative;
+}
+
+.foodSelect__menu .img__description {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(230, 230, 230, 0.8);
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+}
+
+/* END foodSelect__output */
+
+/* media */
+
+@media (max-width: 1600px) and (min-width: 768px) {
+    .checkoutServices__i .list {
+    	padding-right: 0;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+
+    .foodSelect__passagers {
+        flex-basis: 40%;
+	}
+
+    .foodSelect__menu {
+    	flex-basis: 60%;
+    }
+
+    .foodSelect__menu .item {
+    	width: 45%;
+    	max-width: 100%;
+    	margin: 0 1% 20px 1%;
+	}
+}
+
+@media (max-width: 1000px) and (min-width: 768px) {
+    .foodSelect__headind {
+        flex-direction: column;
+        align-items: stretch;
+	}
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+
+    .foodSelect__passagers {
+        flex-basis: 50%;
+	}
+
+    .foodSelect__menu {
+    	flex-basis: 50%;
+    }
+
+    .foodSelect__menu .item {
+    	width: 80%;
+    	margin: 0 auto 20px auto;
+	}
+}
+
+/* media */
