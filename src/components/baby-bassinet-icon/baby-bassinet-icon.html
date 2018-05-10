@@ -18,8 +18,12 @@
     g.active .st1{fill:#d0112b;}
     g.active .st2{stroke:#d0112b;}
 
+	g.disabled .st0{fill:#8a8a8d;}
+	g.disabled .st1{fill:#8a8a8d;}
+    g.disabled .st2{stroke:#FFFFFF; fill:#8a8a8d;}
+
 </style>
-<g class="rfisc-icon__{{vm.rfisc || 'regular'}}" ng-class="{ active: vm.active }">
+<g class="rfisc-icon__{{vm.rfisc || 'regular'}}" ng-class="{ active: vm.active, disabled: vm.disabled }">
 	<g>
 		<rect x="0.5" y="0.5" class="st0" width="25" height="25"/>
 		<path class="st1" d="M25,1v24H1V1H25 M26,0H0v26h26V0L26,0z"/>
