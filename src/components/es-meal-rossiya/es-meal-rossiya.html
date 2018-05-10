@@ -235,8 +235,8 @@
 
                           <div ng-repeat="mealItem in subgroup"
                                ng-if="vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false"
-                               ng-class="{ active: mealItem.active, control_disabled: vm.locked }"
-                               ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)" class="item">
+                               ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked }"
+                               ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)" class="item">
 
                             <div class="food_wrap">
 
@@ -260,15 +260,12 @@
                                 <div class="panel-action">
                                   <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
 
-                                  <div class="baggageControl" ng-class="{ control_disabled: vm.locked }">
-                                    <div class="baggageControl__i">
-                                      <a href ng-click="vm.decrease()" class="minus" ng-class="{ disabled: !vm.canMinus }"></a>
-                                      <div class="val val_noBagagge">
-                                        <p>{{ vm.count }}</p>
-                                      </div>
-                                      <a href ng-click="vm.increase()" class="plus" ng-class="{ disabled: !vm.canPlus }"></a>
-                                    </div>
-                                  </div>
+                                  <service-picker count="mealItem.alreadySelectedCount"
+                                      limit="mealItem.limit"
+                                      locked="vm.locked"
+                                      on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
+                                      on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+                                  </service-picker>
                                 </div>
                               </div>
 

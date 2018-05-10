@@ -22,6 +22,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
     vm.scrollToStart = scrollToStart;
     vm.scrollToEnd = scrollToEnd;
     vm.checkAllChoose = checkAllChoose;
+    vm.mealCountChangeHandler = mealCountChangeHandler;
     vm.hasAlias = backend.hasAlias;
     vm.getAvailablePassengersCount = utils.getAvailablePassengersCount;
     vm.checkServiceRemovalProhibited = backend.checkServiceRemovalProhibited;
@@ -64,6 +65,20 @@ function MealRossiyaController($scope, $element, backend, utils) {
                     code: 'meal'
                 });
             }
+        }
+    }
+
+    function mealCountChangeHandler(subgroupNum, mealItem, delta) {
+        if (!vm.locked) {
+            backend.modifyExtraService({
+                code: 'meal',
+                passenger_id: vm.orderInfo.passengers[vm.selectedPassenger].id,
+                segment_id: vm.orderInfo.plainFlights[vm.selectedFlight].id,
+                subgroup: vm.service.subgroups[subgroupNum],
+                amount: (mealItem.alreadySelectedCount || 0) + delta,
+                service_type: mealItem.serviceType,
+                rfisc: mealItem.rfisc
+            });
         }
     }
 

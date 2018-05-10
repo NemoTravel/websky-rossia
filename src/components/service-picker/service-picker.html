@@ -1,0 +1,10 @@
+
+<div class="baggageControl" ng-class="{ control_disabled: vm.locked }">
+    <div class="baggageControl__i">
+        <a href ng-click="vm.decrease()" class="minus" ng-class="{ disabled: !vm.canMinus }">-</a>
+        <div class="val val_noBagagge">
+            <p>{{ vm.count }}</p>
+        </div>
+        <a href ng-click="vm.increase()" class="plus" ng-class="{ disabled: !vm.canPlus }">+</a>
+    </div>
+</div>
