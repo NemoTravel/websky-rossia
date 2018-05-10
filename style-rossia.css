@@ -4356,3 +4356,12 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 .seatInfo .seat-babyBassinet {
     margin-left: 25px;
 }
+
+.seatPopupInfo .seatInfo .seat-babyBassinet {
+    margin-left: 0;
+    order: 8;
+}
+
+.popup_selectSeat .seatInfo ul {
+    justify-content: left;
+}
