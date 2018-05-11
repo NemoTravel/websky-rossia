@@ -103,11 +103,14 @@
                         ng-class="{ active: mealItem.active }"
                         class="item">
 
-                        <a href ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+                        <a href>
                             <div class="img">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
+                                <span class="more-info">
+                                  Подробнее
+                                </span>
                             </div>
-                            <div class="name">
+                            <div class="name" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
                                 <p>{{ mealItem.title }}</p>
                                 <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
                             </div>
