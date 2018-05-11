@@ -96,68 +96,32 @@
             <div class="list">
 
               <div class="list__i isotopeGrid">
-                <wrap ng-if="vm.mealMenuSubgroup === false">
 
-                  <div ng-repeat="mealItem in vm.arrayString(vm.mealMenu)"
-                       ng-class="{ active: mealItem.active }"
-                       ng-init="submeal = vm.getGroupMeal(mealItem, vm.mealMenu)"
-                       class="item">
+                <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
+                    <div ng-repeat="mealItem in subgroup"
+                        ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
+                        ng-class="{ active: mealItem.active }"
+                        class="item">
 
-                    <a href ng-if="!mealItem.active" ng-click="vm.setPassengerFlightMeal(submeal, mealItem)">
-                      <div class="img">
-                        <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
-                      </div>
-                      <div class="name">
-                        <p>{{ mealItem.title }}</p>
-                        <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
-                      </div>
-                    </a>
+                        <a href ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+                            <div class="img">
+                                <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
+                            </div>
+                            <div class="name">
+                                <p>{{ mealItem.title }}</p>
+                                <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
+                            </div>
+                            <div class="extra-service-picker">
+                                <service-picker count="mealItem.alreadySelectedCount"
+                                    limit="mealItem.limit"
+                                    locked="vm.locked"
+                                    on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
+                                    on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+                                </service-picker>
+                            </div>
+                        </a>
 
-                    <a href ng-if="mealItem.active" ng-click="vm.clearPassengerFlightMeal()">
-                      <div class="img">
-                        <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
-                      </div>
-                      <div class="name">
-                        <p>{{ mealItem.title }}</p>
-                        <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
-                      </div>
-                    </a>
-
-                  </div>
-                </wrap>
-                <!--  -->
-                <!--  -->
-                <wrap ng-if="vm.mealMenuSubgroup !== false" ng-repeat="(subgroupNum, subgroup) in vm.arrayString(vm.mealMenu)">
-
-                  <div ng-repeat="mealItem in subgroup"
-                       ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
-                       ng-class="{ active: mealItem.active }" class="item">
-
-                       <div style="display: none">
-                         {{mealItem}}
-                       </div>
-
-                    <a href ng-if="!mealItem.active" ng-click="vm.setPassengerFlightMeal(subgroupNum, mealItem)">
-                      <div class="img">
-                        <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
-                      </div>
-                      <div class="name">
-                        <p>{{ mealItem.title }}</p>
-                        <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
-                      </div>
-                    </a>
-
-                    <a href ng-if="mealItem.active" ng-click="vm.clearPassengerFlightMeal()">
-                      <div class="img">
-                        <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
-                      </div>
-                      <div class="name">
-                        <p>{{ mealItem.title }}</p>
-                        <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
-                      </div>
-                    </a>
-
-                  </div>
+                    </div>
                 </wrap>
 
               </div>

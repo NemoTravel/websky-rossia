@@ -513,8 +513,19 @@
     </div>
   </div>
 
-  <popup-meal-rossiya menu="vm.mealMenu" passenger="vm.orderInfo.passengers[vm.selectedPassenger]" passengers="vm.orderInfo.passengers" current-passenger-index="vm.selectedPassenger" flight="vm.orderInfo.plainFlights[vm.selectedFlight]" current-flight-index="vm.selectedFlight"
-    handler="vm.setPassengerFlightMeal" get="vm.getSelectedPassengerFlightMeal" remove="vm.removePassengerFlightMeal(vm.selectedPassenger, vm.selectedFlight)" path="vm.mealImagesPath" subgroups="vm.service.subgroups" select="vm.selectFlightPassenger" service="vm.service">
+  <popup-meal-rossiya menu="vm.mealMenu"
+      passenger="vm.orderInfo.passengers[vm.selectedPassenger]"
+      passengers="vm.orderInfo.passengers"
+      current-passenger-index="vm.selectedPassenger"
+      flight="vm.orderInfo.plainFlights[vm.selectedFlight]"
+      current-flight-index="vm.selectedFlight"
+      handler="vm.mealCountChangeHandler"
+      get="vm.getSelectedPassengerFlightMeal"
+      remove="vm.removePassengerFlightMeal(vm.selectedPassenger, vm.selectedFlight)"
+      path="vm.mealImagesPath"
+      subgroups="vm.service.subgroups"
+      select="vm.selectFlightPassenger"
+      service="vm.service">
   </popup-meal-rossiya>
 
 </div>

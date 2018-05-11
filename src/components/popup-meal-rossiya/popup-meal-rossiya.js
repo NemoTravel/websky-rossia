@@ -9,7 +9,7 @@ angular.module('app').component('popupMealRossiya', {
 		currentFlightIndex: '=',
 		passengers: '=passengers',
 		flight: '=flight',
-		setPassengerFlightMeal: '=handler',
+		mealCountChangeHandler: '=handler',
 		clearPassengerFlightMeal: '&remove',
 		getPassengerFlightMeal: '=get',
 		subgroups: '=subgroups',
