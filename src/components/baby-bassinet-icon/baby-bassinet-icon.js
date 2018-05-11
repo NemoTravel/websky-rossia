@@ -4,7 +4,8 @@ angular.module('app').component('babyBassinetIcon', {
     controllerAs: 'vm',
     bindings: {
         rfisc: '=rfisc',
-        active: '=active'
+        active: '=active',
+        disabled: '=disabled'
     }
 });
 
