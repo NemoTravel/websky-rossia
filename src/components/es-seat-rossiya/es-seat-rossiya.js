@@ -88,7 +88,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
         if (reset) {
             seatMapContainerTopPosition = '0px';
         } else {
-            seatMapContainerTopPosition = jQuery('#seatMapCont .mCSB_container').css('top');
+            seatMapContainerTopPosition = jQuery('.passengersSeatMap').find('.mCSB_container').css('top');
         }
     }
 
@@ -118,8 +118,9 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                 vm.seatMap = resp;
                 vm.seatMap.hasSeatsWithBabyBassinet = checkExistSeatsWithBabyBassinetBySeatMap(resp);
                 vm.loadingSeatMap = false;
+
                 $timeout(function () {
-                    jQuery('#seatMapCont .mCSB_container').css('top', seatMapContainerTopPosition);
+                    jQuery('.passengersSeatMap').find('.mCSB_container').css('top', seatMapContainerTopPosition);
                 });
             }, function (resp) {
                 vm.seatMapError = resp.error;
@@ -171,8 +172,12 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             segId = vm.orderInfo.plainFlights[vm.selectedFlight].id;
         if (!vm.locked) {
             if (chair.available && cabinAllowed) {
-                setSeatMapContainerTopPosition();
+                //setSeatMapContainerTopPosition();
+
+                seatMapContainerTopPosition = jQuery('.passengersSeatMap').find('.mCSB_container').css('top');
+
                 vm.modifyError = false;
+
                 backend.modifyExtraService({
                     code: 'seat',
                     passenger_id: paxId,
@@ -182,14 +187,15 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                     rfisc: chair.rfisc || '',
                     service_type: 'F'
                 }).then(function () {
-                    updateSeatMap()
+                    updateSeatMap();
+
                     if (checkExistSeatsWithBabyBassinetByChair(chair)) {
                         if (
                             vm.babyBassinetService &&
                             vm.babyBassinetService.itemsByPassengerSegments &&
                             vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger] &&
                             vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]
-                        ) { 
+                        ) {
                             babyBassinetItem = utils.getFirstNotEmptySubListItem(vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]);
                             if (
                                 babyBassinetItem &&
@@ -288,7 +294,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             !vm.locked && !backend.checkServiceRemovalProhibited('seat', passengerNum, flightNum)
         ) {
             vm.modifyError = false;
-            
+
             backend.removeExtraService({
                 code: 'seat',
                 passenger_id: paxId,
@@ -303,8 +309,8 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
                     vm.modifyError = resp.error;
                 }
             });
-            
-           
+
+
         }
     }
 
