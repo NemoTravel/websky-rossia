@@ -20,7 +20,7 @@
                   <wrap ng-repeat="prop in item.properties">
                     <baby-bassinet-icon ng-if="prop == 'babyBassinet'" rfisc="item.rfisc" disabled="(!item.available || !cabin.allowed)" active="vm.isSelectedByActivePassenger(row.number + item.number) || vm.isSelectedByOrderPassenger(row.number + item.number)"></baby-bassinet-icon>
                   </wrap>
-                  <div ng-if="item.free && item.available && cabin.allowed" class="seatName">
+                  <div ng-if="item.available && cabin.allowed" class="seatName">
                     {{ row.number }}{{ item.number }}
                     <wrap ng-if="item.cost">
                       {{' - '}}
