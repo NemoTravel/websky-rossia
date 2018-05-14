@@ -92,13 +92,50 @@
             </div>
             <!-- end foodSortSelect_wrap -->
 
-            <!-- list ng-if="vm.mealMenuSubgroup === false" -->
             <div class="list">
+
+              <div style="display: none">
+                {{ vm.detailedView }}
+              </div>
+
+              <!-- itemPopup -->
+              <div id="itemPopup" ng-if="vm.detailedView.open">
+                <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
+
+                  <div ng-repeat="(mealItemNum, mealItem) in subgroup"
+                    ng-if="vm.detailedView.subgroupIndex === subgroupNum && vm.detailedView.mealIndex === mealItemNum">
+
+                    <div class="itemPopup__inner">
+
+                      <div class="itemPopup__close" ng-click="vm.closeItemPopup()"></div>
+
+                      <div class="itemPopup__arrow itemPopup__arrow_left" ng-click="vm.prevItemPopup()"></div>
+                      <div class="itemPopup__arrow itemPopup__arrow_right" ng-click="vm.nextItemPopup()"></div>
+
+                      <div class="itemPopup__container">
+
+                        <div class="itemPopup__img">
+                          <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
+                        </div>
+
+                        <div class="itemPopup__name">
+                          <p>{{ mealItem.title }}</p>
+                        </div>
+
+                        <div class="itemPopup__description" ng-bind-html="mealItem.description"></div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </wrap>
+              </div>
+              <!-- END itemPopup -->
 
               <div class="list__i isotopeGrid">
 
                 <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
-                    <div ng-repeat="mealItem in subgroup"
+                    <div ng-repeat="(mealItemNum, mealItem) in subgroup"
                         ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
                         ng-class="{ active: mealItem.active }"
                         class="item">
@@ -106,7 +143,7 @@
                         <a href>
                             <div class="img">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
-                                <span class="more-info">
+                                <span class="more-info" ng-click="vm.setItemIndex(subgroupNum, mealItemNum)">
                                   Подробнее
                                 </span>
                             </div>
@@ -145,8 +182,6 @@
             </div>
             <!-- end list -->
 
-
-
           </div>
 
         </div>
@@ -154,6 +189,13 @@
       </div>
 
     </div>
-
   </div>
+
+  <div class="popup__footer" ng-if="vm.detailedView.open">
+    <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
+    <div class="popup__btn">
+      Заказать
+    </div>
+  </div>
+
 </div>

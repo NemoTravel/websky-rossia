@@ -32,6 +32,33 @@ function PopupMealRossiyaController(utils, $scope) {
 	vm.arrayString = arrayString;
 	vm.getGroupMeal = getGroupMeal;
 
+	vm.detailedView = {open: false};
+	vm.setItemIndex = setItemIndex;
+	vm.closeItemPopup = closeItemPopup;
+	vm.nextItemPopup = nextItemPopup;
+	vm.prevItemPopup = prevItemPopup;
+
+	function setItemIndex(subgroupIndex, mealIndex) {
+
+		vm.detailedView.open = true;
+		vm.detailedView.subgroupIndex = subgroupIndex;
+		vm.detailedView.mealIndex = mealIndex;
+
+		console.log(vm.detailedView);
+	}
+
+	function closeItemPopup() {
+		vm.detailedView.open = false;
+	}
+
+	function nextItemPopup() {
+		vm.detailedView.mealIndex++;
+	}
+
+	function prevItemPopup() {
+		vm.detailedView.mealIndex--;
+	}
+
 	function setAvailablePassengers() {
 		vm.availablePassengers = vm.passengers.filter(function (passenger, index) {
 					return (
