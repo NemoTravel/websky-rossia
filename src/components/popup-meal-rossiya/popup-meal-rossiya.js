@@ -44,7 +44,6 @@ function PopupMealRossiyaController(utils, $scope) {
 		vm.detailedView.subgroupIndex = subgroupIndex;
 		vm.detailedView.mealIndex = mealIndex;
 
-		console.log(vm.detailedView);
 	}
 
 	function closeItemPopup() {

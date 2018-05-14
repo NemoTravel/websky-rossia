@@ -94,10 +94,6 @@
 
             <div class="list">
 
-              <div style="display: none">
-                {{ vm.detailedView }}
-              </div>
-
               <!-- itemPopup -->
               <div id="itemPopup" ng-if="vm.detailedView.open">
                 <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
@@ -192,9 +188,28 @@
   </div>
 
   <div class="popup__footer" ng-if="vm.detailedView.open">
-    <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
-    <div class="popup__btn">
-      Заказать
+    <div class="popup__container">
+      <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
+        <div ng-repeat="(mealItemNum, mealItem) in subgroup"
+          ng-if="vm.detailedView.subgroupIndex === subgroupNum && vm.detailedView.mealIndex === mealItemNum">
+
+          <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
+
+          <div class="popup__btn" ng-if="!mealItem.active" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+            {{ 'web.extraServices.meal.order' | aliasStatic}}
+          </div>
+
+          <div class="extra-service-picker" ng-if="mealItem.active">
+              <service-picker count="mealItem.alreadySelectedCount"
+                  limit="mealItem.limit"
+                  locked="vm.locked"
+                  on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
+                  on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+              </service-picker>
+          </div>
+
+        </div>
+      </wrap>
     </div>
   </div>
 
