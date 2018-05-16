@@ -235,7 +235,7 @@
 
                           <div ng-repeat="mealItem in subgroup"
                                ng-if="vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false"
-                               ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked }"
+                               ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked, disabled: vm.getLimitStatus() === true }"
                                ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)" class="item">
 
                             <div class="food_wrap">
