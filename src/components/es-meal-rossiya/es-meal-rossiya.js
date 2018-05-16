@@ -222,7 +222,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
           countMeals += item.alreadySelectedCount
         })
       })
-      return (countMeals === 3) ? true : false;
+      return (countMeals >= 3) ? true : false;
     }
 
 }

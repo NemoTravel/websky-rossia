@@ -92,7 +92,7 @@
             </div>
             <!-- end foodSortSelect_wrap -->
 
-            <div class="list"> 
+            <div class="list">
 
               <!-- itemPopup -->
               <div id="itemPopup" ng-if="vm.detailedView.open">
@@ -132,9 +132,9 @@
 
                 <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
                     <div ng-repeat="(mealItemNum, mealItem) in subgroup"
-                        ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
-                        ng-class="{ active: mealItem.active }"
-                        class="item">
+                         ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
+                         ng-class="{ active: mealItem.alreadySelectedCount, disabled: vm.getLimitStatus() === true }"
+                         class="item">
 
                         <a href>
                             <div class="img">

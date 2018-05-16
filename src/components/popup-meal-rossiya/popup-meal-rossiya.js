@@ -15,7 +15,8 @@ angular.module('app').component('popupMealRossiya', {
 		subgroups: '=subgroups',
 		mealImagesPath: '=path',
 		service: '=',
-		selectFlightPassenger: '=select'
+		selectFlightPassenger: '=select',
+		getLimitStatus: '=limit'
 	}
 });
 
