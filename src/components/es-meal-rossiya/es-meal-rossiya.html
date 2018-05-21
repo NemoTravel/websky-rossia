@@ -157,13 +157,6 @@
                     </div>
                     <!-- end foodSelect__name-passager -->
 
-                    <a href
-                      class="btn-choice"
-                      ng-click="vm.selectFlightPassenger(flightNum, passengerNum)"
-                      ng-if="!selectedPassengerFlightMeal && vm.service.availableByPassengerSegments[passengerNum]">
-                        {{ 'web.extraServices.meal.noneSelected' | aliasStatic}}
-                    </a>
-
                     <!-- foodSelect__meal-passager -->
                     <div class="foodSelect__meal-passager"
                          ng-if="selectedPassengerFlightMeal">
