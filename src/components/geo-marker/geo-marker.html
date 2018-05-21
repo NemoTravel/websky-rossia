@@ -1,0 +1,8 @@
+<div class="{{ vm.prefix }} geo-marker__{{ vm.key }} city-port__{{ vm.city }}-{{ vm.port }}">
+    <div class="{{ vm.prefix }}_city city__{{ vm.city }}">
+        {{ vm.cityName }}
+    </div>
+    <div ng-if=" vm.cityName != vm.portName " class="{{ vm.prefix }}_airport port__{{ vm.port }}">
+        {{ ' - ' + vm.portName }}
+    </div>
+</div>
