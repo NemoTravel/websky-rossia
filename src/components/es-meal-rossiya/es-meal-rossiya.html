@@ -141,16 +141,17 @@
               <div ng-repeat="(flightNum, flight) in vm.orderInfo.plainFlights"
                    ng-if="vm.service.availableBySegments[flightNum] && vm.selectedFlight == flightNum">
 
-                <div ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
-                     ng-init="selectedPassengerFlightMeal = vm.getSelectedPassengerFlightMeal(passengerNum, flightNum)">
+                  <div ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
+                       ng-init="mealSelect = vm.orderInfo.all_extra_services[0].passengers[passengerNum].segments[flightNum].selectedExtraServices">
 
                   <div class="foodSelect__passager"
                        ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum]">
+
                     <!-- foodSelect__name-passager -->
                     <div class="foodSelect__name-passager"
                          ng-click="vm.selectFlightPassenger(flightNum, passengerNum)"
                          ng-class=" { focus: passengerNum === vm.selectedPassenger,
-                                      notChoice: !selectedPassengerFlightMeal && vm.service.availableByPassengerSegments[passengerNum] } ">
+                                      notChoice: !mealSelect && vm.service.availableByPassengerSegments[passengerNum] } ">
 
                       {{ passenger.lastName }} {{ passenger.firstName }}
                       <i ng-if="!vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats" class="icon_child-discount"></i>
@@ -159,17 +160,18 @@
 
                     <!-- foodSelect__meal-passager -->
                     <div class="foodSelect__meal-passager"
-                         ng-if="selectedPassengerFlightMeal">
+                         ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect"
+                         ng-if="mealSelect">
 
-                      <div class="">
-                        {{ 'web.extraServices.' + selectedPassengerFlightMeal.rfisc + '.' + selectedPassengerFlightMeal.serviceType +'.ALL.text' | aliasStatic }}
+                      <div>
+                        {{ 'web.extraServices.' + mealSelect[indexMealSelect].rfisc + '.' + mealSelect[indexMealSelect].serviceType +'.ALL.text' | aliasStatic }}
                       </div>
 
                       <div class="foodSelect__price">
-                        <span ng-bind-html="{ value: selectedPassengerFlightMeal.totalPrice, currency: selectedPassengerFlightMeal.currency } | price"></span>
+                        <span ng-bind-html="{ value: mealSelect[indexMealSelect].totalPrice, currency: mealSelect[indexMealSelect].currency } | price"></span>
 
                         <a href
-                           ng-if="selectedPassengerFlightMeal"
+                           ng-if="mealSelect"
                            ng-click="vm.removePassengerFlightMeal(passengerNum, flightNum)"
                            class="btn-remove">
                            <span class="infoBoxWrap">
