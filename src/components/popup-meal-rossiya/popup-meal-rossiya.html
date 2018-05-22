@@ -137,11 +137,8 @@
                          class="item">
 
                         <a href>
-                            <div class="img">
+                            <div class="img" ng-click="vm.setItemIndex(subgroupNum, mealItemNum)">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
-                                <span class="more-info" ng-click="vm.setItemIndex(subgroupNum, mealItemNum)">
-                                  Подробнее
-                                </span>
                             </div>
                             <div class="name" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
                                 <p>{{ mealItem.title }}</p>
