@@ -27,6 +27,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
     vm.getAvailablePassengersCount = utils.getAvailablePassengersCount;
     vm.checkServiceRemovalProhibited = backend.checkServiceRemovalProhibited;
     vm.getLimitStatus = getLimitStatus;
+    vm.getMealInfo = getMealInfo;
 
     vm.canScrollRight = true;
     vm.canScrollLeft = false;
@@ -223,6 +224,24 @@ function MealRossiyaController($scope, $element, backend, utils) {
         })
       })
       return (countMeals >= 3) ? true : false;
+    }
+
+    function getMealInfo(obj) {
+      var infoMeal = {
+        group: 0,
+        meal: {}
+      }
+
+      for (var i = 0; i < vm.mealMenu.length; i++) {
+        for (var j = 0; j < vm.mealMenu[i].length; j++) {
+          if(vm.mealMenu[i][j].rfisc == obj.rfisc) {
+            infoMeal.meal = vm.mealMenu[i][j];
+            infoMeal.group = i;
+          }
+        }
+      }
+
+      return infoMeal;
     }
 
 }

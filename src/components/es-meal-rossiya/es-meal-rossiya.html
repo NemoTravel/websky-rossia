@@ -172,7 +172,7 @@
 
                         <a href
                            ng-if="mealSelect"
-                           ng-click="vm.removePassengerFlightMeal(passengerNum, flightNum)"
+                           ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)"
                            class="btn-remove">
                            <span class="infoBoxWrap">
                              <i class="icon_remove"></i>
@@ -489,7 +489,6 @@
                       <div class="passengersTable__segment-passengers__passenger__meals"
                            ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
                         <span>
-                          <!-- {{ issuedMealItem.title }} -->
                           {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasStatic }}
                         </span>
 
