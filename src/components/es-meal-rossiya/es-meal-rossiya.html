@@ -142,7 +142,7 @@
                    ng-if="vm.service.availableBySegments[flightNum] && vm.selectedFlight == flightNum">
 
                   <div ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
-                       ng-init="mealSelect = vm.orderInfo.all_extra_services[0].passengers[passengerNum].segments[flightNum].selectedExtraServices">
+                       ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
                   <div class="foodSelect__passager"
                        ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum]">
@@ -418,7 +418,7 @@
                 <div class="passengersTable__segment-passengers__passenger"
                      ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
                      ng-class="{ active: (vm.selectedFlight == flightNum && vm.selectedPassenger == passengerNum) }"
-                     ng-init="mealSelect = vm.orderInfo.all_extra_services[0].passengers[passengerNum].segments[flightNum].selectedExtraServices">
+                     ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
                   <div ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum]">
 
