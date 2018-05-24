@@ -71,6 +71,8 @@ function MealRossiyaController($scope, $element, backend, utils) {
     }
 
     function mealCountChangeHandler(subgroupNum, mealItem, delta) {
+
+      if(delta < 0) {
         if (!vm.locked) {
             backend.modifyExtraService({
                 code: 'meal',
@@ -82,6 +84,23 @@ function MealRossiyaController($scope, $element, backend, utils) {
                 rfisc: mealItem.rfisc
             });
         }
+      }
+
+      // if countSumm for all meal > limit, don't plus
+      if(!getLimitStatus() && delta > 0) {
+        if (!vm.locked) {
+            backend.modifyExtraService({
+                code: 'meal',
+                passenger_id: vm.orderInfo.passengers[vm.selectedPassenger].id,
+                segment_id: vm.orderInfo.plainFlights[vm.selectedFlight].id,
+                subgroup: vm.service.subgroups[subgroupNum],
+                amount: (mealItem.alreadySelectedCount || 0) + delta,
+                service_type: mealItem.serviceType,
+                rfisc: mealItem.rfisc
+            });
+        }
+      }
+
     }
 
     function selectFlightPassenger(flightNum, passengerNum) {
