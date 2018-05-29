@@ -14,7 +14,7 @@
 
         <!-- <div class="searchResultsControl searchResultsControl__back">
           <div class="searchResultsControl__i">
-            <a href ng-click="vm.openOrder(vm.pnr, vm.lastName)" class="btn btn_back">
+            <a href ng-click="vm.openOrder(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_back">
               {{ 'web.addServices.backToOrder' | aliasStatic}}
             </a>
           </div>
@@ -26,7 +26,7 @@
             <h2 class="title">
               {{ 'web.addServices.header' | aliasStatic}}
               <div class="orderInfo">
-                <!-- <span>{{ 'web.addServices.regnumLabel' | aliasStatic}}{{ vm.pnr }}</span> -->
+                <!-- <span>{{ 'web.addServices.regnumLabel' | aliasStatic}}{{ vm.pnrOrTicketNumber }}</span> -->
                 <span>{{ 'web.addServices.regnumLabel' | aliasStatic}} {{ vm.orderInfo.header.regnum }}</span>
                 <span>
                   <!-- {{ 'web.addServices.routeLabel' | aliasStatic}}{{ ' ' }} -->
@@ -45,7 +45,7 @@
                 </span>
                 <div class="searchResultsControl searchResultsControl__back">
                   <div class="searchResultsControl__i">
-                    <a href ng-click="vm.openOrder(vm.pnr, vm.lastName)" class="btn btn_back">
+                    <a href ng-click="vm.openOrder(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_back">
                       {{ 'web.addServices.backToOrder' | aliasStatic}}
                     </a>
                   </div>
@@ -68,7 +68,7 @@
 
             <div class="invoiceBottomButtons">
               <div class="invoiceBackToSearchOrder">
-                <a href ng-click="vm.openOrder(vm.pnr, vm.lastName)" class="btn btn-back-to-search-order">
+                <a href ng-click="vm.openOrder(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn-back-to-search-order">
 									{{ 'web.addServices.backToOrder' | aliasStatic}}
 								</a>
               </div>
