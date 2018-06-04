@@ -1,0 +1,865 @@
+/* infoBoxWrap */
+.foodSelect .infoBoxWrap {
+	position: relative;
+}
+
+.foodSelect .infoBoxWrap .infoBox {
+	transform: translate(-50%, -10px);
+}
+
+/* END infoBoxWrap */
+
+.foodSelect__head {
+	display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+/* перебиваем стили */
+.foodSelect__flights .route {
+	padding-bottom: 0;
+}
+/* end перебиваем стили */
+
+.foodSelect__flights {
+	flex-basis: 50%;
+    padding-left: 20px;
+}
+
+.foodSelect__flight {
+	cursor: pointer;
+}
+
+.foodSelect__flight.active {
+	color: #006da3;
+    font-weight: bold;
+}
+
+.foodSelect__flight.active .route__plane {
+	display: block;
+}
+
+.foodSelect__flight .route {
+	display: flex;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: "Helios";
+    align-items: center;
+    height: 24px;
+}
+
+.foodSelect__flight .route__plane {
+    margin-left: 20px;
+    display: none;
+    font-size: 24px;
+}
+
+.foodSelect__flight .route__city {
+	margin-right: 10px;
+}
+
+.foodSelect__flight .route__city geo-marker {
+	position: relative;
+    margin-right: 5px;
+}
+
+.foodSelect__flight .route__city geo-marker:last-child {
+	margin-right: 0;
+}
+
+.foodSelect__flight .route__city geo-marker:after {
+	content: "/";
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: 2px;
+}
+
+.foodSelect__flight .route__city geo-marker:last-child:after {
+	display: none;
+}
+
+.foodSelect__flight .date {
+	position: relative;
+    margin-left: 10px;
+}
+
+.foodSelect__flight .date:before {
+    content: "|";
+    display: block;
+    position: absolute;
+    left: -15px;
+    top: 0;
+}
+
+.foodSorting {
+	flex-basis: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.foodSorting ul li a {
+	background: #eceded;
+}
+
+/* foodSelect__output */
+
+.foodSelect__output {
+	display: flex;
+    margin-top: 20px;
+}
+
+.foodSelect__passagers {
+    flex-basis: 35%;
+    padding-left: 20px;
+    padding-top: 30px;
+    margin-right: 20px;
+}
+
+.foodSelect__passager {
+	display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.foodSelect__name-passager {
+    font-weight: bold;
+    font-size: 18px;
+    color: #55565a;
+    position: relative;
+    cursor: pointer;
+}
+
+.foodSelect__name-passager.notChoice {
+	color: #87878a;
+}
+
+.foodSelect__name-passager.notChoice:after {
+    border: 1px solid #87878a;
+}
+
+.foodSelect__name-passager.focus {
+	color: #cd112b;
+}
+
+.foodSelect__name-passager.focus:after {
+    border: 1px solid #cd112b;
+}
+
+.foodSelect__name-passager.focus:before {
+	background: #cd112b;
+    display: block;
+}
+
+.foodSelect__name-passager.disable {
+	color: #87878a;
+}
+
+.foodSelect__name-passager.disable:after {
+	border: 1px solid #87878a;
+}
+
+.foodSelect__name-passager i {
+	line-height: 0.5;
+}
+
+.foodSelect__name-passager:after,
+.foodSelect__name-passager:before {
+	content: "";
+    position: absolute;
+}
+
+.foodSelect__name-passager:after {
+    display: block;
+	top: -2px;
+    left: -25px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #55565a;
+    border-radius: 50%;
+}
+
+.foodSelect__name-passager:before {
+    display: none;
+	top: 3px;
+    left: -20px;
+    width: 8px;
+    height: 8px;
+    background: #55565a;
+    border-radius: 50%;
+}
+
+.foodSelect__passager .btn-choice {
+	margin-right: 35px;
+}
+
+.btn-choice {
+	font-size: 18px;
+    border-bottom: 1px dashed;
+    font-family: Helios;
+    text-transform: uppercase;
+    color: #d0112b;
+    font-weight: bold;
+}
+
+.foodSelect__meal-passager {
+	width: 100%;
+	display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 16px;
+	align-items: center;
+}
+
+.foodSelect__price {
+    display: flex;
+    align-items: center;
+}
+
+.foodSelect__price .btn-remove {
+	margin-left: 20px;
+}
+
+.foodSelect__price .btn-remove .icon_remove:before {
+    content: "";
+    display: inline-block;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAEWUlEQVRYhcWZT2wUVRzHPzO7200FLY6hFgLV1ujBTrUOsTEBDxY90EqCCWjsQY3/UEwMGv/UEjwgojFULIkaDxgvjSaS4MEW0kShxEMFGQ5OGrVJtU21CvFhq0K6fzoeZqft7O7szNtO1+9t33vffZ99O+837/1+im3blCtT05uBTUAL0AhcD1wNZIFLwBTwI3AWGDKE9Ue5cymyoKamNwJPAw8D9RLWOeAM8AnQZwjrH5l5Q4Oamn4zsA94EFBlJimiS8AhoMcQ1uUwhkBQU9MTwF7gVaBqiYD5mgCeNYQ1EDSwJKip6fXAUeDO6NgKZAO9wCuGsNJ+g3xBTU3fAPTjbJBKaBDYbgjr72KdRUFNTW/NGWuWl61A3wJtxZ7bAtDcrh4GVleGrUDHga2GsLKLGz2719T0auAL/j9IgC040cWj/DBzAGiuCE5pdZmavmlxw/xfb2q6gfMGWWqMjEojwO2GsDLghTpISEglEQdV/vcoSakwfCvwhPtBBTA1/S7gnjDuuhefomXiDLf9dJpVW+8LBxhTWX9wLy2T39E88jUrWlvCwnaZmh6bBwV2hXFVrVvD2j3PoySriGuraPi4B217RyDkDR8cYPXjD6HEVBJ1tazb/3JY0BuBdgA1t9MfCONSqhKgKF6ID9/yhXUhtR33e9rVZDIsKEAnOCvaBqwM45gdm+DPvmOFMEVg/SDtVJpf3+iVAW03NT0e21ld+ySwMaxrZnCIZMN6qptuWYBSFWraN5P6eYIrI6MlIccee4GZwdMyoEmgPw5skHHZ2TnGd3UDeEDclSWmck3bRl/I6ROnZKZzdYdy7tqmceQOwAtgRVYN2/Y8xxFAAvSoQF05TndlxedfejuihwRYo7KEw7AvrNsfDSTAVcv7uozFiK1cEclXqUCqXLPvc7q4v0ScldBlFfi9HGfJzZQ/bumwUyowGhWknUoz9sjugmc2AtjROHAO2BwJZG7jTJ84CfjEWUAc7ZcFNVVgSMZR37svMJj7RQMXtmZLqIOaqxngvAqcBEJlLZKN9VzXua0k5Hx7Cdi1Xc/JgA4YwsqohrCuAMcCh+egFm+WoDjpBzs3OysD2gcL59H3wzhSk1P89uZh7NkUGfEXY4/uDgzmLuzFI59hZ7Kkpy4wueedsJC/4NxKPXemr3COfIFSEnHsTLYgFIXypTMylmcMYX0E3jvSSzgZt0DZ6Yw05LwvvEaAI+6HeVBDWOeBw9KzL4/mgJ3uDRQKb53dwPcVRSqutw1hfbO4wQOaiwDbgIuVpMrTAPB6fmPB6ckQ1hjQAUxXACpfw8CO/LwT+CQcDGGdxYkAZefcy9AgcK9fBtr3PGoIywRacfLuyykbeA/oMIT1r9+gsKnxbuA1nBthlBrHSY0fDxooU2y4CdhPNMUGAbwLHIqs2JAvU9MbcMo3nciXb4ZxyjefLlv5pphMTW8C7mahIFaLk07PsFAQ+wHnzHvKENaFcuf6D5GQ1k9mfJC/AAAAAElFTkSuQmCC');
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+}
+
+.foodSelect__menu {
+	flex-basis: 65%;
+}
+
+.foodSelect__menu .list__i {
+	margin-left: 0;
+    margin-right: 0;
+}
+
+.foodSelect__menu wrap {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.foodSelect__menu .item {
+	width: 30%;
+    max-width: 500px;
+    float: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 1% 20px 1%;
+    cursor: pointer;
+    background: #e6e6e6;
+}
+
+.foodSelect__menu .item.disabled {
+	opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.foodSelect__menu .item.disabled .plus {
+	opacity: 0.3;
+}
+
+.foodSelect__menu .item .baggageControl {
+	display: none;
+}
+
+.foodSelect__menu .img {
+    padding-bottom: 0;
+}
+
+.foodSelect__menu .food_footer {
+    padding: 15px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.foodSelect__menu .name {
+    position: relative;
+    padding: 0;
+}
+
+.foodSelect__menu .name p {
+    font-weight: 400;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.foodSelect__menu .item.active {
+	background: #d0102b;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.foodSelect__menu .item.active .price {
+	color: #fff;
+}
+
+.foodSelect__menu .item.active .price:before {
+	background: #fff;
+    display: block;
+}
+
+.foodSelect__menu .item.active .price:after {
+	background: #d00f2b;
+}
+
+.foodSelect__menu .item.active .baggageControl {
+	display: inline-block;
+}
+
+.foodSelect__menu .item .img:hover .img__description {
+	display: block;
+}
+
+.foodSelect__menu .food_wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.baggageControl .baggageControl__i {
+	background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.baggageControl .val.val_noBagagge {
+	padding: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.foodSelect__menu .panel-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.panel-action .price,
+#popupMeal .price{
+    font-size: 18px;
+    position: relative;
+}
+
+.panel-action .price:after,
+.panel-action .price:before,
+#popupMeal .price:after,
+#popupMeal .price:before {
+    content: "";
+	position: absolute;
+}
+
+.panel-action .price:after,
+#popupMeal .price:after {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 50%;
+    left: -31px;
+    top: -5px;
+    background: #fff;
+}
+
+.panel-action .price:before,
+#popupMeal .price:before {
+    display: none;
+ 	background: black;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    left: -25px;
+    z-index: 1;
+    top: 1px;
+}
+
+.baggageControl a.minus,
+.baggageControl a.plus {
+	left: 0;
+    font-size: 0;
+    background: #d0112b;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    position: relative;
+    border: 1px solid #fff;
+}
+
+.baggageControl a.minus.disabled,
+.baggageControl a.plus.disabled {
+	opacity: 0.3;
+}
+
+.baggageControl a.minus:after {
+	content: "";
+    display:block;
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    margin-left: -6px;
+    margin-top: -1px;
+}
+
+.baggageControl a.plus:after,
+.baggageControl a.plus:before {
+	content: "";
+    display:block;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.baggageControl a.plus:before {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.foodSelect__menu .img  {
+    position: relative;
+}
+
+.foodSelect__menu .img__description {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(230, 230, 230, 0.8);
+    width: 100%;
+    height: calc(100% - 3px);
+    padding: 25px;
+    font-size: 13px;
+}
+
+/* END foodSelect__output */
+
+
+/* #popupMeal */
+
+#popupMeal .item > a {
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ebecec;
+}
+
+#popupMeal .item .extra-service-picker {
+	display: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 15px 0;
+    background: #d0102b;
+}
+
+#popupMeal .item.active .extra-service-picker {
+	display: flex;
+}
+
+#popupMeal .item .extra-service-picker a {
+	background: #d0112b;
+}
+
+
+#popupMeal .item.active .name {
+	display: none;
+}
+
+#popupMeal .foodSlider .img {
+	position: relative;
+}
+
+#popupMeal .foodSlider .more-info {
+    position: absolute;
+    bottom: 8px;
+    right: 0;
+    background: #fa999a;
+    padding: 8px 10px;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0px 2px 6px #666;
+}
+
+
+/* END #popupMeal */
+
+/* #itemPopup */
+
+#itemPopup {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    margin-top: -30px;
+    overflow-y: auto;
+    padding-bottom: 400px;
+}
+
+.itemPopup__container {
+	width: 80%;
+    margin: 0 auto;
+}
+
+.itemPopup__inner {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.itemPopup__img {
+	margin: 0 auto;
+    max-height: 300px;
+    width: 100%;
+}
+
+.itemPopup__img img {
+	margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+.itemPopup__name {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: #d0102b;
+    margin-top: 20px;
+}
+
+.itemPopup__description {
+	margin-top: 20px;
+}
+
+.popup__footer {
+	position: fixed;
+    z-index: 2;
+    background: #fff;
+    width: 100%;
+    padding: 15px;
+    bottom: 0;
+    box-shadow: 0px -10px 10px rgba(0, 0, 0, 0.15);
+    font-family: "Helios";
+}
+
+.popup__container {
+	width: 80%;
+    margin: 0 auto;
+}
+
+.popup__footer wrap > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup__price {
+	font-size: 20px;
+    white-space: normal;
+    color: #55565a;
+    font-weight: bold;
+}
+
+.popup__btn {
+    background: #d0102b;
+    color: #fff;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-radius: 30px;
+}
+
+.popup__footer .baggageControl .val.val_noBagagge {
+	color: #d0102b;
+	/*font-size: 40px;*/
+    font-size: 30px;
+}
+
+.popup__footer .baggageControl a.minus,
+.popup__footer .baggageControl a.plus {
+    background: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border: 2px solid #d0112b;
+}
+
+.popup__footer .baggageControl a.minus:after {
+	background: #d0112b;
+    width: 20px;
+    height: 4px;
+}
+
+.popup__footer .baggageControl a.plus:after,
+.popup__footer .baggageControl a.plus:before {
+	background: #d0112b;
+    width: 15px;
+    height: 2px;
+}
+
+/* декоративные элементы */
+
+.itemPopup__close {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 15px;
+    right: 15px;
+}
+
+.itemPopup__close:after,
+.itemPopup__close:before {
+	content: "";
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background: #c4c4c4;
+    top: 50%;
+    border-radius: 2px;
+}
+
+.itemPopup__close:after {
+	transform: translate(0, -50%) rotate(45deg);
+}
+
+.itemPopup__close:before{
+	transform: translate(0, -50%) rotate(-45deg);
+}
+
+.itemPopup__arrow {
+	width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -100%);
+    background-repeat: no-repeat;
+}
+
+.itemPopup__arrow_left {
+	left: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="background:new 0 0 477.175 477.175;" xml:space="preserve"><g><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225 c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" fill="%23c4c4c4"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
+}
+
+.itemPopup__arrow_right {
+    right: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;" xml:space="preserve"><g><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5 c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z" fill="%23c4c4c4"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
+}
+
+/* END декоративные элементы */
+
+/* END #itemPopup */
+
+/* media */
+
+@media (max-width: 1600px) and (min-width: 768px) {
+
+    .checkoutServices__i .list {
+    	padding-right: 0;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+
+    .foodSelect__passagers {
+        flex-basis: 40%;
+	}
+
+    .foodSelect__menu {
+    	flex-basis: 60%;
+    }
+
+    .foodSelect__menu .item {
+    	width: 45%;
+    	max-width: 100%;
+    	margin: 0 1% 20px 1%;
+	}
+}
+
+@media (max-width: 1000px) and (min-width: 768px) {
+    .foodSelect__head {
+        flex-direction: column;
+        align-items: stretch;
+	}
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+
+    .foodSelect__passagers {
+        flex-basis: 50%;
+	}
+
+    .foodSelect__menu {
+    	flex-basis: 50%;
+    }
+
+    .foodSelect__menu .item {
+    	width: 80%;
+    	margin: 0 auto 20px auto;
+	}
+}
+
+@media (max-width: 768px) {
+
+    .otherServices .icon-sead,
+    .otherServices .icon-meal {
+    	width: 60px;
+		height: 60px;
+	}
+
+    .otherServices__icons .icon-meal {
+    	margin-right: 10px;
+	}
+
+    .passengersTableMeal__wrapper .passengersTable__segment-passengers .btn-remove .icon_remove:before,
+    #popupMeal .itemOrderInfo .btn-remove .icon_remove:before {
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAEWUlEQVRYhcWZT2wUVRzHPzO7200FLY6hFgLV1ujBTrUOsTEBDxY90EqCCWjsQY3/UEwMGv/UEjwgojFULIkaDxgvjSaS4MEW0kShxEMFGQ5OGrVJtU21CvFhq0K6fzoeZqft7O7szNtO1+9t33vffZ99O+837/1+im3blCtT05uBTUAL0AhcD1wNZIFLwBTwI3AWGDKE9Ue5cymyoKamNwJPAw8D9RLWOeAM8AnQZwjrH5l5Q4Oamn4zsA94EFBlJimiS8AhoMcQ1uUwhkBQU9MTwF7gVaBqiYD5mgCeNYQ1EDSwJKip6fXAUeDO6NgKZAO9wCuGsNJ+g3xBTU3fAPTjbJBKaBDYbgjr72KdRUFNTW/NGWuWl61A3wJtxZ7bAtDcrh4GVleGrUDHga2GsLKLGz2719T0auAL/j9IgC040cWj/DBzAGiuCE5pdZmavmlxw/xfb2q6gfMGWWqMjEojwO2GsDLghTpISEglEQdV/vcoSakwfCvwhPtBBTA1/S7gnjDuuhefomXiDLf9dJpVW+8LBxhTWX9wLy2T39E88jUrWlvCwnaZmh6bBwV2hXFVrVvD2j3PoySriGuraPi4B217RyDkDR8cYPXjD6HEVBJ1tazb/3JY0BuBdgA1t9MfCONSqhKgKF6ID9/yhXUhtR33e9rVZDIsKEAnOCvaBqwM45gdm+DPvmOFMEVg/SDtVJpf3+iVAW03NT0e21ld+ySwMaxrZnCIZMN6qptuWYBSFWraN5P6eYIrI6MlIccee4GZwdMyoEmgPw5skHHZ2TnGd3UDeEDclSWmck3bRl/I6ROnZKZzdYdy7tqmceQOwAtgRVYN2/Y8xxFAAvSoQF05TndlxedfejuihwRYo7KEw7AvrNsfDSTAVcv7uozFiK1cEclXqUCqXLPvc7q4v0ScldBlFfi9HGfJzZQ/bumwUyowGhWknUoz9sjugmc2AtjROHAO2BwJZG7jTJ84CfjEWUAc7ZcFNVVgSMZR37svMJj7RQMXtmZLqIOaqxngvAqcBEJlLZKN9VzXua0k5Hx7Cdi1Xc/JgA4YwsqohrCuAMcCh+egFm+WoDjpBzs3OysD2gcL59H3wzhSk1P89uZh7NkUGfEXY4/uDgzmLuzFI59hZ7Kkpy4wueedsJC/4NxKPXemr3COfIFSEnHsTLYgFIXypTMylmcMYX0E3jvSSzgZt0DZ6Yw05LwvvEaAI+6HeVBDWOeBw9KzL4/mgJ3uDRQKb53dwPcVRSqutw1hfbO4wQOaiwDbgIuVpMrTAPB6fmPB6ckQ1hjQAUxXACpfw8CO/LwT+CQcDGGdxYkAZefcy9AgcK9fBtr3PGoIywRacfLuyykbeA/oMIT1r9+gsKnxbuA1nBthlBrHSY0fDxooU2y4CdhPNMUGAbwLHIqs2JAvU9MbcMo3nciXb4ZxyjefLlv5pphMTW8C7mahIFaLk07PsFAQ+wHnzHvKENaFcuf6D5GQ1k9mfJC/AAAAAElFTkSuQmCC');
+	}
+
+    #popupMeal geo-marker div.arr__point_airport:before,
+    #popupMeal geo-marker div.dep__point_airport:before {
+    	padding-right: 5px;
+	}
+
+	#popupMeal .foodSlider .list__i .item.disabled {
+        opacity: 0.3;
+	}
+
+    #popupMeal .foodSlider .list__i .item.disabled .plus {
+    	opacity: 0.3;
+	}
+
+    #popupMeal .foodSlider .list__i .item.active {
+        opacity: 1;
+	}
+
+    #popupMeal .foodSlider .name .price {
+    	font-weight: bold;
+	}
+
+    .popup__footer .baggageControl a.minus:after {
+		width: 18px;
+    	height: 3px;
+        margin-left: -9px;
+    	margin-top: -1px;
+	}
+}
+
+
+
+@media only screen and (max-width: 450px) {
+    #itemPopup {
+        margin-top: -10px;
+	}
+
+    .panel-action .price:after,
+    #popupMeal .price:after {
+    	width: 15px;
+    	height: 15px;
+        left: -25px;
+    	top: -3px;
+    }
+
+    #popupMeal .foodSlider .more-info {
+    	font-size: 12px;
+		padding: 6px 8px;
+	}
+
+    .itemPopup__close {
+    	width: 30px;
+		height: 30px;
+	}
+
+    .itemPopup__arrow_left {
+    	left: 0;
+	}
+
+    .itemPopup__arrow_right {
+    	right: 0;
+	}
+
+    .itemPopup__name {
+    	font-size: 14px;
+	}
+
+    .itemPopup__description {
+    	font-size: 12px;
+        margin-top: 10px;
+	}
+
+    .popup__btn {
+    	font-size: 16px;
+		padding: 12px 20px;
+	}
+
+    .popup__price {
+		font-size: 18px;
+	}
+}
+
+/* media */
+
+
+
+.otherServices {
+	display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.otherServices .title {
+	padding: 0 10px 0 0;
+    margin: 0 0 20px 0;
+}
+
+.otherServices__icons {
+	display: flex;
+}
+
+.otherServices .icon-sead,
+.otherServices .icon-meal {
+    width: 80px;
+    height: 80px;
+	background-size: cover;
+    border: 2px solid #fff;
+}
+
+.otherServices__icons .icon-meal {
+    margin-right: 20px;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAYBQTFRF0BEr0Rcw54WT5X6M0BQu3lhr6pKe1S1E1SpB6pOf31xu1zdN65ei43B/2DlO20ld//z8/vj51jNJ9cvR////5oKQ5HiH9s/U0Roz6pah/fHy9crQ4mt75HSE3FFk//v78rrC76y11i5F9c3T9czS4m193E5h/O3v76637aGr1S1D88DH/vr7+uLl3E1h+d/i1zhN99Xa0BUv+ubp0Rgx9MTK4mp6+uXo0hs0/vf49tLX8ba+4GJz6I2Z4WV27aKs7KCr4GR17aWv4m5+20pe/O/x8LG6/fHz7aOt8be/7qix3ldq43GA6Y+c+Nre+eHk0h428bnA1ClA/fP19MfN9tDV1CY+1jJI88PJ3lps+d3h+d7i0yA55HaF/vn62DtQ2DxS6pSg/O7w76221StC/Ozu8LO70hw00Rky2UFW5HWE7qqz76+4//7+5X2L8bW94GV12kdb/fX28r3E9cnP65ij0h837J+q8LK62kVZ43OD0yI63FBj1Cc+20hc0x84oPiOtQAAAZBJREFUeJzt1VdTAjEUBeCLBQsWxIMFURE7KiA27BV7wYaK2LH3rqj4190wDorlgWxmfDDnJcmdnW+S3cxdIhkZGRmZ92gSEpMoWZtCqWnpkYJOm5GZxUVl63MMlAsj5SG/gBUKAVORmYcqBkqoFBYqA6ysUA6WCl38VCVQRdWooVqYbKxQB5OlHmgw8FD2L5SDnBag0SWAamomVwvQKoBqcxNZ29GRKoaiTui7BFGJQLcgqgfo5aX6Yql+YCBOahAYIg+GlV2NpMTuajROysx2pccYjX87YLzUBDBJU9N2asGMVx3lBGbZODePBVJH0SJg9GmWlpVBLbWi9AGPXw+sBtRStLYeaSuODVJN0eZWKRyVXhJAkWsbO9GFOiq4q1xRMZStGnufqX2K3DcR1AEdHh2LoShgYt/0RASlY9LpmQjKAJxfXHJIP1JGHuhnakpSkpLUP6esV7iOLm7gYa3vlo+628V9dPEAP/kAnhbK8hh6is6DIeU3/Rxyc1Iv4Y+5JvyqvL3w7w/LyMj8cd4ALNRrlQdLxHkAAAAASUVORK5CYII=');
+}
+
+.otherServices__icons .icon-sead {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAWtQTFRF0BEr4GR19czS//v7/vr79MjO31tt65ei////6ImW311v/vf476+48LK63FBj/fX22DtR2kVZ8bnB/vn67aWv8LO7++rs6IiV0BUv5HaF3VRm/fT28r3E1ClA//7+7aOt7622//391CU99MfN/fHy0Rcw3lhr43KB43OC/fHz88HI7qmy1Cg/0Rgx3ldp315w/O/x0yE58rzE+Nzg0yQ85XyK4m1920tf0BQu++vt9cvR/Ozu7qaw5oKQ0BIs7J6p1S1D8bi/0hw03E9i5X6M4Wd48rvD7J+q0h010BMt9tDV0h83++ns20ld65ql1jFI76u1/fL01i9G5oGO6Y+b7qew++fq99XZ9MTK1zZM6pOf54WT9MfO+uPn99bb0yM77aKs6pSg/PDx1i5F2UBV+uXo2kNX65um99TY766365mk4Wl60Roz/vb39tHW9s/U/vj55XqJ4GFy8bnA5XmI6IuX8bW9+uTn1CY+5lzLQwAAAYxJREFUeJzt1ulTkmEUhvEnRb3S1IxcExEXCM0tW4VwaaWyNJcyrWzR1Fat1D8/Dhrrt3P40sxzfbmHZ4bfvPMOvOCcz+fz/fedqaoO1NRWQqoj21m7VA8N5xoD0GSmamg+71xLgAtmKshFmVbazBS0y2TumKc8laM67FT229cJXVbqEt0yoR7CVqqXSJ9sPwODRioKMdnLEDVSg3GGZPsiDBspN0zkiuwQ8REjNQqdsjEYM1Id4/TLTlTTa6RcmJ6Q7FXyTV5TUV1wXfZGAcVNFXXrNlOyE0ESydPupFSUm4YZ2Vka5nRCrrtwT/Y+PDi9qoexRyoq3cZj2SfBgpv1dF5lPYPnsgsD/8pYiy801DwsFZ/MLcOKhkqt8rL07BUJDSXP0LWSo9fKJ3QLrJccbWh/+d/wtuj1u8x1buqo95T14aOO+lQmbW3rJOc+78BuMtfel69aybkk39L6dxf1nR8VktI/T/79VaA12K8QdQC/6vL9NlB/Sj4LugdytsNi6ejYcFk+n89n6S+MGzCKpsj3nwAAAABJRU5ErkJggg==');
+}
+
+.checkoutServices__i .list > .item {
+	padding-bottom: 5px;
+}
+
+.foodSelect .dep__point_airport:before {
+	content: " - ";
+    display: inline-block;
+    margin: 0 5px;
+}
