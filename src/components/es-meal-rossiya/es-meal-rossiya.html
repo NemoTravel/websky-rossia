@@ -160,7 +160,7 @@
 
                     <!-- foodSelect__meal-passenger -->
                     <div class="foodSelect__meal-passenger"
-                         ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect"
+                         ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect track by $index"
                          ng-if="mealSelect">
 
                       <div>
@@ -444,7 +444,7 @@
                     <!-- passengersTable__segment-passengers__passenger__meals -->
                     <div class="passengersTable__segment-passengers__passenger__meals"
                          ng-if="mealSelect"
-                         ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect">
+                         ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect track by $index">
 
                       <!-- passengersTable__priceSeat  (цена с крестиком)-->
                       <div class="passengersTable__segment-passengers__passenger__meal__title">

@@ -42,6 +42,13 @@ function MealRossiyaController($scope, $element, backend, utils) {
     }
 
     backend.addOrderInfoListener(function (orderInfo) {
+        if (
+            orderInfo &&
+            orderInfo.groupedEditableExtraServices &&
+            orderInfo.groupedEditableExtraServices.meal
+        ) {
+            orderInfo.groupedEditableExtraServices.meal = splitMeal(orderInfo.groupedEditableExtraServices.meal);
+        }
         vm.orderInfo = orderInfo;
     }, false, true);
 
@@ -261,6 +268,35 @@ function MealRossiyaController($scope, $element, backend, utils) {
       }
 
       return infoMeal;
+    }
+
+    function splitMeal(selectedMeal) {
+        if (selectedMeal && selectedMeal.length) {
+            selectedMeal = selectedMeal.map(function (selectedMealPassenger) {
+                if (selectedMealPassenger && selectedMealPassenger.length) {
+                    selectedMealPassenger = selectedMealPassenger.map(function (selectedMealPassengerSegment) {
+                        var newMealList = [];
+                        if (selectedMealPassengerSegment && selectedMealPassengerSegment.length) {
+                            selectedMealPassengerSegment.forEach(function (selectedMealItem) {
+                                var tmpItem;
+                                if (selectedMealItem && selectedMealItem.amount) {
+                                    tmpItem = angular.copy(selectedMealItem);
+                                    tmpItem.amount = 1;
+                                    tmpItem.totalPrice = Big(selectedMealItem.totalPrice).div(selectedMealItem.amount).toFixed(2);
+                                    for (var i=0; i<selectedMealItem.amount; i++) {
+                                        newMealList.push(tmpItem);
+                                    }
+                                }
+                            });
+                            selectedMealPassengerSegment = newMealList;
+                        }
+                        return selectedMealPassengerSegment;
+                    });
+                }
+                return selectedMealPassenger;
+            });
+        }
+        return selectedMeal;
     }
 
 }
