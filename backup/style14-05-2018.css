@@ -105,21 +105,21 @@
     margin-top: 20px;
 }
 
-.foodSelect__passagers {
+.foodSelect__passengers {
     flex-basis: 35%;
     padding-left: 20px;
     padding-top: 30px;
     margin-right: 20px;
 }
 
-.foodSelect__passager {
+.foodSelect__passenger {
 	display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
     flex-wrap: wrap;
 }
 
-.foodSelect__name-passager {
+.foodSelect__name-passenger {
     font-weight: bold;
     font-size: 18px;
     color: #55565a;
@@ -127,46 +127,46 @@
     cursor: pointer;
 }
 
-.foodSelect__name-passager.notChoice {
+.foodSelect__name-passenger.notChoice {
 	color: #87878a;
 }
 
-.foodSelect__name-passager.notChoice:after {
+.foodSelect__name-passenger.notChoice:after {
     border: 1px solid #87878a;
 }
 
-.foodSelect__name-passager.focus {
+.foodSelect__name-passenger.focus {
 	color: #cd112b;
 }
 
-.foodSelect__name-passager.focus:after {
+.foodSelect__name-passenger.focus:after {
     border: 1px solid #cd112b;
 }
 
-.foodSelect__name-passager.focus:before {
+.foodSelect__name-passenger.focus:before {
 	background: #cd112b;
     display: block;
 }
 
-.foodSelect__name-passager.disable {
+.foodSelect__name-passenger.disable {
 	color: #87878a;
 }
 
-.foodSelect__name-passager.disable:after {
+.foodSelect__name-passenger.disable:after {
 	border: 1px solid #87878a;
 }
 
-.foodSelect__name-passager i {
+.foodSelect__name-passenger i {
 	line-height: 0.5;
 }
 
-.foodSelect__name-passager:after,
-.foodSelect__name-passager:before {
+.foodSelect__name-passenger:after,
+.foodSelect__name-passenger:before {
 	content: "";
     position: absolute;
 }
 
-.foodSelect__name-passager:after {
+.foodSelect__name-passenger:after {
     display: block;
 	top: -2px;
     left: -25px;
@@ -176,7 +176,7 @@
     border-radius: 50%;
 }
 
-.foodSelect__name-passager:before {
+.foodSelect__name-passenger:before {
     display: none;
 	top: 3px;
     left: -20px;
@@ -186,7 +186,7 @@
     border-radius: 50%;
 }
 
-.foodSelect__passager .btn-choice {
+.foodSelect__passenger .btn-choice {
 	margin-right: 35px;
 }
 
@@ -199,7 +199,7 @@
     font-weight: bold;
 }
 
-.foodSelect__meal-passager {
+.foodSelect__meal-passenger {
 	width: 100%;
 	display: flex;
     justify-content: space-between;
@@ -662,7 +662,7 @@
 
 @media (max-width: 1200px) and (min-width: 768px) {
 
-    .foodSelect__passagers {
+    .foodSelect__passengers {
         flex-basis: 40%;
 	}
 
@@ -686,7 +686,7 @@
 
 @media (max-width: 900px) and (min-width: 768px) {
 
-    .foodSelect__passagers {
+    .foodSelect__passengers {
         flex-basis: 50%;
 	}
 

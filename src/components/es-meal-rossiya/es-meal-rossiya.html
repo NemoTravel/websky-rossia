@@ -135,8 +135,8 @@
 
           <div class="foodSelect__output">
 
-            <!-- foodSelect__passagers -->
-            <div class="foodSelect__passagers">
+            <!-- foodSelect__passengers -->
+            <div class="foodSelect__passengers">
 
               <div ng-repeat="(flightNum, flight) in vm.orderInfo.plainFlights"
                    ng-if="vm.service.availableBySegments[flightNum] && vm.selectedFlight == flightNum">
@@ -144,11 +144,11 @@
                   <div ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
                        ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
-                  <div class="foodSelect__passager"
+                  <div class="foodSelect__passenger"
                        ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum]">
 
-                    <!-- foodSelect__name-passager -->
-                    <div class="foodSelect__name-passager"
+                    <!-- foodSelect__name-passenger -->
+                    <div class="foodSelect__name-passenger"
                          ng-click="vm.selectFlightPassenger(flightNum, passengerNum)"
                          ng-class=" { focus: passengerNum === vm.selectedPassenger,
                                       notChoice: !mealSelect && vm.service.availableByPassengerSegments[passengerNum] } ">
@@ -156,10 +156,10 @@
                       {{ passenger.lastName }} {{ passenger.firstName }}
                       <i ng-if="!vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats" class="icon_child-discount"></i>
                     </div>
-                    <!-- end foodSelect__name-passager -->
+                    <!-- end foodSelect__name-passenger -->
 
-                    <!-- foodSelect__meal-passager -->
-                    <div class="foodSelect__meal-passager"
+                    <!-- foodSelect__meal-passenger -->
+                    <div class="foodSelect__meal-passenger"
                          ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect"
                          ng-if="mealSelect">
 
@@ -186,18 +186,18 @@
                       </div>
 
                     </div>
-                    <!-- end foodSelect__meal-passager -->
+                    <!-- end foodSelect__meal-passenger -->
                   </div>
 
-                  <div class="foodSelect__passager"
+                  <div class="foodSelect__passenger"
                        ng-if="!vm.service.availableByPassengerSegments[passengerNum][flightNum]">
-                    <!-- foodSelect__name-passager -->
-                    <div class="foodSelect__name-passager"
+                    <!-- foodSelect__name-passenger -->
+                    <div class="foodSelect__name-passenger"
                          ng-class=" { disable: !vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats } ">
                       {{ passenger.lastName }} {{ passenger.firstName }}
                       <i ng-if="!vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats" class="icon_child-discount"></i>
                     </div>
-                    <!-- end foodSelect__name-passager -->
+                    <!-- end foodSelect__name-passenger -->
 
                     <div ng-if="vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum].length">
                       <div ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
