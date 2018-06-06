@@ -145,7 +145,11 @@
                        ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
                   <div class="foodSelect__passenger"
-                       ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum]">
+                       ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum] && passenger.hasSeats">
+
+                       <span style="display: none">
+                         {{ passenger.hasSeats }}
+                       </span>
 
                     <!-- foodSelect__name-passenger -->
                     <div class="foodSelect__name-passenger"
@@ -189,8 +193,9 @@
                     <!-- end foodSelect__meal-passenger -->
                   </div>
 
+                  <!-- foodSelect__passenger -->
                   <div class="foodSelect__passenger"
-                       ng-if="!vm.service.availableByPassengerSegments[passengerNum][flightNum]">
+                       ng-if="!vm.service.availableByPassengerSegments[passengerNum][flightNum] && passenger.hasSeats">
                     <!-- foodSelect__name-passenger -->
                     <div class="foodSelect__name-passenger"
                          ng-class=" { disable: !vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats } ">
@@ -211,6 +216,7 @@
                     </div>
 
                   </div>
+                  <!-- foodSelect__passenger -->
 
                 </div>
               </div>
