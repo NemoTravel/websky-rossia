@@ -51,33 +51,33 @@
               </div>
             </div>
             <!-- end itemTitle -->
+
             <!-- itemOrderInfo -->
             <div class="itemOrderInfo">
-              <div ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
-                <div ng-repeat="mealItem in subgroup" ng-if="mealItem.active" class="itemOrderInfo-row">
-                  <!-- <span>{{ mealItem.title }}</span> -->
-                  <span>
-                      {{ 'web.extraServices.' + mealItem.rfisc + '.' + mealItem.serviceType +'.ALL.text' | aliasStatic }}
-                  </span>
+              <div ng-repeat="(indexMealSelect, itemMealSelect) in vm.mealSelect track by $index" class="itemOrderInfo-row">
 
-                  <span class="itemOrderInfo-row__price">
-                    <span ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></span>
-                    <a href class="btn-remove" ng-click="vm.clearPassengerFlightMeal()">
-                      <span class="infoBoxWrap">
-                        <i class="icon_remove"></i>
-                        <span class="infoBox">
-                          <span class="infoBox__i">
-                            {{ 'web.extraServices.meal.cancelByPassengerSegment' | aliasStatic }}
-                          </span>
+                <span>
+                  {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasStatic }}
+                </span>
+
+                <span class="itemOrderInfo-row__price">
+                  <span ng-bind-html="{ value: itemMealSelect.totalPrice, currency: itemMealSelect.currency } | price"></span>
+                  <a href class="btn-remove" ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)">
+                    <span class="infoBoxWrap">
+                      <i class="icon_remove"></i>
+                      <span class="infoBox">
+                        <span class="infoBox__i">
+                          {{ 'web.extraServices.meal.cancelByPassengerSegment' | aliasStatic }}
                         </span>
                       </span>
-                    </a>
-                  </span>
+                    </span>
+                  </a>
+                </span>
 
-                </div>
               </div>
+
             </div>
-            <!-- end itemOrderInfo -->
+            <!-- END itemOrderInfo -->
 
             <!-- foodSortSelect_wrap -->
             <div ng-show=" vm.subgroups.length > 1 " class="foodSortSelect_wrap">

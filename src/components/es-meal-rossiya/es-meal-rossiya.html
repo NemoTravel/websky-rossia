@@ -516,7 +516,11 @@
     </div>
   </div>
 
-  <popup-meal-rossiya menu="vm.mealMenu"
+<!-- ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]" -->
+
+  <popup-meal-rossiya menu="vm.mealMenu" 
+      get-meal-info='vm.getMealInfo',
+      meal-select="vm.orderInfo.groupedEditableExtraServices.meal[vm.selectedPassenger][vm.selectedFlight]"
       passenger="vm.orderInfo.passengers[vm.selectedPassenger]"
       passengers="vm.orderInfo.passengers"
       current-passenger-index="vm.selectedPassenger"
