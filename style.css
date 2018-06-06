@@ -1,3 +1,17 @@
+/* grouped-services-list */
+
+.included-service__passenger__services__segment__service__text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.content-add-services .included-service__passenger {
+	margin-bottom: 10px;
+}
+
+/* END grouped-services-list */
+
 /* infoBoxWrap */
 .foodSelect .infoBoxWrap {
 	position: relative;
@@ -182,10 +196,10 @@
 
 .foodSelect__name-passenger:before {
     display: none;
-	top: 3px;
-    left: -20px;
-    width: 8px;
-    height: 8px;
+	top: 2px;
+    left: -21px;
+    width: 10px;
+    height: 10px;
     background: #55565a;
     border-radius: 50%;
 }
@@ -669,6 +683,10 @@
 /* END декоративные элементы */
 
 /* END #itemPopup */
+
+.itemOrderInfo-row {
+	margin-bottom: 10px;
+}
 
 /* media */
 
