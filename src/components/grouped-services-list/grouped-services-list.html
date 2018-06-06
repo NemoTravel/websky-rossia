@@ -156,6 +156,15 @@
 <!--  -->
 
 <div ng-if="vm.mode == 'editable'">
+
+  <div style="display: none" ng-init="mealSelect = vm.order.groupedEditableExtraServices.meal[passengerNum][flightNum]">
+
+    <div>
+      {{ mealSelect }}
+    </div>
+
+  </div>
+
   <wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ].length">
 
     <div ng-repeat="extraService in vm.orderInfo.all_extra_services | orderBy:'code' : true "
@@ -182,7 +191,66 @@
   			<div class="included-service__passenger__name">
   				{{ passenger.lastName }} {{ passenger.firstName }}
   			</div>
-  			<div ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerSegmentServices"
+
+        <!--  -->
+        <div style="display: none">
+
+          <wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerSegmentServices">
+            <wrap ng-repeat="(segmentNumber, segment) in vm.orderInfo.plainFlights">
+              <div ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerSegmentServices[segmentNumber]" class="passenger-segment-services">
+                {{ 'web.orderInfo.extraServices.flight' | aliasStatic}} {{ segment.company.code }}-{{ segment.racenumber }}
+                <ul>
+                  <wrap ng-repeat="passengerSegmentService in vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerSegmentServices[segmentNumber]">
+                    <li ng-if="passengerSegmentService.code == 'seat'">
+                      <span ng-class="{ line_through: passengerSegmentService.serviceItem.removed }" title="{{ (passengerSegmentService.serviceItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}">
+                        {{ 'web.orderInfo.extraServices.seat' | aliasStatic}} {{ passengerSegmentService.serviceItem.value }}
+                      </span>
+                      <span ng-if="passengerSegmentService.serviceItem.status" class="service-status service-status-{{ passengerSegmentService.serviceItem.status }}">
+                        {{ 'web.serviceStatus.' | aliasWithPrefix:passengerSegmentService.serviceItem.status }}
+                      </span>
+                    </li>
+                    <li ng-if="passengerSegmentService.code == 'meal'" ng-repeat="serviceItem in passengerSegmentService.serviceItems track by $index">
+                      <span ng-class="{ line_through: serviceItem.removed }" title="{{ (serviceItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}">
+                        {{ 'web.orderInfo.extraServices.meal' | aliasStatic}} {{ serviceItem.title }}
+                      </span>
+                      <span ng-if="serviceItem.status" class="service-status service-status-{{ serviceItem.status }}">
+                        {{ 'web.serviceStatus.' | aliasWithPrefix:serviceItem.status }}
+                      </span>
+                    </li>
+                    <wrap ng-if="passengerSegmentService.code == 'baggage'">
+                      <li ng-repeat="baggageItem in passengerSegmentService.items">
+                        <span ng-class="{ line_through: baggageItem.removed }" title="{{ (baggageItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}">
+                          {{ baggageItem.amount }} {{ baggageItem.title }}
+                          <wrap ng-if="baggageItem.affectedSegmentIds.length">
+                            {{ ' (' }}
+                            <wrap ng-repeat="(flightNum, flight) in vm.getAffectedFlightsByIds(baggageItem.affectedSegmentIds)">{{ flightNum ? ', ' : '' }}{{ 'web.extraServices.baggage.flight' | aliasStatic}} {{ flight.company.code || flight.company.code_en }}-{{ flight.racenumber }}</wrap>
+                            {{ ')' }}
+                          </wrap>
+                        </span>
+                        <span ng-if="baggageItem.status" class="service-status service-status-{{ baggageItem.status }}">
+                          {{ 'web.serviceStatus.' | aliasWithPrefix:baggageItem.status }}
+                        </span>
+                      </li>
+                    </wrap>
+                    <li ng-if="vm.isCommonService(passengerSegmentService.code)">
+                      <span ng-class="{ line_through: passengerSegmentService.serviceItem.removed }" title="{{ (passengerSegmentService.serviceItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}">
+                        {{ 'web.orderInfo.extraServices.' | aliasWithPrefix:passengerSegmentService.code }}
+                      </span>
+                      <span ng-if="passengerSegmentService.serviceItem.status" class="service-status service-status-{{ passengerSegmentService.serviceItem.status }}">
+                        {{ 'web.serviceStatus.' | aliasWithPrefix:passengerSegmentService.serviceItem.status }}
+                      </span>
+                    </li>
+                  </wrap>
+                </ul>
+              </div>
+            </wrap>
+          </wrap>
+
+        </div>
+        <!--  -->
+
+
+        <div ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerSegmentServices"
   				 class="included-service__passenger__services">
   				<div ng-repeat="(segmentNumber, segment) in vm.orderInfo.plainFlights"
   					 class="included-service__passenger__services__segment"
@@ -192,6 +260,8 @@
   						<div class="included-service__passenger__services__segment__code">
   							{{ 'web.orderInfo.extraServices.flight' | aliasStatic}} {{ segment.company.code }}-{{ segment.racenumber }}
   						</div>
+
+              <!-- included-service__passenger__services__segment__route -->
   						<div class="included-service__passenger__services__segment__route">
   							<div class="included-service__passenger__services__segment__route__departure">
   								<div class="included-service__passenger__services__segment__route__departure__city">
@@ -213,20 +283,36 @@
   								</div>
   							</div>
   						</div>
-  						<div class="included-service__passenger__services__segment__service">
-  							<div ng-class="{ line_through: passengerSegmentService.serviceItem.removed }"
-  								 title="{{ (passengerSegmentService.serviceItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}"
-  								 class="included-service__passenger__services__segment__service__text">
+              <!-- END included-service__passenger__services__segment__route -->
+
+              <div ng-if="passengerSegmentService.code == 'meal'"
+                   ng-repeat="serviceItem in passengerSegmentService.serviceItems track by $index">
+
+                <div class="included-service__passenger__services__segment__service__text">
+                  <span class="included-service__passenger__services__segment__service__text__value">
+                    {{ 'web.orderInfo.extraServices.meal' | aliasStatic}} {{ serviceItem.title }}
+                  </span>
+                  <span class="included-service__passenger__services__segment__service__price"
+                        ng-bind-html="{ value: serviceItem.totalPrice, currency: serviceItem.currency } | price"
+                        ng-if="serviceItem.status !== 'ISSUED_WITH_EMD'">
+                  </span>
+    							<span class="included-service__passenger__services__segment__service__price included-service__passenger__services__segment__service__price_issued"
+    								 ng-if="serviceItem.status == 'ISSUED_WITH_EMD'">
+    								{{ 'web.serviceStatus.ISSUED_WITH_EMD' | aliasStatic }}
+    							</span>
+                </div>
+
+              </div>
+
+              <!-- included-service__passenger__services__segment__service -->
+  						<div class="included-service__passenger__services__segment__service"
+                   ng-if="passengerSegmentService.code !== 'meal'">
+  							<div class="included-service__passenger__services__segment__service__text">
   								<span class="included-service__passenger__services__segment__service__text__title">
   									{{ 'web.orderInfo.extraServices.' + passengerSegmentService.code | aliasStatic}}
   								</span>
-  								<span class="included-service__passenger__services__segment__service__text__value"
-  									  ng-if="passengerSegmentService.code == 'seat'">
+  								<span class="included-service__passenger__services__segment__service__text__value">
   									{{ passengerSegmentService.serviceItem.value }}
-  								</span>
-  								<span class="included-service__passenger__services__segment__service__text__value"
-  									  ng-if="passengerSegmentService.code == 'meal' || passengerSegmentService.code == 'baggage'">
-  									{{ passengerSegmentService.serviceItem.title }}
   								</span>
   							</div>
   							<div class="included-service__passenger__services__segment__service__price"
@@ -238,6 +324,7 @@
   								{{ 'web.serviceStatus.ISSUED_WITH_EMD' | aliasStatic }}
   							</div>
   						</div>
+              <!-- included-service__passenger__services__segment__service -->
   					</div>
   				</div>
   			</div>
