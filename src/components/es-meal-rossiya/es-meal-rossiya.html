@@ -462,7 +462,7 @@
                         <span ng-bind-html="{ value: itemMealSelect.totalPrice, currency: itemMealSelect.currency } | price"></span>
 
                         <a ng-if="mealSelect" href
-                           ng-click="vm.removePassengerFlightMeal(passengerNum, flightNum)"
+                           ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)"
                            class="btn-remove">
                            <span class="infoBoxWrap">
                              <i class="icon_remove"></i>
@@ -518,7 +518,7 @@
 
 <!-- ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]" -->
 
-  <popup-meal-rossiya menu="vm.mealMenu" 
+  <popup-meal-rossiya menu="vm.mealMenu"
       get-meal-info='vm.getMealInfo',
       meal-select="vm.orderInfo.groupedEditableExtraServices.meal[vm.selectedPassenger][vm.selectedFlight]"
       passenger="vm.orderInfo.passengers[vm.selectedPassenger]"
