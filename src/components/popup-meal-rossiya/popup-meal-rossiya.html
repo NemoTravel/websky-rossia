@@ -49,8 +49,7 @@
                   {{ vm.passenger.lastName }} {{ vm.passenger.firstName }}
                 </span>
                 <span ng-if="vm.totalAmount() !== 0">
-                  {{ vm.totalAmount() }}
-                </span>
+                  <span ng-bind-html="{ value: vm.totalAmount(), currency: 'RUB' } | price"></span>
               </div>
             </div>
             <!-- end itemTitle -->
@@ -64,6 +63,9 @@
                 </span>
 
                 <span class="itemOrderInfo-row__price">
+                  <span style="display: none">
+                    {{ itemMealSelect.currency }}
+                  </span>
                   <span ng-bind-html="{ value: itemMealSelect.totalPrice, currency: itemMealSelect.currency } | price"></span>
                   <a href class="btn-remove" ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)">
                     <span class="infoBoxWrap">
