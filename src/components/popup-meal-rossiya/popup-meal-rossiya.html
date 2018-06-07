@@ -45,9 +45,12 @@
             <!-- itemTitle -->
             <div class="itemTitle">
               <div class="itemTitle__i">
-                <p>
+                <span>
                   {{ vm.passenger.lastName }} {{ vm.passenger.firstName }}
-                </p>
+                </span>
+                <span ng-if="vm.totalAmount() !== 0">
+                  {{ vm.totalAmount() }}
+                </span>
               </div>
             </div>
             <!-- end itemTitle -->

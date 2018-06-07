@@ -41,6 +41,8 @@ function PopupMealRossiyaController(utils, $scope) {
 	vm.nextItemPopup = nextItemPopup;
 	vm.prevItemPopup = prevItemPopup;
 
+	vm.totalAmount = totalAmount;
+
 	function setItemIndex(subgroupIndex, mealIndex) {
 
 		vm.detailedView.open = true;
@@ -209,6 +211,22 @@ function PopupMealRossiyaController(utils, $scope) {
 				}
 			}
 		}
+	}
+
+	function totalAmount() {
+		vm.mealMenu = vm.mealMenu || [];
+
+		var totalSumm = 0;
+
+		for (var i = 0; i < vm.mealMenu.length; i++) {
+			for(var j = 0; j < vm.mealMenu[i].length; j++) {
+				if(vm.mealMenu[i][j].alreadySelectedCount) {
+					totalSumm += ( vm.mealMenu[i][j].price * vm.mealMenu[i][j].alreadySelectedCount );
+				}
+			}
+		}
+
+		return totalSumm;
 	}
 
 }
