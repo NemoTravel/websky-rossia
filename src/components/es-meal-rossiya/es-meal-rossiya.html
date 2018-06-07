@@ -176,7 +176,7 @@
 
                         <a href
                            ng-if="mealSelect"
-                           ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)"
+                           ng-click="vm.selectFlightPassenger(flightNum, passengerNum); vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1);"
                            class="btn-remove">
                            <span class="infoBoxWrap">
                              <i class="icon_remove"></i>
@@ -462,7 +462,7 @@
                         <span ng-bind-html="{ value: itemMealSelect.totalPrice, currency: itemMealSelect.currency } | price"></span>
 
                         <a ng-if="mealSelect" href
-                           ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)"
+                           ng-click="vm.selectFlightPassenger(flightNum, passengerNum); vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)"
                            class="btn-remove">
                            <span class="infoBoxWrap">
                              <i class="icon_remove"></i>
