@@ -144,26 +144,22 @@
                   <div ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
                        ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
+                  <!-- foodSelect__passenger -->
                   <div class="foodSelect__passenger"
-                       ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum] && passenger.hasSeats">
-
-                       <span style="display: none">
-                         {{ passenger.hasSeats }}
-                       </span>
+                       ng-if="passenger.hasSeats">
 
                     <!-- foodSelect__name-passenger -->
                     <div class="foodSelect__name-passenger"
                          ng-click="vm.selectFlightPassenger(flightNum, passengerNum)"
                          ng-class=" { focus: passengerNum === vm.selectedPassenger,
                                       notChoice: !mealSelect && vm.service.availableByPassengerSegments[passengerNum] } ">
-
                       {{ passenger.lastName }} {{ passenger.firstName }}
-                      <i ng-if="!vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats" class="icon_child-discount"></i>
                     </div>
                     <!-- end foodSelect__name-passenger -->
 
                     <!-- foodSelect__meal-passenger -->
-                    <div class="foodSelect__meal-passenger"
+                    <div ng-if="mealSelect"
+                         class="foodSelect__meal-passenger"
                          ng-repeat="(indexMealSelect, itemMealSelect) in mealSelect track by $index"
                          ng-if="mealSelect">
 
@@ -191,32 +187,21 @@
 
                     </div>
                     <!-- end foodSelect__meal-passenger -->
-                  </div>
 
-                  <!-- foodSelect__passenger -->
-                  <div class="foodSelect__passenger"
-                       ng-if="!vm.service.availableByPassengerSegments[passengerNum][flightNum] && passenger.hasSeats">
-                    <!-- foodSelect__name-passenger -->
-                    <div class="foodSelect__name-passenger"
-                         ng-class=" { disable: !vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats } ">
-                      {{ passenger.lastName }} {{ passenger.firstName }}
-                      <i ng-if="!vm.service.availableByPassengerSegments[passengerNum] && !passenger.hasSeats" class="icon_child-discount"></i>
+                    <!-- foodSelect__meal-passenger -->
+                    <div class="foodSelect__meal-passenger"
+                         ng-if="vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum].length"
+                         ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
+                      <span>
+                        {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasStatic }}
+                      </span>
+                      <span class="passengersTable__segment-passengers__passenger__meals__issued">
+                        {{ 'web.serviceStatus.issued' | aliasStatic }}
+                      </span>
                     </div>
-                    <!-- end foodSelect__name-passenger -->
-
-                    <div ng-if="vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum].length">
-                      <div ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
-                        <span>
-                          {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasStatic }}
-                        </span>
-                        <span class="passengersTable__segment-passengers__passenger__meals__issued">
-                          {{ 'web.serviceStatus.issued' | aliasStatic }}
-                        </span>
-                      </div>
-                    </div>
-
+                    <!-- END foodSelect__meal-passenger -->
                   </div>
-                  <!-- foodSelect__passenger -->
+                  <!-- END foodSelect__passenger -->
 
                 </div>
               </div>
