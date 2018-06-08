@@ -117,6 +117,9 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             ).then(function (resp) {
                 vm.seatMap = resp;
                 vm.seatMap.hasSeatsWithBabyBassinet = checkExistSeatsWithBabyBassinetBySeatMap(resp);
+                if (vm.seatMap.hasSeatsWithBabyBassinet) {
+                    vm.seatMap.babyBassinetCost = getBabyBassinetCost();
+                }
                 vm.loadingSeatMap = false;
 
                 $timeout(function () {
@@ -128,6 +131,28 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             });
         }
 
+    }
+
+    function getBabyBassinetCost(paxNum, flightNum) {
+        var babyBassinetItem;
+        if (
+            vm.babyBassinetService &&
+            vm.babyBassinetService.itemsByPassengerSegments &&
+            vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger] &&
+            vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]
+        ) {
+            babyBassinetItem = utils.getFirstNotEmptySubListItem(vm.babyBassinetService.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]);
+            if (
+                babyBassinetItem &&
+                babyBassinetItem.price &&
+                babyBassinetItem.currency
+            ) {
+                return {
+                    value: babyBassinetItem.price,
+                    currency: babyBassinetItem.currency
+                }
+            }
+        }
     }
 
     function checkExistSeatsWithBabyBassinetBySeatMap(seatMap) {
@@ -160,6 +185,7 @@ function SeatRossiyaController($scope, $element, $timeout, backend, utils) {
             chair.properties.forEach(function (prop) {
                 if (prop === 'babyBassinet') {
                     hasBabyBassinet = true
+                    chair.hasBabyBassinet = true
                 }
             });
         }

@@ -4367,6 +4367,14 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
     order: 8;
 }
 
+.babyBassinetTooltipCost svg {
+    vertical-align: -10px;
+}
+
+.seatSelect .seatName.seatName--babyBassinet {
+    top: -60px;
+}
+
 .popup_selectSeat .seatInfo ul {
     justify-content: left;
 }
