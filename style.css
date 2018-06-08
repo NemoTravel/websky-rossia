@@ -244,6 +244,11 @@
     background-size: contain;
 }
 
+.passengersTable__segment-passengers__passenger__meals__issued {
+	font-size: 12px;
+    margin-right: 40px;
+}
+
 .foodSelect__menu {
 	flex-basis: 65%;
 }
@@ -363,6 +368,24 @@
     margin-left: 30px;
 }
 
+#popupMeal.popup_selectFood .itemTitle__i {
+	display: flex;
+    justify-content: space-between;
+    padding-right: 53px;
+}
+
+#popupMeal.popup_selectFood .itemTitle__i span {
+    font-family: "Helios";
+    font-weight: bold;
+    font-size: 20px;
+    white-space: normal;
+    color: #55565a;
+}
+
+#popupMeal.popup_selectFood .itemTitle__i .currency_sign {
+	font-family: 'pt_sansregular'
+}
+
 .panel-action .price,
 #popupMeal .price{
     font-size: 18px;
@@ -393,12 +416,12 @@
 #popupMeal .price:before {
     display: none;
  	background: black;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    left: -25px;
     z-index: 1;
-    top: 1px;
+    top: 0;
+    left: -26px;
 }
 
 .baggageControl a.minus,
@@ -685,7 +708,51 @@
 /* END #itemPopup */
 
 .itemOrderInfo-row {
-	margin-bottom: 10px;
+	margin-bottom: 12px;
+}
+
+
+.otherServices {
+	display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.otherServices .title {
+	padding: 0 10px 0 0;
+    margin: 0 0 20px 0;
+}
+
+.otherServices__icons {
+	display: flex;
+}
+
+.otherServices .icon-seat,
+.otherServices .icon-meal {
+    width: 80px;
+    height: 80px;
+	background-size: cover;
+    border: 2px solid #fff;
+}
+
+.otherServices__icons .icon-meal {
+    margin-right: 20px;
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAYBQTFRF0BEr0Rcw54WT5X6M0BQu3lhr6pKe1S1E1SpB6pOf31xu1zdN65ei43B/2DlO20ld//z8/vj51jNJ9cvR////5oKQ5HiH9s/U0Roz6pah/fHy9crQ4mt75HSE3FFk//v78rrC76y11i5F9c3T9czS4m193E5h/O3v76637aGr1S1D88DH/vr7+uLl3E1h+d/i1zhN99Xa0BUv+ubp0Rgx9MTK4mp6+uXo0hs0/vf49tLX8ba+4GJz6I2Z4WV27aKs7KCr4GR17aWv4m5+20pe/O/x8LG6/fHz7aOt8be/7qix3ldq43GA6Y+c+Nre+eHk0h428bnA1ClA/fP19MfN9tDV1CY+1jJI88PJ3lps+d3h+d7i0yA55HaF/vn62DtQ2DxS6pSg/O7w76221StC/Ozu8LO70hw00Rky2UFW5HWE7qqz76+4//7+5X2L8bW94GV12kdb/fX28r3E9cnP65ij0h837J+q8LK62kVZ43OD0yI63FBj1Cc+20hc0x84oPiOtQAAAZBJREFUeJzt1VdTAjEUBeCLBQsWxIMFURE7KiA27BV7wYaK2LH3rqj4190wDorlgWxmfDDnJcmdnW+S3cxdIhkZGRmZ92gSEpMoWZtCqWnpkYJOm5GZxUVl63MMlAsj5SG/gBUKAVORmYcqBkqoFBYqA6ysUA6WCl38VCVQRdWooVqYbKxQB5OlHmgw8FD2L5SDnBag0SWAamomVwvQKoBqcxNZ29GRKoaiTui7BFGJQLcgqgfo5aX6Yql+YCBOahAYIg+GlV2NpMTuajROysx2pccYjX87YLzUBDBJU9N2asGMVx3lBGbZODePBVJH0SJg9GmWlpVBLbWi9AGPXw+sBtRStLYeaSuODVJN0eZWKRyVXhJAkWsbO9GFOiq4q1xRMZStGnufqX2K3DcR1AEdHh2LoShgYt/0RASlY9LpmQjKAJxfXHJIP1JGHuhnakpSkpLUP6esV7iOLm7gYa3vlo+628V9dPEAP/kAnhbK8hh6is6DIeU3/Rxyc1Iv4Y+5JvyqvL3w7w/LyMj8cd4ALNRrlQdLxHkAAAAASUVORK5CYII=');
+}
+
+.otherServices__icons .icon-seat {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAWtQTFRF0BEr4GR19czS//v7/vr79MjO31tt65ei////6ImW311v/vf476+48LK63FBj/fX22DtR2kVZ8bnB/vn67aWv8LO7++rs6IiV0BUv5HaF3VRm/fT28r3E1ClA//7+7aOt7622//391CU99MfN/fHy0Rcw3lhr43KB43OC/fHz88HI7qmy1Cg/0Rgx3ldp315w/O/x0yE58rzE+Nzg0yQ85XyK4m1920tf0BQu++vt9cvR/Ozu7qaw5oKQ0BIs7J6p1S1D8bi/0hw03E9i5X6M4Wd48rvD7J+q0h010BMt9tDV0h83++ns20ld65ql1jFI76u1/fL01i9G5oGO6Y+b7qew++fq99XZ9MTK1zZM6pOf54WT9MfO+uPn99bb0yM77aKs6pSg/PDx1i5F2UBV+uXo2kNX65um99TY766365mk4Wl60Roz/vb39tHW9s/U/vj55XqJ4GFy8bnA5XmI6IuX8bW9+uTn1CY+5lzLQwAAAYxJREFUeJzt1ulTkmEUhvEnRb3S1IxcExEXCM0tW4VwaaWyNJcyrWzR1Fat1D8/Dhrrt3P40sxzfbmHZ4bfvPMOvOCcz+fz/fedqaoO1NRWQqoj21m7VA8N5xoD0GSmamg+71xLgAtmKshFmVbazBS0y2TumKc8laM67FT229cJXVbqEt0yoR7CVqqXSJ9sPwODRioKMdnLEDVSg3GGZPsiDBspN0zkiuwQ8REjNQqdsjEYM1Id4/TLTlTTa6RcmJ6Q7FXyTV5TUV1wXfZGAcVNFXXrNlOyE0ESydPupFSUm4YZ2Vka5nRCrrtwT/Y+PDi9qoexRyoq3cZj2SfBgpv1dF5lPYPnsgsD/8pYiy801DwsFZ/MLcOKhkqt8rL07BUJDSXP0LWSo9fKJ3QLrJccbWh/+d/wtuj1u8x1buqo95T14aOO+lQmbW3rJOc+78BuMtfel69aybkk39L6dxf1nR8VktI/T/79VaA12K8QdQC/6vL9NlB/Sj4LugdytsNi6ejYcFk+n89n6S+MGzCKpsj3nwAAAABJRU5ErkJggg==');
+}
+
+.checkoutServices__i .list > .item {
+	padding-bottom: 5px;
+}
+
+.foodSelect .dep__point_airport:before {
+	content: " - ";
+    display: inline-block;
+    margin: 0 5px;
 }
 
 /* media */
@@ -737,7 +804,12 @@
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+
+    .passengersTable__segment-passengers__passenger__meals__issued {
+    	font-size: 16px;
+	    margin-right: 45px;
+	}
 
     .otherServices .icon-seat,
     .otherServices .icon-meal {
@@ -786,6 +858,15 @@
 
 
 @media only screen and (max-width: 450px) {
+
+    #popupMeal.popup_selectFood .itemTitle__i {
+        padding-right: 26px;
+	}
+
+    #popupMeal.popup_selectFood .itemTitle__i span {
+    	font-size: 12px;
+    }
+
     #itemPopup {
         margin-top: -10px;
 	}
@@ -836,48 +917,3 @@
 }
 
 /* media */
-
-
-
-.otherServices {
-	display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding-top: 20px;
-}
-
-.otherServices .title {
-	padding: 0 10px 0 0;
-    margin: 0 0 20px 0;
-}
-
-.otherServices__icons {
-	display: flex;
-}
-
-.otherServices .icon-seat,
-.otherServices .icon-meal {
-    width: 80px;
-    height: 80px;
-	background-size: cover;
-    border: 2px solid #fff;
-}
-
-.otherServices__icons .icon-meal {
-    margin-right: 20px;
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAYBQTFRF0BEr0Rcw54WT5X6M0BQu3lhr6pKe1S1E1SpB6pOf31xu1zdN65ei43B/2DlO20ld//z8/vj51jNJ9cvR////5oKQ5HiH9s/U0Roz6pah/fHy9crQ4mt75HSE3FFk//v78rrC76y11i5F9c3T9czS4m193E5h/O3v76637aGr1S1D88DH/vr7+uLl3E1h+d/i1zhN99Xa0BUv+ubp0Rgx9MTK4mp6+uXo0hs0/vf49tLX8ba+4GJz6I2Z4WV27aKs7KCr4GR17aWv4m5+20pe/O/x8LG6/fHz7aOt8be/7qix3ldq43GA6Y+c+Nre+eHk0h428bnA1ClA/fP19MfN9tDV1CY+1jJI88PJ3lps+d3h+d7i0yA55HaF/vn62DtQ2DxS6pSg/O7w76221StC/Ozu8LO70hw00Rky2UFW5HWE7qqz76+4//7+5X2L8bW94GV12kdb/fX28r3E9cnP65ij0h837J+q8LK62kVZ43OD0yI63FBj1Cc+20hc0x84oPiOtQAAAZBJREFUeJzt1VdTAjEUBeCLBQsWxIMFURE7KiA27BV7wYaK2LH3rqj4190wDorlgWxmfDDnJcmdnW+S3cxdIhkZGRmZ92gSEpMoWZtCqWnpkYJOm5GZxUVl63MMlAsj5SG/gBUKAVORmYcqBkqoFBYqA6ysUA6WCl38VCVQRdWooVqYbKxQB5OlHmgw8FD2L5SDnBag0SWAamomVwvQKoBqcxNZ29GRKoaiTui7BFGJQLcgqgfo5aX6Yql+YCBOahAYIg+GlV2NpMTuajROysx2pccYjX87YLzUBDBJU9N2asGMVx3lBGbZODePBVJH0SJg9GmWlpVBLbWi9AGPXw+sBtRStLYeaSuODVJN0eZWKRyVXhJAkWsbO9GFOiq4q1xRMZStGnufqX2K3DcR1AEdHh2LoShgYt/0RASlY9LpmQjKAJxfXHJIP1JGHuhnakpSkpLUP6esV7iOLm7gYa3vlo+628V9dPEAP/kAnhbK8hh6is6DIeU3/Rxyc1Iv4Y+5JvyqvL3w7w/LyMj8cd4ALNRrlQdLxHkAAAAASUVORK5CYII=');
-}
-
-.otherServices__icons .icon-seat {
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAMAAAArDjJDAAAAAXNSR0IB2cksfwAAAWtQTFRF0BEr4GR19czS//v7/vr79MjO31tt65ei////6ImW311v/vf476+48LK63FBj/fX22DtR2kVZ8bnB/vn67aWv8LO7++rs6IiV0BUv5HaF3VRm/fT28r3E1ClA//7+7aOt7622//391CU99MfN/fHy0Rcw3lhr43KB43OC/fHz88HI7qmy1Cg/0Rgx3ldp315w/O/x0yE58rzE+Nzg0yQ85XyK4m1920tf0BQu++vt9cvR/Ozu7qaw5oKQ0BIs7J6p1S1D8bi/0hw03E9i5X6M4Wd48rvD7J+q0h010BMt9tDV0h83++ns20ld65ql1jFI76u1/fL01i9G5oGO6Y+b7qew++fq99XZ9MTK1zZM6pOf54WT9MfO+uPn99bb0yM77aKs6pSg/PDx1i5F2UBV+uXo2kNX65um99TY766365mk4Wl60Roz/vb39tHW9s/U/vj55XqJ4GFy8bnA5XmI6IuX8bW9+uTn1CY+5lzLQwAAAYxJREFUeJzt1ulTkmEUhvEnRb3S1IxcExEXCM0tW4VwaaWyNJcyrWzR1Fat1D8/Dhrrt3P40sxzfbmHZ4bfvPMOvOCcz+fz/fedqaoO1NRWQqoj21m7VA8N5xoD0GSmamg+71xLgAtmKshFmVbazBS0y2TumKc8laM67FT229cJXVbqEt0yoR7CVqqXSJ9sPwODRioKMdnLEDVSg3GGZPsiDBspN0zkiuwQ8REjNQqdsjEYM1Id4/TLTlTTa6RcmJ6Q7FXyTV5TUV1wXfZGAcVNFXXrNlOyE0ESydPupFSUm4YZ2Vka5nRCrrtwT/Y+PDi9qoexRyoq3cZj2SfBgpv1dF5lPYPnsgsD/8pYiy801DwsFZ/MLcOKhkqt8rL07BUJDSXP0LWSo9fKJ3QLrJccbWh/+d/wtuj1u8x1buqo95T14aOO+lQmbW3rJOc+78BuMtfel69aybkk39L6dxf1nR8VktI/T/79VaA12K8QdQC/6vL9NlB/Sj4LugdytsNi6ejYcFk+n89n6S+MGzCKpsj3nwAAAABJRU5ErkJggg==');
-}
-
-.checkoutServices__i .list > .item {
-	padding-bottom: 5px;
-}
-
-.foodSelect .dep__point_airport:before {
-	content: " - ";
-    display: inline-block;
-    margin: 0 5px;
-}
