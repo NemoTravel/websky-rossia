@@ -186,7 +186,7 @@
 
       </div>
 
-    </div>
+    </div>  
   </div>
 
   <div class="popup__footer" ng-if="vm.detailedView.open">
@@ -197,11 +197,11 @@
 
           <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
 
-          <div class="popup__btn" ng-if="!mealItem.active" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+          <div class="popup__btn" ng-if="mealItem.alreadySelectedCount == 0" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
             {{ 'web.extraServices.meal.order' | aliasStatic}}
           </div>
 
-          <div class="extra-service-picker" ng-if="mealItem.active">
+          <div class="extra-service-picker" ng-if="mealItem.alreadySelectedCount > 0">
               <service-picker count="mealItem.alreadySelectedCount"
                   limit="mealItem.limit"
                   locked="vm.locked"
