@@ -18,7 +18,7 @@
                       <span class="infoBoxWrap">
                         <i class="icon_info"></i>
                         <span class="infoBox">
-                          <span class="infoBox__i" ng-bind-html="'web.extraServicesRules.seat' | aliasStatic"></span>
+                          <span class="infoBox__i" ng-bind-html="'web.extraServicesRules.seat' | aliasDynamic"></span>
                         </span>
                       </span>
                     </a>
@@ -158,7 +158,7 @@
                   <div class="passengersTable__segment-passengers__passenger__info" ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum] || vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum]">
                     <div class="passengersTable__segment-passengers__passenger__info__seat">
                       <div class="passengersTable__segment-passengers__passenger__info__seat__text">
-                        {{ 'web.extraServices.seat.seatText' | aliasStatic}}
+                        {{ 'web.extraServices.seat.seatText' | aliasDynamic}}
                       </div>
                       <div class="passengersTable__segment-passengers__passenger__info__seat__number" ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]">
                         {{ vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].value }}
@@ -167,12 +167,12 @@
                         {{ vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum].value }}
                       </div>
                       <div class="passengersTable__segment-passengers__passenger__info__seat__no-number" ng-if="!vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum] && !vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum]">
-                        {{ 'web.extraServices.seat.noSeatSelected' | aliasStatic}}
+                        {{ 'web.extraServices.seat.noSeatSelected' | aliasDynamic}}
                       </div>
                     </div>
                     <div class="passengersTable__segment-passengers__passenger__info__price">
                       <div class="passengersTable__segment-passengers__passenger__info__price__text">
-                        {{ 'web.extraServices.seat.seatPrice' | aliasStatic}}
+                        {{ 'web.extraServices.seat.seatPrice' | aliasDynamic}}
                       </div>
                       <div class="passengersTable__segment-passengers__passenger__info__price__money" ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]" ng-bind-html="{ value: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
                       </div>
@@ -234,7 +234,7 @@
                       <span class="infoBoxWrap">
                         <i class="icon_info"></i>
                         <span class="infoBox infoBox_mobile">
-                          <span class="infoBox__i" ng-bind-html="'web.extraServicesRules.seat' | aliasStatic"></span>
+                          <span class="infoBox__i" ng-bind-html="'web.extraServicesRules.seat' | aliasDynamic"></span>
                         </span>
                       </span>
                     </a>
@@ -335,7 +335,7 @@
                   </div>
                   <div class="passengersTable__segment-passengers__passenger__info" ng-if="vm.service.availableByPassengerSegments[passengerNum][flightNum] || vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum]">
                     <div class="passengersTable__segment-passengers__passenger__info__seat">
-                      <div class="passengersTable__segment-passengers__passenger__info__seat__text">{{ 'web.extraServices.seat.seatText' | aliasStatic }}</div>
+                      <div class="passengersTable__segment-passengers__passenger__info__seat__text">{{ 'web.extraServices.seat.seatText' | aliasDynamic }}</div>
                       <div class="passengersTable__segment-passengers__passenger__info__seat__number" ng-class="{ selected: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum] || vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum], notSelected: !vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum] && !vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum]}">
                         <div class="passengersTable__segment-passengers__passenger__info__seat__number__value" ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]">
                           {{ vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].value }}
@@ -360,7 +360,7 @@
                       </div>
                     </div>
                     <div class="passengersTable__segment-passengers__passenger__info__price">
-                      <div class="passengersTable__segment-passengers__passenger__info__price__text">{{ 'web.extraServices.seat.seatPrice' | aliasStatic }}</div>
+                      <div class="passengersTable__segment-passengers__passenger__info__price__text">{{ 'web.extraServices.seat.seatPrice' | aliasDynamic }}</div>
                       <div class="passengersTable__segment-passengers__passenger__info__price__money" ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]" ng-bind-html="{ value: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
                       </div>
                       <div class="passengersTable__segment-passengers__passenger__info__price__money" ng-if="vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum]" ng-bind-html="{ value: vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.issuedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">

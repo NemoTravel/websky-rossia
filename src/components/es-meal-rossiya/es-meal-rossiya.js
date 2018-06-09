@@ -123,10 +123,25 @@ function MealRossiyaController($scope, $element, backend, utils) {
     }
 
     function updateMealMenu() {
-        vm.mealMenu = vm.service.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight];
+        vm.mealMenu = flattenMealMenu(vm.service.itemsByPassengerSegments[vm.selectedPassenger][vm.selectedFlight]);
         if (vm.mealMenuSubgroup === undefined) {
             vm.mealMenuSubgroup = false;
         }
+    }
+
+    function flattenMealMenu(deepMenu) {
+        var flatMenu = [];
+        if (deepMenu && deepMenu.length) {
+            deepMenu.forEach(function (deepMenuItems, subgroupNum) {
+                if (deepMenuItems && deepMenuItems.length) {
+                    deepMenuItems.forEach(function (deepMenuItem) {
+                        deepMenuItem.subgroupNum = subgroupNum;
+                        flatMenu.push(deepMenuItem);
+                    });
+                }
+            });
+        }
+        return flatMenu;
     }
 
     function setPassengerFlightMeal(subgroupNum, mealItem) {
@@ -246,17 +261,28 @@ function MealRossiyaController($scope, $element, backend, utils) {
       var countMeals = 0,
           selectedPassenger = vm.selectedPassenger || 0,
           selectedFlight = vm.selectedFlight || 0,
-          mealsIssued = vm.orderInfo.groupedIssuedExtraServices.meal[selectedPassenger][selectedFlight].length || 0;
+          mealsIssued = getMealsIssuedLength(selectedPassenger, selectedFlight);
 
-      vm.mealMenu.forEach(function(arr) {
-        arr.forEach(function(item) {
+      vm.mealMenu.forEach(function(item) {
           countMeals += item.alreadySelectedCount;
-        });
       });
 
       countMeals += mealsIssued;
 
       return (countMeals >= 3) ? true : false;
+    }
+
+    function getMealsIssuedLength(selectedPassenger, selectedFlight) {
+        if (
+            vm.orderInfo.groupedIssuedExtraServices &&
+            vm.orderInfo.groupedIssuedExtraServices.meal &&
+            vm.orderInfo.groupedIssuedExtraServices.meal[selectedPassenger] &&
+            vm.orderInfo.groupedIssuedExtraServices.meal[selectedPassenger][selectedFlight] &&
+            vm.orderInfo.groupedIssuedExtraServices.meal[selectedPassenger][selectedFlight].length
+        ) {
+            return vm.orderInfo.groupedIssuedExtraServices.meal[selectedPassenger][selectedFlight].length;
+        }
+        return 0;
     }
 
     function getMealInfo(obj) {

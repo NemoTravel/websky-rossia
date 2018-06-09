@@ -68,7 +68,7 @@
 								<div class="seatPopupBottom__selectedInfo" ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers" ng-if="vm.selectedPassenger == passengerNum">
 									<div class="passengersTable__segment-passengers__passenger__info__seat">
 										<div class="passengersTable__segment-passengers__passenger__info__seat__text">
-											{{ 'web.extraServices.seat.seatText' | aliasStatic}}
+											{{ 'web.extraServices.seat.seatText' | aliasDynamic}}
 										</div>
 										<div class="passengersTable__segment-passengers__passenger__info__seat__number" ng-if="vm.selectedSeatsByPassengerSegments[passengerNum][flightNum]">
 											{{ vm.selectedSeatsByPassengerSegments[passengerNum][flightNum].value }}
@@ -77,12 +77,12 @@
 											{{ vm.issuedSeatsByPassengerSegments[passengerNum][flightNum].value }}
 										</div>
 										<div class="passengersTable__segment-passengers__passenger__info__seat__no-number" ng-if="!vm.selectedSeatsByPassengerSegments[passengerNum][flightNum] && !vm.issuedSeatsByPassengerSegments[passengerNum][flightNum]">
-											{{ 'web.extraServices.seat.noSeatSelected' | aliasStatic}}
+											{{ 'web.extraServices.seat.noSeatSelected' | aliasDynamic}}
 										</div>
 									</div>
 									<div class="passengersTable__segment-passengers__passenger__info__price">
 										<div class="passengersTable__segment-passengers__passenger__info__price__text">
-											{{ 'web.extraServices.seat.seatPrice' | aliasStatic}}
+											{{ 'web.extraServices.seat.seatPrice' | aliasDynamic}}
 										</div>
 										<div class="passengersTable__segment-passengers__passenger__info__price__money" ng-if="vm.selectedSeatsByPassengerSegments[passengerNum][flightNum]" ng-bind-html="{ value: vm.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
 										</div>

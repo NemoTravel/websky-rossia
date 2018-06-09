@@ -43,10 +43,9 @@ function PopupMealRossiyaController(utils, $scope) {
 
 	vm.totalAmount = totalAmount;
 
-	function setItemIndex(subgroupIndex, mealIndex) {
+	function setItemIndex(mealIndex) {
 
 		vm.detailedView.open = true;
-		vm.detailedView.subgroupIndex = subgroupIndex;
 		vm.detailedView.mealIndex = mealIndex;
 
 	}
@@ -57,74 +56,31 @@ function PopupMealRossiyaController(utils, $scope) {
 
 	function nextItemPopup() {
 
-		var countSubgroupIndex = vm.mealMenu.length - 1,
-				countMealIndex = vm.mealMenu[vm.detailedView.subgroupIndex].length - 1;
-
-		if (
-			vm.detailedView.subgroupIndex !== countSubgroupIndex &&
-			vm.detailedView.mealIndex !== countMealIndex
-		) {
-				vm.detailedView.mealIndex++;
-		} else if
-			(
-				vm.detailedView.subgroupIndex !== countSubgroupIndex &&
-				vm.detailedView.mealIndex == countMealIndex
-			) {
-				vm.detailedView.mealIndex = 0;
-				vm.detailedView.subgroupIndex++;
-		} else if
-			(
-				vm.detailedView.subgroupIndex == countSubgroupIndex &&
-				vm.detailedView.mealIndex !== countMealIndex
-			) {
-				vm.detailedView.mealIndex++;
-		} else if
-			(
-				vm.detailedView.subgroupIndex == countSubgroupIndex &&
-				vm.detailedView.mealIndex == countMealIndex
-			) {
-				vm.detailedView.mealIndex = 0;
-				vm.detailedView.subgroupIndex = 0;
+		if (vm.detailedView.mealIndex < (vm.mealMenu.length - 1)) {
+			vm.detailedView.mealIndex++;
+		} else {
+			vm.detailedView.mealIndex = 0;
 		}
+
 	}
 
 	function prevItemPopup() {
 
-		if (
-			vm.detailedView.subgroupIndex !== 0 &&
-			vm.detailedView.mealIndex !== 0
-		) {
-				vm.detailedView.mealIndex--;
-		} else if
-			(
-				vm.detailedView.subgroupIndex !== 0 &&
-				vm.detailedView.mealIndex == 0
-			) {
-				vm.detailedView.subgroupIndex--;
-				vm.detailedView.mealIndex = vm.mealMenu[vm.detailedView.subgroupIndex].length - 1;
-		} else if
-			(
-				vm.detailedView.subgroupIndex == 0 &&
-				vm.detailedView.mealIndex !== 0
-			) {
-				vm.detailedView.mealIndex--;
-		} else if
-			(
-				vm.detailedView.subgroupIndex == 0 &&
-				vm.detailedView.mealIndex == 0
-			) {
-				vm.detailedView.subgroupIndex = vm.mealMenu.length - 1;
-				vm.detailedView.mealIndex = vm.mealMenu[vm.detailedView.subgroupIndex].length - 1;
+		if (vm.detailedView.mealIndex > 0) {
+			vm.detailedView.mealIndex--;
+		} else {
+			vm.detailedView.mealIndex = vm.mealMenu.length - 1;
 		}
+
 	}
 
 	function setAvailablePassengers() {
 		vm.availablePassengers = vm.passengers.filter(function (passenger, index) {
-					return (
-							vm.service.availableByPassengerSegments[index] &&
-							vm.service.availableByPassengerSegments[index][vm.currentFlightIndex]
-					);
-			});
+			return (
+				vm.service.availableByPassengerSegments[index] &&
+				vm.service.availableByPassengerSegments[index][vm.currentFlightIndex]
+			);
+		});
 	}
 
 	$scope.$watch('vm.currentFlightIndex', function () {

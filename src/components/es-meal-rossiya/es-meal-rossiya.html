@@ -164,7 +164,7 @@
                          ng-if="mealSelect">
 
                       <div>
-                        {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasStatic }}
+                        {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasDynamic }}
                       </div>
 
                       <div class="foodSelect__price">
@@ -193,7 +193,7 @@
                          ng-if="vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum].length"
                          ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
                       <span>
-                        {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasStatic }}
+                        {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
                       </span>
                       <span class="passengersTable__segment-passengers__passenger__meals__issued">
                         {{ 'web.serviceStatus.issued' | aliasStatic }}
@@ -217,12 +217,12 @@
                     <div class="list customScroll_height customScroll_js" custom-scroll>
                       <div class="list__i isotopeGrid">
 
-                        <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
-
-                          <div ng-repeat="mealItem in subgroup"
-                               ng-if="vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false"
+                        
+                        <wrap>
+                          <div ng-repeat="mealItem in vm.mealMenu"
+                               ng-if="vm.mealMenuSubgroup === mealItem.subgroupNum || vm.mealMenuSubgroup === false"
                                ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked, disabled: vm.getLimitStatus() === true }"
-                               ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)" class="item">
+                               ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)" class="item">
 
                             <div class="food_wrap">
 
@@ -249,16 +249,17 @@
                                   <service-picker count="mealItem.alreadySelectedCount"
                                       limit="mealItem.limit"
                                       locked="vm.locked"
-                                      on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
-                                      on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+                                      on-increase="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)"
+                                      on-decrease="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, -1)">
                                   </service-picker>
                                 </div>
                               </div>
 
                             </div>
                           </div>
-
                         </wrap>
+
+
 
                       </div>
                     </div>
@@ -440,7 +441,7 @@
                       <!-- passengersTable__priceSeat  (цена с крестиком)-->
                       <div class="passengersTable__segment-passengers__passenger__meal__title">
                         <!-- {{ selectedPassengerFlightMeal.title }} -->
-                        {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasStatic }}
+                        {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasDynamic }}
                       </div>
 
                       <div class="passengersTable__segment-passengers__passenger__meal__price">
@@ -480,7 +481,7 @@
                       <div class="passengersTable__segment-passengers__passenger__meals"
                            ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
                         <span>
-                          {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasStatic }}
+                          {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
                         </span>
 
                           <span class="passengersTable__segment-passengers__passenger__meals__issued">
@@ -518,5 +519,6 @@
       select="vm.selectFlightPassenger"
       service="vm.service">
   </popup-meal-rossiya>
+
 
 </div>

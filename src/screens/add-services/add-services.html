@@ -93,8 +93,8 @@
                 <div class="invoiceServicesSelected__i">
 
                   <h2 class="title">
-                                        {{ 'web.orderInfo.pricesNotIssued' | aliasStatic}}
-                                    </h2>
+                    {{ 'web.orderInfo.pricesNotIssued' | aliasDynamic}}
+                  </h2>
 
                   <div class="add-services-price-wrapper__row__grouped-services-list">
                     <grouped-services-list order="vm.orderInfo" mode="editable"></grouped-services-list>

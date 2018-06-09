@@ -59,7 +59,7 @@
               <div ng-repeat="(indexMealSelect, itemMealSelect) in vm.mealSelect track by $index" class="itemOrderInfo-row">
 
                 <span>
-                  {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasStatic }}
+                  {{ 'web.extraServices.' + itemMealSelect.rfisc + '.' + itemMealSelect.serviceType +'.ALL.text' | aliasDynamic }}
                 </span>
 
                 <span class="itemOrderInfo-row__price">
@@ -101,10 +101,10 @@
 
               <!-- itemPopup -->
               <div id="itemPopup" ng-if="vm.detailedView.open">
-                <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
+                <wrap>
 
-                  <div ng-repeat="(mealItemNum, mealItem) in subgroup"
-                    ng-if="vm.detailedView.subgroupIndex === subgroupNum && vm.detailedView.mealIndex === mealItemNum">
+                  <div ng-repeat="(mealItemNum, mealItem) in vm.mealMenu"
+                    ng-if="vm.detailedView.mealIndex === mealItemNum">
 
                     <div class="itemPopup__inner">
 
@@ -135,17 +135,17 @@
 
               <div class="list__i isotopeGrid">
 
-                <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
-                    <div ng-repeat="(mealItemNum, mealItem) in subgroup"
-                         ng-if=" vm.mealMenuSubgroup === subgroupNum || vm.mealMenuSubgroup === false "
+                <wrap>
+                    <div ng-repeat="(mealItemNum, mealItem) in vm.mealMenu"
+                         ng-if=" vm.mealMenuSubgroup === mealItem.subgroupNum || vm.mealMenuSubgroup === false "
                          ng-class="{ active: mealItem.alreadySelectedCount, disabled: vm.getLimitStatus() === true }"
                          class="item">
 
                         <a href>
-                            <div class="img" ng-click="vm.setItemIndex(subgroupNum, mealItemNum)">
+                            <div class="img" ng-click="vm.setItemIndex(mealItemNum)">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
                             </div>
-                            <div class="name" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+                            <div class="name" ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)">
                                 <p>{{ mealItem.title }}</p>
                                 <p class="price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></p>
                             </div>
@@ -153,8 +153,8 @@
                                 <service-picker count="mealItem.alreadySelectedCount"
                                     limit="mealItem.limit"
                                     locked="vm.locked"
-                                    on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
-                                    on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+                                    on-increase="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)"
+                                    on-decrease="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, -1)">
                                 </service-picker>
                             </div>
                         </a>
@@ -167,7 +167,7 @@
               <!-- list-footer -->
               <div class="list-footer">
                 <div class="list-footer__text">
-                  {{ 'web.extraServices.meal.footerText' | aliasStatic}}
+                  {{ 'web.extraServices.meal.footerText' | aliasDynamic}}
                 </div>
                 <div class="list-footer__button">
                   <a href="" ng-click="vm.close()" class="btn">
@@ -191,13 +191,13 @@
 
   <div class="popup__footer" ng-if="vm.detailedView.open">
     <div class="popup__container">
-      <wrap ng-repeat="(subgroupNum, subgroup) in vm.mealMenu">
-        <div ng-repeat="(mealItemNum, mealItem) in subgroup"
-          ng-if="vm.detailedView.subgroupIndex === subgroupNum && vm.detailedView.mealIndex === mealItemNum">
+      <wrap>
+        <div ng-repeat="(mealItemNum, mealItem) in vm.mealMenu"
+          ng-if="vm.detailedView.mealIndex === mealItemNum">
 
           <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
 
-          <div class="popup__btn" ng-if="!mealItem.active" ng-click="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)">
+          <div class="popup__btn" ng-if="!mealItem.active" ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)">
             {{ 'web.extraServices.meal.order' | aliasStatic}}
           </div>
 
@@ -205,8 +205,8 @@
               <service-picker count="mealItem.alreadySelectedCount"
                   limit="mealItem.limit"
                   locked="vm.locked"
-                  on-increase="vm.mealCountChangeHandler(subgroupNum, mealItem, +1)"
-                  on-decrease="vm.mealCountChangeHandler(subgroupNum, mealItem, -1)">
+                  on-increase="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)"
+                  on-decrease="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, -1)">
               </service-picker>
           </div>
 
