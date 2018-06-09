@@ -9,7 +9,6 @@
             <tr ng-repeat="row in cabin.rows" class="row-number-{{row.number}} {{ vm.getRowSeatsUniqueCssPropertiesClasses(row.items) }}" ng-class="{ wingsStart: row.wingsStart, atWing: row.atWing, wingsEnd: row.wingsEnd }">
 
               <td class="row-num">{{ row.number }}</td>
-              <!-- ng-class="{ seat_disabled: (!item.free || !item.available || !cabin.allowed), active: vm.isSelectedByActivePassenger(row.number + item.number), selectedByOrderPassenger: vm.isSelectedByOrderPassenger(row.number + item.number) }" -->
               <td ng-repeat="item in row.items">
                 <div ng-if="item.type == 'chair'"
                     class="seat seat-cost-{{ vm.replaceDots(item.cost || 'none') }} seat-rfisc-{{ item.rfisc || 'none' }} {{ vm.getSeatCssPropertiesClasses(item) }}"
@@ -17,15 +16,20 @@
                     ng-class="{ seat_disabled: (!item.available || !cabin.allowed), active: vm.isSelectedByActivePassenger(row.number + item.number), selectedByOrderPassenger: vm.isSelectedByOrderPassenger(row.number + item.number), 'seat-auto-assigned': item.autoAssigned }">
                   
                   <span class="seat-number">{{ item.number }}</span>
-                  <wrap ng-repeat="prop in item.properties">
-                    <baby-bassinet-icon ng-if="prop == 'babyBassinet'" rfisc="item.rfisc" disabled="(!item.available || !cabin.allowed)" active="vm.isSelectedByActivePassenger(row.number + item.number) || vm.isSelectedByOrderPassenger(row.number + item.number)"></baby-bassinet-icon>
-                  </wrap>
-                  <div ng-if="item.available && cabin.allowed" class="seatName">
+                  
+                  <baby-bassinet-icon ng-if="item.hasBabyBassinet" rfisc="item.rfisc" disabled="(!item.available || !cabin.allowed)" active="vm.isSelectedByActivePassenger(row.number + item.number) || vm.isSelectedByOrderPassenger(row.number + item.number)"></baby-bassinet-icon>
+
+                  <div ng-if="item.available && cabin.allowed" class="seatName" ng-class="{ 'seatName--babyBassinet': item.hasBabyBassinet }">
                     {{ row.number }}{{ item.number }}
                     <wrap ng-if="item.cost">
                       {{' - '}}
                       <wrap ng-bind-html="{ value: item.cost, currency: item.currency } | price"></wrap>
                     </wrap>
+                    <div ng-if="vm.seatMap.babyBassinetCost && item.hasBabyBassinet" class="babyBassinetTooltipCost">
+                        <baby-bassinet-icon-tooltip></baby-bassinet-icon-tooltip>
+                        {{' - '}}
+                        <wrap ng-bind-html="vm.seatMap.babyBassinetCost | price"></wrap>
+                    </div>
                   </div>
                 </div>
               </td>

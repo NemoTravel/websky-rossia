@@ -558,7 +558,7 @@ es-seat .iconBox i{
 .popup_selectSeat .seatInfo ul li  .rfiscs-seat-label-cost:after{
 	display: none;
 }
-.passengersTableSeat__wrapper > .passengersSeatMapBottom .seatInfo ul li span:after,
+.passengersTableSeat__wrapper > .passengersSeatMapBottom .seatInfo ul li span.seat-place:after,
 .popup_selectSeat .seatInfo ul li span:after{
     content: "";
     border-top: 1px solid #fff;
@@ -4365,6 +4365,32 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 .seatPopupInfo .seatInfo .seat-babyBassinet {
     margin-left: 0;
     order: 8;
+}
+
+.babyBassinetTooltipCost svg {
+    vertical-align: -10px;
+}
+
+.seatSelect .seatName.seatName--babyBassinet {
+    top: -60px;
+}
+
+.checkoutServices__i .infoBoxWrap--babyBassinetLegend {
+    padding-left: 10px;
+}
+
+.checkoutServices__i .infoBoxWrap--babyBassinetLegend .infoBox {
+    left: auto;
+    right: 0px;
+    -webkit-transform: none;
+    transform: none;
+    bottom: auto;
+    top: 5px;
+}
+
+.checkoutServices__i .infoBoxWrap--babyBassinetLegend .infoBox:after {
+    left: auto;
+    right: 27px;
 }
 
 .popup_selectSeat .seatInfo ul {
