@@ -292,11 +292,9 @@ function MealRossiyaController($scope, $element, backend, utils) {
       }
 
       for (var i = 0; i < vm.mealMenu.length; i++) {
-        for (var j = 0; j < vm.mealMenu[i].length; j++) {
-          if(vm.mealMenu[i][j].rfisc == obj.rfisc) {
-            infoMeal.meal = vm.mealMenu[i][j];
-            infoMeal.group = i;
-          }
+        if(vm.mealMenu[i].rfisc == obj.rfisc) {
+          infoMeal.meal = vm.mealMenu[i];
+          infoMeal.group = vm.mealMenu[i].subgroupNum;
         }
       }
 
