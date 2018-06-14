@@ -65,7 +65,10 @@
   									{{ passengerSegmentService.serviceItem.value }}
   								</span>
   								<span class="included-service__passenger__services__segment__service__text__value"
-  									  ng-if="passengerSegmentService.code == 'meal' || passengerSegmentService.code == 'baggage'">
+                                        ng-if="passengerSegmentService.code == 'meal' || passengerSegmentService.code == 'baggage'">
+                                    <span ng-if="passengerSegmentService.serviceItem.amount > 1" class="service-item-amount">
+                                        {{ passengerSegmentService.serviceItem.amount }}
+                                    </span>
   									{{ passengerSegmentService.serviceItem.title }}
   								</span>
   							</div>
@@ -211,6 +214,9 @@
                     </li>
                     <li ng-if="passengerSegmentService.code == 'meal'" ng-repeat="serviceItem in passengerSegmentService.serviceItems track by $index">
                       <span ng-class="{ line_through: serviceItem.removed }" title="{{ (serviceItem.removed ? ( 'web.orderInfo.extraServiceRemoved' | aliasStatic) : '') }}">
+                        <span ng-if="serviceItem.amount > 1" class="service-item-amount">
+                            {{ serviceItem.amount }}
+                        </span>
                         {{ 'web.orderInfo.extraServices.meal' | aliasStatic}} {{ serviceItem.title }}
                       </span>
                       <span ng-if="serviceItem.status" class="service-status service-status-{{ serviceItem.status }}">
@@ -290,6 +296,9 @@
 
                 <div class="included-service__passenger__services__segment__service__text">
                   <span class="included-service__passenger__services__segment__service__text__value">
+                    <span ng-if="serviceItem.amount > 1" class="service-item-amount">
+                        {{ serviceItem.amount }}
+                    </span>
                     {{ 'web.orderInfo.extraServices.meal' | aliasStatic}} {{ serviceItem.title }}
                   </span>
                   <span class="included-service__passenger__services__segment__service__price"
