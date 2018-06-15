@@ -50,6 +50,7 @@
                 </span>
                 <span ng-if="vm.totalAmount() !== 0">
                   <span ng-bind-html="{ value: vm.totalAmount(), currency: 'RUB' } | price"></span>
+                </span>
               </div>
             </div>
             <!-- end itemTitle -->
@@ -186,7 +187,7 @@
 
       </div>
 
-    </div>  
+    </div>
   </div>
 
   <div class="popup__footer" ng-if="vm.detailedView.open">
