@@ -198,7 +198,9 @@
 
           <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
 
-          <div class="popup__btn" ng-if="mealItem.alreadySelectedCount == 0" ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)">
+          <div class="popup__btn"
+               ng-if="mealItem.alreadySelectedCount == 0 && !vm.getLimitStatus()" 
+               ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)">
             {{ 'web.extraServices.meal.order' | aliasStatic}}
           </div>
 
