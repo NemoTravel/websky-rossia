@@ -199,7 +199,7 @@
           <div class="popup__price" ng-bind-html="{ value: mealItem.price, currency: mealItem.currency } | price"></div>
 
           <div class="popup__btn"
-               ng-if="mealItem.alreadySelectedCount == 0 && !vm.getLimitStatus()" 
+               ng-if="mealItem.alreadySelectedCount == 0 && !vm.getLimitStatus()"
                ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)">
             {{ 'web.extraServices.meal.order' | aliasStatic}}
           </div>
@@ -216,6 +216,10 @@
         </div>
       </wrap>
     </div>
+  </div>
+
+  <div class="alert" ng-if="vm.getLimitStatus()" ng-class="{ alert_bottom: vm.detailedView.open }">
+    Одному пассажиру доступно не более трёх блюд
   </div>
 
 </div>
