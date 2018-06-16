@@ -82,11 +82,11 @@
 }
 
 .foodSelect__flight .route__city geo-marker:after {
-	content: "/";
+	content: " - ";
     display: block;
     position: absolute;
-    right: -5px;
-    top: 2px;
+    right: -6px;
+    top: 3px;
 }
 
 .foodSelect__flight .route__city geo-marker:last-child:after {
@@ -611,10 +611,11 @@
 }
 
 .popup__price {
-	font-size: 20px;
+	font-size: 24px;
     white-space: normal;
     color: #55565a;
     font-weight: bold;
+    font-family: Arial;
 }
 
 .popup__btn {
@@ -624,6 +625,13 @@
     text-transform: uppercase;
     font-size: 18px;
     border-radius: 30px;
+}
+
+.popup__footer {
+	min-height: 75px;
+	display: flex;
+	align-items: center;
+	padding: 0;
 }
 
 .popup__footer .baggageControl .val.val_noBagagge {
@@ -750,9 +758,29 @@
 }
 
 .foodSelect .dep__point_airport:before {
-	content: " - ";
+	content: " / ";
     display: inline-block;
     margin: 0 5px;
+}
+
+.alert {
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    color: #8a8a8d;
+    font-size: 14px;
+    bottom: 10px;
+    font-weight: 400;
+    padding: 15px 30px;
+    border-radius: 30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: #fff;
+    box-shadow: 1px 1px 6px #bfbfbf;
+}
+
+.alert_bottom {
+	bottom: 100px;
 }
 
 /* media */
@@ -804,8 +832,12 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
 
+    .checkoutServices__i .list > .item {
+        margin: 0 -15px 5px -15px;
+	}
+    
     .passengersTable__segment-passengers__passenger__meals__issued {
     	font-size: 16px;
 	    margin-right: 45px;
@@ -858,6 +890,10 @@
 
 
 @media only screen and (max-width: 450px) {
+
+    #popupMeal .itemOrderInfo .itemOrderInfo-row {
+    	margin-bottom: 5px;
+	}
 
     #popupMeal.popup_selectFood .itemTitle__i {
         padding-right: 26px;
@@ -912,7 +948,7 @@
 	}
 
     .popup__price {
-		font-size: 18px;
+		font-size: 20px;
 	}
 }
 
