@@ -221,10 +221,22 @@
                         <wrap>
                           <div ng-repeat="mealItem in vm.mealMenu"
                                ng-if="vm.mealMenuSubgroup === mealItem.subgroupNum || vm.mealMenuSubgroup === false"
-                               ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked, disabled: vm.getLimitStatus() === true }"
+                               ng-class="{ active: mealItem.alreadySelectedCount, control_disabled: vm.locked, disabled: vm.getLimitStatus(vm.selectedPassenger, vm.selectedFlight) > 2 }"
                                ng-click="vm.mealCountChangeHandler(mealItem.subgroupNum, mealItem, +1)" class="item">
 
                             <div class="food_wrap">
+
+                              <div style="display: none">
+                                <span>
+                                  {{ vm.getLimitStatus(vm.selectedPassenger, vm.selectedFlight) }}
+                                </span>
+                                <span>
+                                  {{ vm.orderInfo.groupedIssuedExtraServices.meal }}
+                                </span>
+                                <span>
+                                  {{ vm.orderInfo.groupedEditableExtraServices.meal }}
+                                </span>
+                              </div>
 
                               <div class="img">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt="" />
@@ -427,7 +439,7 @@
                         class="passengersTable__segment-passengers__passenger__wrap__link"
                         fancybox="popupMeal"
                         ng-click="vm.selectFlightPassenger(flightNum, passengerNum)"
-                        ng-if="!mealSelect && vm.service.availableByPassengerSegments[passengerNum]">
+                        ng-if="vm.getLimitStatus(passengerNum, flightNum) < 3">
                           {{ 'web.extraServices.meal.noneSelected' | aliasStatic}}
                       </a>
 

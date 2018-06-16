@@ -257,19 +257,17 @@ function MealRossiyaController($scope, $element, backend, utils) {
 
     }
 
-    function getLimitStatus() {
-      var countMeals = 0,
-          selectedPassenger = vm.selectedPassenger || 0,
-          selectedFlight = vm.selectedFlight || 0,
-          mealsIssued = getMealsIssuedLength(selectedPassenger, selectedFlight);
-
-      vm.mealMenu.forEach(function(item) {
-          countMeals += item.alreadySelectedCount;
-      });
-
-      countMeals += mealsIssued;
-
-      return (countMeals >= 3) ? true : false;
+    function getLimitStatus(selectedPassenger, selectedFlight) {
+      if (
+          vm.orderInfo.groupedEditableExtraServices &&
+          vm.orderInfo.groupedEditableExtraServices.meal &&
+          vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger] &&
+          vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight] &&
+          vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight].length
+      ) {
+          return vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight].length;
+      }
+      return 0;
     }
 
     function getMealsIssuedLength(selectedPassenger, selectedFlight) {
