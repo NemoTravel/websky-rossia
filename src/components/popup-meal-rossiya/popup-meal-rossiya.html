@@ -29,8 +29,12 @@
 
               <ol>
 
-                <li ng-repeat="(num, pax) in vm.passengers"
+                <!-- <li ng-repeat="(num, pax) in vm.passengers"
           					ng-if="vm.service.availableByPassengerSegments[num] && vm.service.availableByPassengerSegments[num][vm.currentFlightIndex]"
+          					ng-class="{ active:vm.currentPassengerIndex == num, choice: vm.getPassengerFlightMeal(num, vm.currentFlightIndex)}">
+				        </li> -->
+                <li ng-repeat="(num, pas) in vm.passengers"
+                    ng-if="pas.hasSeats"
           					ng-class="{ active:vm.currentPassengerIndex == num, choice: vm.getPassengerFlightMeal(num, vm.currentFlightIndex)}">
 				        </li>
 
@@ -64,9 +68,6 @@
                 </span>
 
                 <span class="itemOrderInfo-row__price">
-                  <span style="display: none">
-                    {{ itemMealSelect.currency }}
-                  </span>
                   <span ng-bind-html="{ value: itemMealSelect.totalPrice, currency: itemMealSelect.currency } | price"></span>
                   <a href class="btn-remove" ng-click="vm.mealCountChangeHandler(vm.getMealInfo(itemMealSelect).group, vm.getMealInfo(itemMealSelect).meal, -1)">
                     <span class="infoBoxWrap">
@@ -81,6 +82,20 @@
                 </span>
 
               </div>
+
+              <div ng-if="vm.issuedMeal[vm.currentPassengerIndex][vm.currentFlightIndex].length"
+                   ng-repeat="issuedMealItem in vm.issuedMeal[vm.currentPassengerIndex][vm.currentFlightIndex]"
+                   class="itemOrderInfo-row">
+
+                <span>
+                  {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
+                </span>
+
+                  <span class="itemOrderInfo-row__issued">
+                  {{ 'web.serviceStatus.issued' | aliasStatic }}
+                </span>
+              </div>
+
 
             </div>
             <!-- END itemOrderInfo -->
