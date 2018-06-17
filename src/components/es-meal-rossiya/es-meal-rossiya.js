@@ -27,6 +27,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
     vm.getAvailablePassengersCount = utils.getAvailablePassengersCount;
     vm.checkServiceRemovalProhibited = backend.checkServiceRemovalProhibited;
     vm.getLimitStatus = getLimitStatus;
+    vm.getMealsIssuedLength = getMealsIssuedLength;
     vm.getMealInfo = getMealInfo;
 
     vm.canScrollRight = true;
@@ -258,6 +259,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
     }
 
     function getLimitStatus(selectedPassenger, selectedFlight) {
+      var total = 0;
       if (
           vm.orderInfo.groupedEditableExtraServices &&
           vm.orderInfo.groupedEditableExtraServices.meal &&
@@ -265,7 +267,8 @@ function MealRossiyaController($scope, $element, backend, utils) {
           vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight] &&
           vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight].length
       ) {
-          return vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight].length;
+        total = vm.orderInfo.groupedEditableExtraServices.meal[selectedPassenger][selectedFlight].length + getMealsIssuedLength(selectedPassenger, selectedFlight);
+        return total;
       }
       return 0;
     }
