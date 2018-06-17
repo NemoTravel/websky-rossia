@@ -490,6 +490,10 @@
 /* END foodSelect__output */
 
 
+.passengersTableMeal__wrapper .passengersTable__segment-passengers__passenger {
+	display: block;
+}
+
 /* #popupMeal */
 
 #popupMeal .item > a {
@@ -719,6 +723,11 @@
 	margin-bottom: 12px;
 }
 
+.itemOrderInfo-row__issued {
+	font-size: 16px;
+    margin-right: 40px;
+}
+
 
 .otherServices {
 	display: flex;
@@ -837,7 +846,7 @@
     .checkoutServices__i .list > .item {
         margin: 0 -15px 5px -15px;
 	}
-    
+
     .passengersTable__segment-passengers__passenger__meals__issued {
     	font-size: 16px;
 	    margin-right: 45px;
@@ -893,6 +902,11 @@
 
     #popupMeal .itemOrderInfo .itemOrderInfo-row {
     	margin-bottom: 5px;
+	}
+
+    #popupMeal .itemOrderInfo .itemOrderInfo-row__issued {
+		font-size: 12px;
+    	margin-right: 16px;
 	}
 
     #popupMeal.popup_selectFood .itemTitle__i {
