@@ -850,6 +850,7 @@
     .passengersTable__segment-passengers__passenger__meals__issued {
     	font-size: 16px;
 	    margin-right: 45px;
+		min-width: 56px;
 	}
 
     .otherServices .icon-seat,
