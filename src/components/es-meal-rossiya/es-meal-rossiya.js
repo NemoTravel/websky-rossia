@@ -95,7 +95,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
       }
 
       // if countSumm for all meal > limit, don't plus
-      if(!getLimitStatus() && delta > 0) {
+      if(getLimitStatus(vm.selectedPassenger, vm.selectedFlight) < 3 && delta > 0) {
         if (!vm.locked) {
             backend.modifyExtraService({
                 code: 'meal',
