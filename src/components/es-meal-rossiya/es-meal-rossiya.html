@@ -193,6 +193,9 @@
                          ng-if="vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum].length"
                          ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
                       <span>
+                        <span ng-if="issuedMealItem.amount > 1" class="service-item-amount">
+                            {{ issuedMealItem.amount }}
+                        </span>
                         {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
                       </span>
                       <span class="passengersTable__segment-passengers__passenger__meals__issued">
@@ -470,6 +473,9 @@
                     <div class="passengersTable__segment-passengers__passenger__meals"
                          ng-repeat="issuedMealItem in vm.orderInfo.groupedIssuedExtraServices.meal[passengerNum][flightNum]">
                       <span>
+                        <span ng-if="issuedMealItem.amount > 1" class="service-item-amount">
+                            {{ issuedMealItem.amount }}
+                        </span>
                         {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
                       </span>
 

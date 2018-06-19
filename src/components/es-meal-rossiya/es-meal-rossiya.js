@@ -50,6 +50,7 @@ function MealRossiyaController($scope, $element, backend, utils) {
         ) {
             orderInfo.groupedEditableExtraServices.meal = splitMeal(orderInfo.groupedEditableExtraServices.meal);
         }
+
         vm.orderInfo = orderInfo;
     }, false, true);
 
