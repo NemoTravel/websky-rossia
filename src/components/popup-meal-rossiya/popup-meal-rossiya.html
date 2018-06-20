@@ -156,18 +156,6 @@
                          ng-class="{ active: mealItem.alreadySelectedCount, disabled: vm.getLimitStatus(vm.currentPassengerIndex, vm.currentFlightIndex) }"
                          class="item">
 
-                         <div>
-                           <span>
-                             {{ vm.getLimitStatus(vm.currentPassengerIndex, vm.currentFlightIndex) }}
-                           </span>
-                           <span>
-                             vm.currentPassengerIndex -- {{ vm.currentPassengerIndex }}
-                           </span>
-                           <span>
-                             vm.currentFlightIndex -- {{ vm.currentFlightIndex }}
-                           </span>
-                         </div>
-
                         <a href>
                             <div class="img" ng-click="vm.setItemIndex(mealItemNum)">
                                 <img ng-src="{{vm.mealImagesPath}}/{{ mealItem.serviceType }}-{{ mealItem.rfisc }}.jpg" alt=""/>
