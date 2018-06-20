@@ -84,6 +84,9 @@
                    class="itemOrderInfo-row">
 
                 <span>
+                  <span ng-if="issuedMealItem.amount > 1" class="service-item-amount">
+                    {{ issuedMealItem.amount }}
+                  </span>
                   {{ 'web.extraServices.' + issuedMealItem.rfisc + '.' + issuedMealItem.serviceType +'.ALL.text' | aliasDynamic }}
                 </span>
 
