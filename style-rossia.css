@@ -2553,12 +2553,15 @@ label[for="iconfirm"],
 }
 .searchOrderDesc__title {
     color: #333333;
-    margin: 20px 0;
+    margin: 10px 0;
     font: 600 14px/17px 'Arial', sans-serif;
 }
 .searchOrderDesc__text {
     font: 400 14px/17px 'Arial', sans-serif;
     color: #333333;
+}
+.searchOrderDesc__text p {
+    padding-bottom: 10px;
 }
 /* meal styles */
 .dropdown-meal,
