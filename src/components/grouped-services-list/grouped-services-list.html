@@ -199,7 +199,7 @@
 				</div>
 			</div>
 
-			<div ng-repeat="(passengerNumber, passenger) in vm.orderInfo.passengers" ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber] && extraService.passengers[passengerNumber].segments.length"
+			<div ng-repeat="(passengerNumber, passenger) in vm.orderInfo.passengers" ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber] && $root.hasSomeTrueInArray(vm.orderInfo.groupedEditableExtraServices[extraService.code][passengerNumber])"
 			    class="included-service__passenger">
 				<div class="included-service__passenger__name">
 					{{ passenger.lastName }} {{ passenger.firstName }}
