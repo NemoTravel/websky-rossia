@@ -1,7 +1,7 @@
 <div ng-if="vm.mode == 'all'">
 	<wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ].length">
 
-		<div ng-repeat="extraService in vm.orderInfo.all_extra_services" class="included-service included-service__{{ extraService.code }}"
+		<div ng-repeat="extraService in vm.orderInfo.all_extra_services | orderBy:'code' : true " class="included-service included-service__{{ extraService.code }}"
 		    ng-if="!extraService.empty">
 			<div class="included-service__total">
 				<div class="included-service__total__img included-service__total__img__{{ extraService.code }}"></div>
@@ -59,7 +59,7 @@
 										<span ng-if="serviceItem.amount > 1" class="service-item-amount">
 											{{ serviceItem.amount }}
 										</span>
-										{{ 'web.orderInfo.extraServices.meal' | aliasStatic}} {{ serviceItem.title }}
+										 {{ serviceItem.title }}
 									</span>
 									<span class="included-service__passenger__services__segment__service__price" ng-bind-html="{ value: serviceItem.totalPrice, currency: serviceItem.currency } | price"
 									    ng-if="serviceItem.status !== 'ISSUED_WITH_EMD'">

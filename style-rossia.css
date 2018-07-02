@@ -291,10 +291,9 @@ es-seat .iconBox i{
     opacity: 1;
 }
 .passengersTableSeat__wrapper .passengersTable__segment-passengers__passenger__name{
+    font-weight: bold;
+    font-size: 18px;
     color: #55565a;
-    font-family: "Helios", sans-serif;
-    font-size: 21px;
-    font-weight: 700;
     margin-bottom: 30px;
     cursor: pointer;
     position: relative;
@@ -4402,4 +4401,8 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 
 .popup_selectSeat .seatInfo ul {
     justify-content: left;
+}
+
+.checkoutServices__i .customScroll_height {
+    max-height: 630px;
 }

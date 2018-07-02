@@ -366,6 +366,7 @@
     align-items: center;
     margin-top: 10px;
     margin-left: 30px;
+    height: 30px;
 }
 
 #popupMeal.popup_selectFood .itemTitle__i {
