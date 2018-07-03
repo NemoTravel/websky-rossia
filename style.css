@@ -880,6 +880,10 @@
 
     #popupMeal .foodSlider .list__i .item.disabled .plus {
     	opacity: 0.3;
+    }
+    
+    #popupMeal .extra-service-picker__disabled-plus .plus {
+    	opacity: 0.3;
 	}
 
     #popupMeal .foodSlider .list__i .item.active {
