@@ -89,6 +89,31 @@ function addFiles() {
     }
 }
 
+function webHeadRemove() {
+    const addFilesConfig = gulpfileLocal.addFiles;
+
+    if (!addFilesConfig) {
+        console.error('There is no config for add files!');
+
+        return false;
+    }
+
+    if (!addFilesConfig.searchJSP) {
+        console.error('The searchJSP option is not specified!');
+
+        return false;
+    }
+
+    const searchJSPContent = fs.readFileSync(addFilesConfig.searchJSP);
+    const commentedWebHeadStr = '<%-- ${aliases["web.head"]} --%>';
+
+    if (searchJSPContent.indexOf(commentedWebHeadStr) === -1) {
+        const result = searchJSPContent.replace('${aliases["web.head"]}', commentedWebHeadStr);
+
+        fs.writeFileSync(addFilesConfig.searchJSP, result);
+    }
+}
+
 gulp.task('build:js', () => {
     return browserify('src/index.js', {transform: strictify})
         .bundle()
@@ -98,7 +123,10 @@ gulp.task('build:js', () => {
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('build/'))
-        .on('end', addFiles)
+        .on('end', () => {
+            webHeadRemove();
+            addFiles();
+        })
 });
 
 gulp.task('watch', () => {
