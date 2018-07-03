@@ -218,7 +218,9 @@
             {{ 'web.extraServices.meal.order' | aliasStatic}}
           </div>
 
-          <div class="extra-service-picker" ng-if="mealItem.alreadySelectedCount > 0">
+          <div class="extra-service-picker"
+            ng-if="mealItem.alreadySelectedCount > 0"
+            ng-class="{ 'extra-service-picker__disabled-plus': vm.getLimitStatus(vm.currentPassengerIndex, vm.currentFlightIndex) }">
               <service-picker count="mealItem.alreadySelectedCount"
                   limit="mealItem.limit"
                   locked="vm.locked"
