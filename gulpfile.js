@@ -104,11 +104,11 @@ function webHeadRemove() {
         return false;
     }
 
-    const searchJSPContent = fs.readFileSync(addFilesConfig.searchJSP);
-    const commentedWebHeadStr = '<%-- ${aliases["web.head"]} --%>';
+    const searchJSPContent = fs.readFileSync(addFilesConfig.searchJSP).toString();
+    const webHeadStr = '${aliases["web.head"]}';
 
-    if (searchJSPContent.indexOf(commentedWebHeadStr) === -1) {
-        const result = searchJSPContent.replace('${aliases["web.head"]}', commentedWebHeadStr);
+    if (searchJSPContent.indexOf(webHeadStr) !== -1) {
+        const result = searchJSPContent.replace(webHeadStr, '');
 
         fs.writeFileSync(addFilesConfig.searchJSP, result);
     }
