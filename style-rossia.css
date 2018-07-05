@@ -112,8 +112,8 @@ body{
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 .checkoutServices__i .passengersTable .food .item.active .food_info {
     background: #d0112b;
@@ -701,9 +701,6 @@ order-ffp-prices[bonus="vm.ffpBonus"] .totalTable{
     .passengersTable__segment-passengers__passenger__info__seat__text,
     .passengersTable__segment-passengers__passenger__info__price__text{
         width: 130px;
-    }
-    .passengersTableSeat__wrapper .passengersTable__segment-passengers__passenger.notSelected{
-        opacity: 1;
     }
 }
 footer.footer .line, header.header .line{

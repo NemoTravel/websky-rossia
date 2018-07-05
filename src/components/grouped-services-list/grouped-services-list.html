@@ -1,7 +1,7 @@
 <div ng-if="vm.mode == 'all'">
 	<wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ].length">
 
-		<div ng-repeat="extraService in vm.orderInfo.all_extra_services | orderBy:'code' : true " class="included-service included-service__{{ extraService.code }}"
+		<div ng-repeat="extraService in vm.orderInfo.all_extra_services" class="included-service included-service__{{ extraService.code }}"
 		    ng-if="!extraService.empty">
 			<div class="included-service__total">
 				<div class="included-service__total__img included-service__total__img__{{ extraService.code }}"></div>
@@ -185,7 +185,7 @@
 
 	<wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ].length">
 
-		<div ng-repeat="extraService in vm.orderInfo.all_extra_services | orderBy:'code' : true " class="included-service included-service__{{ extraService.code }}"
+		<div ng-repeat="extraService in vm.orderInfo.all_extra_services" class="included-service included-service__{{ extraService.code }}"
 		    ng-if="!extraService.empty && vm.orderInfo['pricesNotIssued'].totalExtraServiceByGroup[extraService.code]">
 
 			<div class="included-service__total">
@@ -359,7 +359,7 @@
 <div ng-if="vm.mode == 'editable'" style="display: none">
 	<wrap ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ].length">
 
-		<div ng-repeat="extraService in vm.orderInfo.all_extra_services | orderBy:'code' : true " class="included-service included-service__{{ extraService.code }}"
+		<div ng-repeat="extraService in vm.orderInfo.all_extra_services" class="included-service included-service__{{ extraService.code }}"
 		    ng-if="!extraService.empty && vm.orderInfo['pricesNotIssued'].totalExtraServiceByGroup[extraService.code]">
 
 			<div class="included-service__total">
