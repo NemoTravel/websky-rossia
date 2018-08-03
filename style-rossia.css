@@ -308,10 +308,22 @@ es-seat .iconBox i{
 	cursor: unset;
     color: #d0112b;
 }
-.passengersTable__segment-passengers__passenger .customCheckbox span{
+.passengersTable__segment-passengers__passenger .customCheckbox span {
     top: -1px;
-    border: 1px solid #808080;
+    border: 1px solid #cd112b;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
 }
+
+.passengersTable__segment-passengers__passenger .customCheckbox input:checked + span:after {
+    border-radius: 50%;
+    left: 3px;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+}   
+
 .payMethods .customCheckbox span{
     top: 0px;
 }
