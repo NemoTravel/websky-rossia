@@ -413,6 +413,7 @@
                 <div class="passengersTable__segment-passengers__passenger"
                      ng-repeat="(passengerNum, passenger) in vm.orderInfo.passengers"
                      ng-class="{ active: (vm.selectedFlight == flightNum && vm.selectedPassenger == passengerNum) }"
+                     ng-if="passenger.hasSeats"
                      ng-init="mealSelect = vm.orderInfo.groupedEditableExtraServices.meal[passengerNum][flightNum]">
 
 
