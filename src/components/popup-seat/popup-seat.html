@@ -57,7 +57,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="seatSelect seatPopupSeatMap">
+						<div class="seatSelect seatPopupSeatMap" ng-class="{ 'seatPopupSeatMap__withBabyBassinet': vm.seatMap.babyBassinetCost }">
 
 							<seat-map ng-if="vm.seatMap" map="vm.seatMap" passenger="vm.selectedPassenger" flight="vm.selectedFlight" selected="vm.selectedSeatsByPassengerSegments" locked="vm.locked" set="vm.setPassengerFlightSeat" issued="vm.issuedSeatsByPassengerSegments">
 							</seat-map>

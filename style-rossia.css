@@ -503,6 +503,9 @@ es-seat .iconBox i{
     overflow-x: hidden;
     overflow-y: scroll;
 }
+.popup_selectSeat .seatPopupSeatMap__withBabyBassinet{
+    max-height: calc(100vh - 230px);
+}
 .popup_selectSeat .seatPopupSeatMap::-webkit-scrollbar{
     width: 8px;
 }
