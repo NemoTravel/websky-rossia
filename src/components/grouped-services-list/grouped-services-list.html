@@ -13,7 +13,7 @@
 					</div>
 				</div>
 			</div>
-			<div ng-repeat="(passengerNumber, passenger) in vm.orderInfo.passengers" ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber] && extraService.passengers[passengerNumber].segments.length"
+			<div ng-repeat="(passengerNumber, passenger) in vm.orderInfo.passengers" ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber] && $root.hasSomeTrueInArray(vm.orderInfo.groupedAllExtraServices[extraService.code][passengerNumber])"
 			    class="included-service__passenger">
 				<div class="included-service__passenger__name">
 					{{ passenger.lastName }} {{ passenger.firstName }}
@@ -97,6 +97,36 @@
 					</div>
 				</div>
 				<!--  -->
+
+				<!-- Insurance by passengers -->
+				<div ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerServices" class="included-service__passenger__services">
+					<div ng-repeat="passengerService in vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerServices"
+						ng-if="extraService.code == passengerService.code">
+
+						<div class="included-service__passenger__services__segment__service">
+							<div class="included-service__passenger__services__segment__service__text">
+								<!--
+								<span class="included-service__passenger__services__segment__service__text__title">
+									{{ 'web.orderInfo.extraServices.' + passengerService.code | aliasStatic}}
+								</span>
+								&nbsp;
+								-->
+								<span class="included-service__passenger__services__segment__service__text__value"
+									ng-bind-html=" 'web.insuranceOnline.' | aliasWithPrefix:(passengerService.serviceItem.ins + '.' + passengerService.serviceItem.tins + '.' + passengerService.serviceItem.productCode)">
+								</span>
+							</div>
+							<div class="included-service__passenger__services__segment__service__price" ng-if="passengerService.serviceItem.status !== 'ISSUED_WITH_EMD'"
+								ng-bind-html="{ value: passengerService.serviceItem.price, currency: passengerService.serviceItem.currency } | price">
+							</div>
+							<div class="included-service__passenger__services__segment__service__price included-service__passenger__services__segment__service__price_issued"
+								ng-if="passengerService.serviceItem.status == 'ISSUED_WITH_EMD'">
+								{{ 'web.serviceStatus.ISSUED_WITH_EMD' | aliasStatic }}
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- /Insurance by passengers -->
 
 			</div>
 		</div>
@@ -280,6 +310,37 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Insurance by passengers -->
+				<div ng-if="vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerServices" class="included-service__passenger__services">
+					<div ng-repeat="passengerService in vm.orderInfo[ vm.mode + 'ExtraServicesByPassengers' ][passengerNumber].passengerServices"
+						ng-if="extraService.code == passengerService.code">
+
+						<div class="included-service__passenger__services__segment__service">
+							<div class="included-service__passenger__services__segment__service__text">
+								<!--
+								<span class="included-service__passenger__services__segment__service__text__title">
+									{{ 'web.orderInfo.extraServices.' + passengerService.code | aliasStatic}}
+								</span>
+								&nbsp;
+								-->
+								<span class="included-service__passenger__services__segment__service__text__value"
+									ng-bind-html=" 'web.insuranceOnline.' | aliasWithPrefix:(passengerService.serviceItem.ins + '.' + passengerService.serviceItem.tins + '.' + passengerService.serviceItem.productCode)">
+								</span>
+							</div>
+							<div class="included-service__passenger__services__segment__service__price" ng-if="passengerService.serviceItem.status !== 'ISSUED_WITH_EMD'"
+								ng-bind-html="{ value: passengerService.serviceItem.price, currency: passengerService.serviceItem.currency } | price">
+							</div>
+							<div class="included-service__passenger__services__segment__service__price included-service__passenger__services__segment__service__price_issued"
+								ng-if="passengerService.serviceItem.status == 'ISSUED_WITH_EMD'">
+								{{ 'web.serviceStatus.ISSUED_WITH_EMD' | aliasStatic }}
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- /Insurance by passengers -->
+
 			</div>
 		</div>
 
