@@ -308,6 +308,8 @@ es-seat .iconBox i{
 	cursor: unset;
     color: #d0112b;
 }
+
+.insurance-fares__rossiya .customCheckbox span,
 .passengersTable__segment-passengers__passenger .customCheckbox span {
     top: -1px;
     border: 1px solid #cd112b;
@@ -316,6 +318,7 @@ es-seat .iconBox i{
     height: 18px;
 }
 
+.insurance-fares__rossiya .customCheckbox input:checked + span:after,
 .passengersTable__segment-passengers__passenger .customCheckbox input:checked + span:after {
     border-radius: 50%;
     left: 3px;
@@ -4418,3 +4421,46 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 .checkoutServices__i .customScroll_height {
     max-height: 660px;
 }
+
+.insuranceSelect__i .insurance-fares.insurance-fares__rossiya {
+    margin: 35px 0;
+    max-width: 400px;
+}
+
+.insurance-fares__rossiya .insurance-pax-cell label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.insurance-fares__rossiya__switch-all .insurance-pax-cell label {
+    font-weight: normal;
+    font-size: 14px;
+    color: #666;
+}
+
+.insurance-fares__rossiya .price-cell {
+    text-align: right;
+    color: #d0112b;
+}
+
+.insurance-fares__rossiya__active .insurance-pax-cell label {
+    color: #d0112b;
+}
+
+.insuranceSelect__i .insurance-fares__rossiya td .customCheckbox span {
+    top: -14px;
+}
+/*
+.checkoutServices__i .iconBox i.icon_seat {
+    background-image: url()!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    background: #d0112c;
+    height: 60px;
+    width: 60px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+*/

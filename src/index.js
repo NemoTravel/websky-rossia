@@ -5,4 +5,7 @@ require('./components/order-rossiya/order-rossiya');
 require('./components/baby-bassinet-icon/baby-bassinet-icon');
 require('./components/baby-bassinet-icon-legend/baby-bassinet-icon-legend');
 require('./components/baby-bassinet-icon-tooltip/baby-bassinet-icon-tooltip');
+require('./components/insurance-fares-rossiya/insurance-fares-rossiya');
+require('./components/insurance-fares-switch-all/insurance-fares-switch-all');
+require('./components/es-insurance-rossiya/es-insurance-rossiya');
 require('./hasSomeTrueInArray');

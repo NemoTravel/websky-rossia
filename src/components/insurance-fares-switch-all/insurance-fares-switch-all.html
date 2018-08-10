@@ -1,0 +1,19 @@
+<table class="insurance-fares insurance-fares__rossiya insurance-fares__rossiya__switch-all"
+    ng-class="{ 'insurance-fares__rossiya__active': vm.active }">
+    <tr>
+        <td class="insurance-pax-cell" colspan="2">
+            <span class="customCheckbox">
+                <label>
+                    <input type="checkbox" 
+                        id="insChb_switch_all"
+                        ng-model="vm.active"
+                        ng-click="vm.switch()"/>
+                    <span></span>
+                </label>
+            </span>
+            <label for="insChb_switch_all">
+                {{ 'web.extraServices.insurance.selectAll' | aliasDynamic }}
+            </label>
+        </td>
+    </tr>
+</table>

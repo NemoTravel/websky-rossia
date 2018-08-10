@@ -1,0 +1,29 @@
+<table ng-repeat="(insuranceItemNum, insuranceItem) in vm.items"
+    class="insurance-fares insurance-fares__rossiya"
+    ng-class="{ 'insurance-fares__rossiya__active': insuranceItem.selected }">
+    <tr>
+        <td class="insurance-pax-cell" colspan="2">
+            <span class="customCheckbox">
+                <label>
+                    <input type="checkbox" 
+                        id="insChb_{{vm.paxKey}}_{{ insuranceItemNum }}"
+                        ng-model="insuranceItem.selected"
+                        ng-click="vm.switch(insuranceItemNum, vm.paxKey)"/>
+                    <span></span>
+                </label>
+            </span>
+            <label for="insChb_{{vm.paxKey}}_{{ insuranceItemNum }}">
+                {{ vm.pax.lastName }} {{ vm.pax.firstName }}
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td class="insurance-type-cell">
+            <label ng-if="!insuranceItem.productCode" for="insChb_{{vm.paxKey}}_{{ insuranceItemNum }}" ng-bind-html=" 'web.insurance.' | aliasWithPrefix:(insuranceItem.ins + '.' + insuranceItem.tins)"></label>
+            <label ng-if="insuranceItem.productCode" for="insChb_{{vm.paxKey}}_{{ insuranceItemNum }}" ng-bind-html=" 'web.insuranceOnline.' | aliasWithPrefix:(insuranceItem.ins + '.' + insuranceItem.tins + '.' + insuranceItem.productCode)"></label>
+        </td>
+        <td class="price-cell">
+            <wrap ng-bind-html=" vm.getInsuranceFullPrice(insuranceItem) | price "></wrap>
+        </td>
+    </tr>
+</table>

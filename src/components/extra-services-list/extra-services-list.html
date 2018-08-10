@@ -8,7 +8,7 @@
 
         <es-seat-rossiya ng-if="esCode == 'seat'" service="vm.es.seat" baby-bassinet-service="vm.es.babyBassinet || false" locked="vm.locked"></es-seat-rossiya>
 
-        <es-insurance ng-if="esCode == 'insurance'" service="vm.es.insurance" locked="vm.locked"></es-insurance>
+        <es-insurance-rossiya ng-if="esCode == 'insurance'" service="vm.es.insurance" locked="vm.locked"></es-insurance-rossiya>
         <es-aeroexpress ng-if="esCode == 'aeroexpress'" service="vm.es.aeroexpress" locked="vm.locked"></es-aeroexpress>
         <es-common ng-if="vm.isCommonService(esCode) && esCode != 'babyBassinet'" service="vm.es[esCode]" code="esCode" locked="vm.locked"></es-common>
     </div>
