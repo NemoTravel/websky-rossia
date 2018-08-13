@@ -37,16 +37,20 @@
                                 </div>
                             </div>
                         </td>
+
                         <td>
-                            <a href ng-click="vm.switchService()" ng-class="{ active: vm.service.active, control_disabled: vm.locked }" class="btn showDrop_js ">
+                            <a href ng-click="vm.switchService()" ng-class="{ active: vm.service.active, control_disabled: vm.locked }" class="btn showDrop_js">
                                 <span class="show">
                                     {{ 'web.extraServices.insurance.select' | aliasStatic}}
                                 </span>
-                                <span class="hide">
-                                    {{ 'web.extraServices.insurance.deselect' | aliasStatic}}
-                                </span>
                             </a>
                         </td>
+                        <td ng-if="vm.service.active">
+                            <a ng-class="{ active: vm.service.active, control_disabled: vm.locked }" class="btn-arrow btn dropdown-button">
+                                <span class="arrow__icon"></span>
+                            </a>
+                        </td>
+
                     </tr>
                 </tbody>
             </table>
