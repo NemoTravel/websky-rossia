@@ -41,12 +41,17 @@
 }
 
 .foodSelect__flight {
-	cursor: pointer;
+    cursor: pointer;
+    color: #909092;
+    padding-bottom: 2px;
+    border-bottom: 2px dashed #909092;
+    display: inline-block;
+    margin: 10px 0;
 }
 
 .foodSelect__flight.active {
-	color: #006da3;
-    font-weight: bold;
+    color: #296587;
+    border-bottom: 2px dashed transparent;
 }
 
 .foodSelect__flight.active .route__plane {
@@ -55,17 +60,16 @@
 
 .foodSelect__flight .route {
 	display: flex;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-family: "Helios";
+    margin-bottom: 0px;
+    font-size: 21px;
     align-items: center;
     height: 24px;
 }
 
 .foodSelect__flight .route__plane {
-    margin-left: 20px;
+    margin-left: 30px;
     display: none;
-    font-size: 24px;
+    font-size: 31px;
 }
 
 .foodSelect__flight .route__city {
@@ -223,7 +227,8 @@
     justify-content: space-between;
     margin-top: 15px;
     font-size: 16px;
-	align-items: center;
+    align-items: center;
+    margin-left: -25px;
 }
 
 .foodSelect__price {
