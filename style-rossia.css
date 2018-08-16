@@ -2860,22 +2860,7 @@ label[for="iconfirm"],
     #popupMeal .foodSlider .img {
         padding-bottom: 0;
     }
-    #popupMeal geo-marker div.arr__point_airport:before,
-    #popupMeal geo-marker div.dep__point_airport:before{
-        content: "(";
-        margin-right: -5px;
-        padding-left: 5px;
-    }
-    #popupMeal geo-marker div.arr__point_airport:after,
-    #popupMeal geo-marker div.dep__point_airport:after{
-        content: ")";
-    }
-    #popupMeal geo-marker div.arr__point_airport.port__:after,
-    #popupMeal geo-marker div.arr__point_airport.port__:before,
-    #popupMeal geo-marker div.dep__point_airport.port__:before,
-    #popupMeal geo-marker div.dep__point_airport.port__:after {
-        content:"";
-    }
+
     #popupMeal.popup_selectFood .itemTitle {
         background: transparent;
         padding: 0;
