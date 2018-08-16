@@ -122,23 +122,13 @@
               <div ng-repeat="(flightNum, flight) in vm.orderInfo.plainFlights" ng-class="{ active: vm.selectedFlight == flightNum, disabled: !vm.service.availableBySegments[flightNum] && !vm.service.hasIssuedSeatsBySegments[flightNum] }" ng-click="(vm.service.availableBySegments[flightNum] || vm.service.hasIssuedSeatsBySegments[flightNum]) && vm.selectFlightPassenger(flightNum, 0)"
                 ng-if="vm.orderInfo.plainFlights.length > 1" class="passengersTable__segment">
                 <div class="passengersTable__segment__route">
-                  <div class="passengersTable__segment__route__departure">
-                    <div class="passengersTable__segment__route__departure__city">
-                      {{ flight.origincityName }}
-                    </div>
-                    <div ng-if="flight.originportName && flight.origincityName !== flight.originportName" class="passengersTable__segment__route__departure__port">
-                      {{ flight.originportName }}
-                    </div>
-                  </div>
+
+                  <geo-marker prefix="passengersTable__segment__route__departure" key="es-seat" city="flight.origincity" cityname="flight.origincityName" port="flight.originport" portname="flight.originportName"></geo-marker>
+
                   <div class="passengersTable__segment__route__dash"></div>
-                  <div class="passengersTable__segment__route__arrival">
-                    <div class="passengersTable__segment__route__arrival__city">
-                      {{ flight.destinationcityName }}
-                    </div>
-                    <div ng-if="flight.destinationportName && flight.destinationcityName !== flight.destinationportName" class="passengersTable__segment__route__arrival__port">
-                      {{ flight.destinationportName }}
-                    </div>
-                  </div>
+
+                  <geo-marker prefix="passengersTable__segment__route__arrival" key="es-seat" city="flight.destinationcity" cityname="flight.destinationcityName" port="flight.destinationport" portname="flight.destinationportName"></geo-marker>
+
                   <div class="passengersTable__segment__route__wall"></div>
                   <div class="passengersTable__segment__route__date">
                     {{ flight.date | formatDate: 'DD.MM.YYYY'}}
@@ -303,23 +293,13 @@
               <div ng-repeat="(flightNum, flight) in vm.orderInfo.plainFlights" ng-class="{ active: vm.selectedFlight == flightNum, disabled: !vm.service.availableBySegments[flightNum] && !vm.service.hasIssuedSeatsBySegments[flightNum] }" ng-click="(vm.service.availableBySegments[flightNum] || vm.service.hasIssuedSeatsBySegments[flightNum]) && vm.selectFlightPassenger(flightNum, 0)"
                 ng-if="vm.orderInfo.plainFlights.length > 1" class="passengersTable__segment">
                 <div class="passengersTable__segment__route">
-                  <div class="passengersTable__segment__route__departure">
-                    <div class="passengersTable__segment__route__departure__city">
-                      {{ flight.origincityName }}
-                    </div>
-                    <div ng-if="flight.originportName && flight.origincityName !== flight.originportName" class="passengersTable__segment__route__departure__port">
-                      {{ flight.originportName }}
-                    </div>
-                  </div>
+
+                  <geo-marker prefix="passengersTable__segment__route__departure" key="es-seat" city="flight.origincity" cityname="flight.origincityName" port="flight.originport" portname="flight.originportName"></geo-marker>
+
                   <div class="passengersTable__segment__route__dash"></div>
-                  <div class="passengersTable__segment__route__arrival">
-                    <div class="passengersTable__segment__route__arrival__city">
-                      {{ flight.destinationcityName }}
-                    </div>
-                    <div ng-if="flight.destinationportName && flight.destinationcityName !== flight.destinationportName" class="passengersTable__segment__route__arrival__port">
-                      {{ flight.destinationportName }}
-                    </div>
-                  </div>
+
+                  <geo-marker prefix="passengersTable__segment__route__arrival" key="es-seat" city="flight.destinationcity" cityname="flight.destinationcityName" port="flight.destinationport" portname="flight.destinationportName"></geo-marker>
+
                   <div class="passengersTable__segment__route__wall"></div>
                   <div class="passengersTable__segment__route__date">
                     {{ flight.date | formatDate: 'DD.MM.YYYY'}}

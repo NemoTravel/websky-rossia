@@ -772,12 +772,6 @@
 	padding-bottom: 5px;
 }
 
-.foodSelect .dep__point_airport:before {
-	content: " / ";
-    display: inline-block;
-    margin: 0 5px;
-}
-
 .alert {
     position: fixed;
     width: 100%;

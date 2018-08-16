@@ -239,11 +239,6 @@ es-seat .iconBox i{
         -ms-flex-align: center;
             align-items: center;
 }
-.passengersTableSeat__wrapper .passengersTable__segment__route__departure__port:before,
-.passengersTableSeat__wrapper .passengersTable__segment__route__arrival__port:before{
-	content: "/";
-    padding: 0 5px;
-}
 .passengersTableSeat__wrapper .passengersTable__segment__route__dash:before{
 	content: "-";
     padding: 0 5px;
@@ -1012,11 +1007,6 @@ color: #55565a!important;
 font-family: "Helios";
 font-size: 21px!important;
 font-weight: 700;
-}
-.route_table .dep__point_airport:before,
-.route_table .arr__point_airport:before{
-	content: "/";
-    padding: 0 10px;
 }
 .route_table .port__.dep__point_airport:before,
 .route_table .port__.arr__point_airport:before{
@@ -2103,11 +2093,6 @@ grouped-services-list wrap{
     display: flex;
     font-weight: bold;
 }
-.included-service__passenger__services__segment__route__arrival__port:before,
-.included-service__passenger__services__segment__route__departure__port:before{
-	content: "/";
-    padding: 0 5px;
-}
 .included-service__passenger__services__segment__service{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2258,11 +2243,6 @@ grouped-services-list wrap{
     display: -ms-flexbox;
     display: flex;
     font-weight: bold;
-}
-.content-add-services .included-service__passenger__services__segment__route__arrival__port:before,
-.content-add-services .included-service__passenger__services__segment__route__departure__port:before{
-	content: "/";
-    padding: 0 5px;
 }
 .content-add-services .included-service__passenger__services__segment__service{
     display: -webkit-box;

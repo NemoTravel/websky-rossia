@@ -371,23 +371,13 @@
                 <div class="passengersTable__segment__route">
 
                   <div class="passengersTable__segment__route_wraper">
-                    <div class="passengersTable__segment__route__departure">
-                      <div class="passengersTable__segment__route__departure__city">
-                        {{ flight.origincityName }}
-                      </div>
-                      <div ng-if="flight.originportName && flight.origincityName !== flight.originportName" class="passengersTable__segment__route__departure__port">
-                        ({{ flight.originportName }})
-                      </div>
-                    </div>
+
+                    <geo-marker prefix="passengersTable__segment__route__departure" key="es-meal" city="flight.origincity" cityname="flight.origincityName" port="flight.originport" portname="flight.originportName"></geo-marker>
+
                     <div class="passengersTable__segment__route__dash"></div>
-                    <div class="passengersTable__segment__route__arrival">
-                      <div class="passengersTable__segment__route__arrival__city">
-                        {{ flight.destinationcityName }}
-                      </div>
-                      <div ng-if="flight.destinationportName && flight.destinationcityName !== flight.destinationportName" class="passengersTable__segment__route__arrival__port">
-                        ({{ flight.destinationportName }})
-                      </div>
-                    </div>
+
+                    <geo-marker prefix="passengersTable__segment__route__arrival" key="es-meal" city="flight.destinationcity" cityname="flight.destinationcityName" port="flight.destinationport" portname="flight.destinationportName"></geo-marker>
+
                   </div>
 
                   <div class="passengersTable__segment__route__date">

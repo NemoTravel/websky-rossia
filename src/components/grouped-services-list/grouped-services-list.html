@@ -31,23 +31,13 @@
 
 							<!-- included-service__passenger__services__segment__route -->
 							<div class="included-service__passenger__services__segment__route">
-								<div class="included-service__passenger__services__segment__route__departure">
-									<div class="included-service__passenger__services__segment__route__departure__city">
-										{{ segment.origincityName }}
-									</div>
-									<div ng-if="segment.originportName && segment.origincityName !== segment.originportName" class="included-service__passenger__services__segment__route__departure__port">
-										{{ segment.originportName }}
-									</div>
-								</div>
+
+								<geo-marker prefix="included-service__passenger__services__segment__route__departure" key="grouped-services-list" city="segment.origincity" cityname="segment.origincityName" port="segment.originport" portname="segment.originportName"></geo-marker>
+
 								<div class="included-service__passenger__services__segment__route__dash"></div>
-								<div class="included-service__passenger__services__segment__route__arrival">
-									<div class="included-service__passenger__services__segment__route__arrival__city">
-										{{ segment.destinationcityName }}
-									</div>
-									<div ng-if="segment.destinationportName && segment.destinationcityName !== segment.destinationportName" class="included-service__passenger__services__segment__route__arrival__port">
-										{{ segment.destinationportName }}
-									</div>
-								</div>
+
+								<geo-marker prefix="included-service__passenger__services__segment__route__arrival" key="grouped-services-list" city="segment.destinationcity" cityname="segment.destinationcityName" port="segment.destinationport" portname="segment.destinationportName"></geo-marker>
+
 							</div>
 							<!-- END included-service__passenger__services__segment__route -->
 
@@ -247,23 +237,13 @@
 
 							<!-- included-service__passenger__services__segment__route -->
 							<div class="included-service__passenger__services__segment__route">
-								<div class="included-service__passenger__services__segment__route__departure">
-									<div class="included-service__passenger__services__segment__route__departure__city">
-										{{ segment.origincityName }}
-									</div>
-									<div ng-if="segment.originportName && segment.origincityName !== segment.originportName" class="included-service__passenger__services__segment__route__departure__port">
-										{{ segment.originportName }}
-									</div>
-								</div>
+
+								<geo-marker prefix="included-service__passenger__services__segment__route__departure" key="grouped-services-list" city="segment.origincity" cityname="segment.origincityName" port="segment.originport" portname="segment.originportName"></geo-marker>
+
 								<div class="included-service__passenger__services__segment__route__dash"></div>
-								<div class="included-service__passenger__services__segment__route__arrival">
-									<div class="included-service__passenger__services__segment__route__arrival__city">
-										{{ segment.destinationcityName }}
-									</div>
-									<div ng-if="segment.destinationportName && segment.destinationcityName !== segment.destinationportName" class="included-service__passenger__services__segment__route__arrival__port">
-										{{ segment.destinationportName }}
-									</div>
-								</div>
+
+								<geo-marker prefix="included-service__passenger__services__segment__route__arrival" key="grouped-services-list" city="segment.destinationcity" cityname="segment.destinationcityName" port="segment.destinationport" portname="segment.destinationportName"></geo-marker>
+
 							</div>
 							<!-- END included-service__passenger__services__segment__route -->
 
@@ -451,23 +431,13 @@
 							    ng-if="extraService.code == passengerSegmentService[0].code && passengerSegmentService">
 
 								<div class="included-service__passenger__services__segment__route">
-									<div class="included-service__passenger__services__segment__route__departure">
-										<div class="included-service__passenger__services__segment__route__departure__city">
-											{{ segment.origincityName }}
-										</div>
-										<div ng-if="segment.originportName && segment.origincityName !== segment.originportName" class="included-service__passenger__services__segment__route__departure__port">
-											{{ segment.originportName }}
-										</div>
-									</div>
+
+									<geo-marker prefix="included-service__passenger__services__segment__route__departure" key="grouped-services-list" city="segment.origincity" cityname="segment.origincityName" port="segment.originport" portname="segment.originportName"></geo-marker>
+
 									<div class="included-service__passenger__services__segment__route__dash"></div>
-									<div class="included-service__passenger__services__segment__route__arrival">
-										<div class="included-service__passenger__services__segment__route__arrival__city">
-											{{ segment.destinationcityName }}
-										</div>
-										<div ng-if="segment.destinationportName && segment.destinationcityName !== segment.destinationportName" class="included-service__passenger__services__segment__route__arrival__port">
-											{{ segment.destinationportName }}
-										</div>
-									</div>
+	
+									<geo-marker prefix="included-service__passenger__services__segment__route__arrival" key="grouped-services-list" city="segment.destinationcity" cityname="segment.destinationcityName" port="segment.destinationport" portname="segment.destinationportName"></geo-marker>
+
 								</div>
 
 								<div class="included-service__passenger__services__segment__service">
