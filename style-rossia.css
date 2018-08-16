@@ -293,6 +293,7 @@ es-seat .iconBox i{
     cursor: pointer;
     position: relative;
     padding-left: 25px;
+    margin-left: -25px;
 }
 .passengersTableSeat__wrapper .passengersTable__segment-passengers__passenger__name_rmg{
     padding-left: 0px;
@@ -4403,12 +4404,17 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 
 .insuranceSelect__i .insurance-fares.insurance-fares__rossiya {
     margin: 35px 0;
+    margin-left: -25px;
     max-width: 400px;
 }
 
 .insurance-fares__rossiya .insurance-pax-cell label {
     font-weight: bold;
     font-size: 18px;
+}
+
+.insuranceSelect__i .insurance-fares__rossiya .insurance-type-cell {
+    padding-left: 35px;
 }
 
 .insurance-fares__rossiya__switch-all .insurance-pax-cell label {
