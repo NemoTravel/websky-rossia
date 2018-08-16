@@ -295,6 +295,12 @@ es-seat .iconBox i{
     padding-left: 25px;
     margin-left: -25px;
 }
+@media only screen and (max-width: 767px) {
+    .passengersTableSeat__wrapper .passengersTable__segment-passengers__passenger__name{
+        margin-left: 0px;
+    }
+}
+
 .passengersTableSeat__wrapper .passengersTable__segment-passengers__passenger__name_rmg{
     padding-left: 0px;
     margin-bottom: 35px;
@@ -4406,6 +4412,12 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
     margin: 35px 0;
     margin-left: -25px;
     max-width: 400px;
+}
+
+@media only screen and (max-width: 767px) {
+    .insuranceSelect__i .insurance-fares.insurance-fares__rossiya {
+        margin-left: 0px;
+    }
 }
 
 .insurance-fares__rossiya .insurance-pax-cell label {
