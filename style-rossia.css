@@ -4457,3 +4457,7 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 .checkoutServices__i .list > .item.item-babyBassinet {
     padding-bottom: 0;
 }
+
+es-meal-rossiya .food .img img {
+    height: 199px;
+}
