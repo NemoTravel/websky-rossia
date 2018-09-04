@@ -143,6 +143,14 @@
                         </div>
                       </div>
                     </div>
+                    <div ng-if="vm.hasVKO" class="chooseResult__businessLounge">
+                      <a ng-href="{{ 'web.businessLoungeLinkHref' | aliasDynamic }}" target="_blank" class="businessLounge">
+                        <span class="businessLounge__image"></span>
+                        <span class="businessLounge__label">
+                          {{ 'web.businessLoungeLinkLabel' | aliasDynamic }}
+                        </span>
+                      </a>
+                    </div>
                   </div>
 
                 </div>

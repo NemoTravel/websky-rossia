@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <separate-order-passengers-list ng-if="vm.partiallyAddedPassengers.length" passengers="vm.partiallyAddedPassengers"></separate-order-passengers-list>
+        <separate-order-passengers-list ng-if="vm.partiallyAddedPassengers.length && !vm.orderInfo" passengers="vm.partiallyAddedPassengers"></separate-order-passengers-list>
 
         <div ng-if="vm.showSearchForm" class="orderSearchForm orderSearchForm_change" style="display: block;">
           <div class="orderSearchForm__i">
@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <div ng-if="vm.partiallyAddedPassengers.length" class="searchResultsControl">
+        <div ng-if="vm.partiallyAddedPassengers.length && !vm.orderInfo" class="searchResultsControl">
             <div class="searchResultsControl__i">
                 <a href ng-if="!vm.showSearchForm" ng-click="vm.addPassenger();" class="btn btn_back btn_noArrow">
                     {{ 'web.separateOrder.button.addPassenger' | aliasStatic}}

@@ -92,6 +92,13 @@ function OrderController($scope, $window, $timeout, backend, utils, redirect, fa
                 vm.ffpBonus = resp.total || 0;
             });
         }
+
+        if (vm.orderInfo && vm.orderInfo.plainFlights) {
+            vm.hasVKO = vm.orderInfo.plainFlights.some(function (flight) {
+                return flight.originport === 'VKO';
+            });
+        }
+
     };
 
     function retryPayment(removeInsuranceAeroexpress) {
