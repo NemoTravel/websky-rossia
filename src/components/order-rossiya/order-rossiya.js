@@ -1,19 +1,19 @@
 
 angular.module('app').component('orderRossiya', {
     templateUrl: 'components/order-rossiya/order-rossiya.html',
-    controller: ['$window', '$timeout', 'backend', 'utils', 'redirect', 'fancyboxTools', OrderRossiyaController],
+    controller: ['$scope', '$window', '$timeout', 'backend', 'utils', 'redirect', 'fancyboxTools', OrderController],
     controllerAs: 'vm',
     bindings: {
-        pnrOrTicketNumber: '=num',
-        lastName: '=lastname'
+        orderInfo: '='
     }
 });
 
-function OrderRossiyaController($window, $timeout, backend, utils, redirect, fancyboxTools) {
+function OrderController($scope, $window, $timeout, backend, utils, redirect, fancyboxTools) {
 
     var vm = this;
     vm.loading = true;
     vm.errorMessage = false;
+    vm.choosePayMethodFailMsg = false;
     vm.openExchange = redirect.goToExchange;
     vm.openRefund = redirect.goToRefund;
     vm.openAddServices = redirect.goToAddServices;
@@ -23,33 +23,42 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
     vm.checkAllPassengersHavePaidService = checkAllPassengersHavePaidService;
     vm.clearSession = clearSession;
 
-    backend.searchOrder(vm.pnrOrTicketNumber, vm.lastName).then(function (orderInfo) {
+    $scope.$on('popupChoosePayMethodChoosePayMethodFailMsg', function (event, data) {
+        vm.choosePayMethodFailMsg = data;
+    });
 
+    $scope.$on('popupChoosePayMethodPending', function (event, data) {
+        vm.popupChoosePayMethodPending = data;
+    });
+
+    vm.$onInit = function () {
         var resultParam = utils.getParamFromLocation('result');
 
-        vm.orderInfo = orderInfo;
-
-        if (
-            vm.orderInfo.header &&
-            (
-                vm.orderInfo.header.status === 'being_paid' ||
-                vm.orderInfo.header.status === 'being_paid_for_exchange'
-            )
-        ) {
-            if (resultParam === 'success') {
-                backend.waitPayment(vm.orderInfo.header.regnum, vm.lastName).then(function () {
-                    $window.location = './order?pnr=' + vm.orderInfo.header.regnum + '&lastName=' + vm.lastName + '&result=success';
+        if (resultParam === 'success') {
+            if (
+                vm.orderInfo.header &&
+                (
+                    vm.orderInfo.header.status === 'being_paid' ||
+                    vm.orderInfo.header.status === 'being_paid_for_exchange'
+                )
+            ) {
+                backend.waitPayment(vm.orderInfo.header.regnum, vm.orderInfo.header.lastName).then(function () {
+                    $window.location = (
+                        './order?pnr=' + vm.orderInfo.header.regnum + '&lastName=' + vm.orderInfo.header.lastName + '&result=success'
+                    );
                     return;
                 }, function () {
                     vm.loading = false;
                 });
             } else {
-                if (!vm.orderInfo.hasFailedServices) {
-                    vm.showPaymentFrame = true;
-                }
                 vm.loading = false;
             }
         } else {
+            // Платежный фрэйм открывается независимо от статуса заказа
+            // Необходимое условие для оплаты онлайн страховок
+            if (!vm.orderInfo.hasFailedServices && vm.orderInfo.paymentRedirectTo) {
+                vm.showPaymentFrame = true;
+            }
             vm.loading = false;
         }
 
@@ -63,7 +72,7 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
             )
         ) {
             $timeout(function () {
-                fancyboxTools.openHandler('popupRemovedServicesWarning', false, {
+                fancyboxTools.openHandler('popupRemovedServicesWarningByOrder', false, {
                     submitCallback: function () {
                         if (vm.orderInfo.paymentRedirectTo) {
                             vm.showPaymentFrame = true;
@@ -75,7 +84,6 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
             });
         }
 
-
         if (
             backend.getParam('ffp.enable') &&
             (vm.orderInfo.hasBonusCard || vm.orderInfo.ffpSumm)
@@ -84,20 +92,22 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
                 vm.ffpBonus = resp.total || 0;
             });
         }
+    };
 
-    }, function (resp) {
-        vm.loading = false;
-        vm.errorMessage = resp.error;
-    });
-
-    function retryPayment() {
+    function retryPayment(removeInsuranceAeroexpress) {
         vm.loading = true;
-        backend.retryRegister().then(function (resp) {
-            if (resp.lastName && resp.pnr) {
+        backend.retryRegister(removeInsuranceAeroexpress).then(function (resp) {
+            if (resp.pnr && resp.lastName) {
                 $window.location = './order?pnr=' + resp.pnr + '&lastName=' + resp.lastName;
-            } else {
-                vm.loading = false;
+            } else if (resp.eraseAeroexpressBecauseOfCurrency || resp.eraseInsuranceBecauseOfCurrency) {
+                fancyboxTools.openHandler('popupChangeCurrencyError', false, {
+                    eraseAeroexpressBecauseOfCurrency: resp.eraseAeroexpressBecauseOfCurrency,
+                    eraseInsuranceBecauseOfCurrency: resp.eraseInsuranceBecauseOfCurrency,
+                    mode: 'retryRegister',
+                    submitCallback: retryPayment
+                });
             }
+            vm.loading = false;
         }, function (resp) {
             vm.loading = false;
             vm.errorMessage = resp.error;
@@ -109,7 +119,7 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
             return;
         }
         vm.loading = true;
-        backend.bindOrder(vm.orderInfo.header.regnum, vm.lastName).then(function () {
+        backend.bindOrder(vm.orderInfo.header.regnum, vm.orderInfo.header.lastName).then(function () {
             vm.loading = false;
             vm.orderInfo.bindAlowed = false;
             vm.showBindOrderSuccessMessage = true;
@@ -153,12 +163,10 @@ function OrderRossiyaController($window, $timeout, backend, utils, redirect, fan
 			}
         });
         return result;
-    }
+    }    
 
     function clearSession() {
-        backend.clearSession().then(function () {
-            redirect.goToSearchOrder();
-        });
+        backend.clearSession().then(redirect.goToSearchOrder);
     }
 
 }

@@ -2619,7 +2619,7 @@ label[for="iconfirm"],
         
     }
     .passengersTableMeal__wrapper > .passengersTable .passengersTable__segment.active {
-        color: #006da3;
+        color: #296587;
         
     }
     .passengersTableMeal__wrapper > .passengersTable .passengersTable__segment.disabled {
@@ -2632,7 +2632,6 @@ label[for="iconfirm"],
         justify-content: space-between;
         align-items: center;
         font-size: 18px;
-        font-family: "Helios";
         position: relative;
     }
     .passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route_wraper {
@@ -3486,7 +3485,7 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 	
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__departure, 
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__arrival {
-		font-size: 20px;									
+		font-size: 18px;
 	}
 	
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__date {
@@ -4027,11 +4026,11 @@ background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAvCAYAAAClg
 	
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__departure, 
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__arrival {
-		font-size: 16px;									
+		font-size: 18px;									
 	}
 	
 	.passengersTableMeal__wrapper > .passengersTable .passengersTable__segment .passengersTable__segment__route__date {
-		font-size: 14px;
+		font-size: 18px;
 		padding-top: 0;
 		padding-bottom: 0;
 		margin-top: 0;
