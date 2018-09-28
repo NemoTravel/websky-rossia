@@ -364,7 +364,7 @@
                           {{ 'web.orderInfo.addExtraServices' | aliasStatic}}
                       </h2>
             <div class="btnRow">
-              <a href ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_select js-add-services">
+              <a href ng-click="vm.openAddServices(vm.orderInfo.header.regNum, vm.lastName)" class="btn btn_select js-add-services">
                               {{ 'web.buttons.addServices' | aliasStatic}}
                           </a>
             </div>
@@ -432,7 +432,7 @@
                     </a>
         </li>
         <li ng-if="vm.orderInfo.refundAllowed">
-          <a href ng-click="vm.openRefund(vm.pnr, vm.lastName)" class="btn">
+          <a href ng-click="vm.openRefund(vm.orderInfo.header.regnum, vm.lastName)" class="btn">
                         {{ 'web.orderInfo.actions.refund' | aliasStatic}}
                     </a>
         </li>
